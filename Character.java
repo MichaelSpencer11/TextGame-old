@@ -2,7 +2,7 @@ public class Character {
     private int str;
     private int dex;
     private int con;
-    private int int;
+    private int inte;
     private int wis;
     private int cha;
 
@@ -22,8 +22,8 @@ public class Character {
         return this.con;
     }
 
-    public int GetInt(){
-        return this.int;
+    public int GetInte(){
+        return this.inte;
     }
 
     public int GetWis(){
@@ -34,27 +34,27 @@ public class Character {
         return this.cha;
     }
 
-    public int SetStr(int newStr){
+    public void SetStr(int newStr){
         this.str = newStr;
     }
 
-    public int SetDex(int newDex){
+    public void SetDex(int newDex){
         this.str = newDex;
     }
 
-    public int SetCon(int newCon){
+    public void SetCon(int newCon){
         this.con = newCon;
     }
 
-    public int SetInt(int newInt){
-        this.int = newInt;
+    public void SetInt(int newInt){
+        this.inte = newInt;
     }
 
-    public int SetWis(int newWis){
+    public void SetWis(int newWis){
         this.wis = newWis;
     }
 
-    public int SetCha(int newCha){
+    public void SetCha(int newCha){
         this.cha = newCha;
     }
 
