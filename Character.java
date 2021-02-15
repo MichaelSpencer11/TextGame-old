@@ -58,4 +58,8 @@ public class Character {
         this.cha = newCha;
     }
 
+    public void Look(){
+        
+    }
+
 }
