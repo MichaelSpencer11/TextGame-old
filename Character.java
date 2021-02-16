@@ -1,39 +1,34 @@
-import java.util.Scanner;
+
 
 public class Character {
-    private String name;
-    private String pronounString;
-    private enum pronoun{M, F, NB};
-    private enum race{LandHuman, SeaHuman, SpaceHuman, LandElf, SeaElf, SpaceElf, LandOrc, SeaOrc, SpaceOrc};
-    private int str;
-    private int dex;
-    private int end;
-    private int mnd;
-    private int cha;
+    protected String name;
+    protected String pronounString;
+    protected enum pronoun{M, F, NB};
+    protected String raceString;
+    protected enum race{Human, Elf, Orc};
+    protected String areaString;
+    protected enum area{Land, Sea, Space};
+    protected String areaRace;
+    protected boolean standing;
+    protected boolean sitting;
+    protected boolean prone;
+    protected int str;
+    protected int dex;
+    protected int end;
+    protected int mnd;
+    protected int cha;
 
     public Character(){
-        Scanner conScanner = new Scanner(System.in);
-        System.out.println("What is your name?");
-        this.name = conScanner.nextLine();
-        System.out.println("What is your preferred nomenclature?(M, F, NB)?");
-        switch(conScanner.nextLine()) {
-            case "M": 
-            pronounString = pronoun.M.toString();
-            case "F":
-            pronounString = pronoun.M.toString();
-            case "NB":
-            pronounString = pronoun.NB.toString();
-        }
-
+        
     }
 
     public String getName(){
         return this.name;
     }
 
-    public String getPronoun() {
+    //public String getPronoun() {
         
-    }
+    //}
 
     public int getStr(){
         return this.str;
