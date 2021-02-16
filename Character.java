@@ -1,56 +1,73 @@
+import java.util.Scanner;
+
 public class Character {
+    private String name;
+    private enum pronoun{M, F, NB};
+    private enum race{LandHuman, SeaHuman, SpaceHuman, LandElf, SeaElf, SpaceElf, LandOrc, SeaOrc, SpaceOrc};
     private int str;
     private int dex;
-    private int con;
+    private int end;
     private int mnd;
     private int cha;
 
     public Character(){
+        Scanner conScanner = new Scanner(System.in);
+        System.out.println("What is your name?");
+        this.name = conScanner.nextLine();
 
     }
 
-    public int GetStr(){
+    public String getName(){
+        return this.name;
+    }
+
+    public String getPronoun() {
+        
+    }
+
+    public int getStr(){
         return this.str;
     }
 
-    public int GetDex(){
+    public int getDex(){
         return this.dex;
     }
 
-    public int GetCon(){
-        return this.con;
+    public int getCon(){
+        return this.end;
     }
 
-    public int GetMnd(){
+    public int getMnd(){
         return this.mnd;
     }
 
-    public int GetCha(){
+    public int getCha(){
         return this.cha;
     }
 
-    public void SetStr(int newStr){
+    public void setStr(int newStr){
         this.str = newStr;
     }
 
-    public void SetDex(int newDex){
+    public void setDex(int newDex){
         this.str = newDex;
     }
 
-    public void SetCon(int newCon){
-        this.con = newCon;
+    public void setEnd(int newEnd){
+        this.end = newEnd;
     }
 
-    public void SetInte(int newMnd){
+    public void setInte(int newMnd){
         this.mnd = newMnd;
     }
 
-    public void SetCha(int newCha){
+    public void setCha(int newCha){
         this.cha = newCha;
     }
 
     public void Look(){
-        
+        System.out.println("You look around a bit.");
     }
+
 
 }
