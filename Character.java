@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Character {
     private String name;
+    private String pronounString;
     private enum pronoun{M, F, NB};
     private enum race{LandHuman, SeaHuman, SpaceHuman, LandElf, SeaElf, SpaceElf, LandOrc, SeaOrc, SpaceOrc};
     private int str;
@@ -14,6 +15,15 @@ public class Character {
         Scanner conScanner = new Scanner(System.in);
         System.out.println("What is your name?");
         this.name = conScanner.nextLine();
+        System.out.println("What is your preferred nomenclature?(M, F, NB)?");
+        switch(conScanner.nextLine()) {
+            case "M": 
+            pronounString = pronoun.M.toString();
+            case "F":
+            pronounString = pronoun.M.toString();
+            case "NB":
+            pronounString = pronoun.NB.toString();
+        }
 
     }
 
