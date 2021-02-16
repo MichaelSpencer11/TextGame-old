@@ -6,9 +6,9 @@ public class Player extends Character{
         this.sitting = false;
         this.standing = false;
         Scanner conScanner = new Scanner(System.in);
-        do
+        do {
         System.out.println("What is your preferred nomenclature?(M, F, NB)?");
-        switch(conScanner.nextLine()) {
+        switch(conScanner.nextLine().toUpperCase()) {
             case "M": 
             this.pronounString = pronoun.M.toString();
             break;
@@ -21,9 +21,10 @@ public class Player extends Character{
             default:
             System.out.println("Please enter either M, F, or NB.");
         }
-        while(pronounString != null || !pronounString.equals("") );
 
-        do
+        }while(this.pronounString == null );
+
+        do {
         System.out.println("You look down at your body. What does your body look like? (1-3)");
         System.out.println("1. It looks human.");
         System.out.println("2. It looks elven.");
@@ -41,9 +42,9 @@ public class Player extends Character{
             default:
             System.out.println("Please tell me how your body looks. (1, 2, or 3)");
         }
-        while(this.raceString != null);
+        }while(this.raceString == null);
 
-        do
+        do {
         System.out.println("You you begin to daydream and have visions of another place. What are you doing? ");
         System.out.println("1. Hiking through snowy mountains.");
         System.out.println("2. Rigging up the main mast on a sailing ship.");
@@ -61,18 +62,18 @@ public class Player extends Character{
             System.out.println("Please enter 1, 2, or 3.");
 
         }
-        while(this.areaString == null || this.areaString.equals(""));
+        }while(this.areaString == null );
 
-        do
+        do {
         System.out.println("You are lying down in a bed. Would you like to try to stand up? Type 'stand' to stand up.");
         if (conScanner.nextLine().equals("stand")){
             System.out.println("You stand up.");
             this.prone = false;
             this.standing = true;
         }
-        while(!this.standing);
+        }while(!this.standing);
 
-        do
+        do {
         System.out.println("Now, how difficult was it to stand up?");
         System.out.println("1. Very hard.");
         System.out.println("2. Hard.");
@@ -98,10 +99,10 @@ public class Player extends Character{
             default:
             System.out.println("Please tell me how difficult it was to get up(1-5).");
         }
-        while (this.str != null);
+        }while (this.str < 8 || this.str > 12);
 
         System.out.println("There is a desk with a chair and a piece of paper and pen on it.");
-        do
+        do {
         System.out.println("Try to remember your name. If you can remember your name, try to write it on the paper.");
         this.name = conScanner.nextLine();
         System.out.println("Great job. How difficult was it to write your name?");
@@ -130,9 +131,15 @@ public class Player extends Character{
             System.out.println("Please tell me how hard it was to write your name.(1-3)");
         
         }
-        while(this.dex != null);
+        }while(this.dex < 8 || this.dex > 12);
 
-        
+        System.out.println("Str: " + this.str);
+        System.out.println("Dex: " + this.dex);
+        System.out.println("Nom: " + pronounString);
+        System.out.println("Area: " + areaString);
+        System.out.println("Race: " + raceString);
+        System.out.print("Press any key to continue . . . ");
+        conScanner.nextLine();
         
         
     }
