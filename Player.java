@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 public class Player extends Character{
     public Player() {
@@ -33,7 +33,7 @@ public class Player extends Character{
             this.raceString = race.Human.toString();
             break;
             case "2":
-            this.raceString = race.Elven.toString();
+            this.raceString = race.Elf.toString();
             break;
             case "3":
             this.raceString = race.Orc.toString();
@@ -67,7 +67,7 @@ public class Player extends Character{
         System.out.println("You are lying down in a bed. Would you like to try to stand up? Type 'stand' to stand up.");
         if (conScanner.nextLine().equals("stand")){
             System.out.println("You stand up.");
-            this.lying = false;
+            this.prone = false;
             this.standing = true;
         }
         while(!this.standing);
