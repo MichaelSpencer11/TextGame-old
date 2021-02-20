@@ -74,5 +74,14 @@ public class Character {
         System.out.println("You look around a bit.");
     }
 
+    public void openDoor(Door door) {
+        door.setOpened();
+        System.out.println("You open the door.");
+    }
+
+    public void closeDoor(Door door){
+        door.setClosed();
+        System.out.println("You close the door.");
+    }
 
 }

@@ -133,14 +133,9 @@ public class Player extends Character{
         }
         }while(this.dex < 8 || this.dex > 12);
 
-        System.out.println("Str: " + this.str);
-        System.out.println("Dex: " + this.dex);
-        System.out.println("Nom: " + pronounString);
-        System.out.println("Area: " + areaString);
-        System.out.println("Race: " + raceString);
-        System.out.print("Press any key to continue . . . ");
-        conScanner.nextLine();
-        
+        System.out.println("There is a door here in the room.");
         
     }
+
+    
 }
