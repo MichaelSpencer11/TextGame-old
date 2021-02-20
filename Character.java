@@ -83,5 +83,5 @@ public class Character {
         door.setClosed();
         System.out.println("You close the door.");
     }
-
+    
 }
