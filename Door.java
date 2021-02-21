@@ -31,8 +31,8 @@ public class Door {
         isLocked = false;
     }
 
-    public void unlock(Key key){
+    //public void unlock(Key key){
         //if()
-    }
+    //}
 
 }

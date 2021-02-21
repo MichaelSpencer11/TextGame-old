@@ -1,7 +1,8 @@
 public class Room {
     private enum dirs{N, NE, E, SE, S, SW, W, NW, U, D};
+    public enum Terrain{ROCKY, WETLAND, FIELD, INTERIOR, GRASS };
     private String description;
-    private Terrains roomTerrain;
+    private Terrain roomTerrain;
 
     private boolean hasN;
     private boolean hasNE;
@@ -15,7 +16,21 @@ public class Room {
     private boolean hasD;
     
     public Room(String terrainType){
-        Terrains roomTerrain = new Terrains(terrainType);
+        if(terrainType.equals("ROCKY")){
+            this.roomTerrain = Terrain.ROCKY;
+        }
+        else if (terrainType.equals("WETLAND")){
+            this.roomTerrain = Terrain.WETLAND;
+        }
+        else if(terrainType.equals("FIELD")){
+            this.roomTerrain = Terrain.FIELD;
+        }
+        else if(terrainType.equals("INTERIOR")){
+            this.roomTerrain = Terrain.INTERIOR;
+        }
+        else if(terrainType.equals("GRASS")){
+            this.roomTerrain = Terrain.GRASS;
+        }
     }
 
     public String getTerrainType(){
