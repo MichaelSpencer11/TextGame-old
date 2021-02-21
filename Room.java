@@ -1,6 +1,6 @@
 public class Room {
     private enum dirs{N, NE, E, SE, S, SW, W, NW, U, D};
-    public enum Terrain{ROCKY, WETLAND, FIELD, INTERIOR, GRASS };
+    public enum Terrain{ROCKY, WETLAND, FIELD, INTERIOR, GRASS, FOREST };
     private String description;
     private Terrain roomTerrain;
 
@@ -30,6 +30,9 @@ public class Room {
         }
         else if(terrainType.equals("GRASS")){
             this.roomTerrain = Terrain.GRASS;
+        }
+        else if(terrainType.equals("FOREST")){
+            this.roomTerrain = Terrain.FOREST;
         }
     }
 
