@@ -134,8 +134,14 @@ public class Player extends Character{
         }
         }while(this.dex < 8 || this.dex > 12);
 
-        System.out.println("There is a door here in the room.");
         
+        
+
+    }
+
+    Scanner pScanner = new Scanner(System.in);
+    if(pScanner.nextLine().equals("look")){
+        this.look()
     }
 
     
