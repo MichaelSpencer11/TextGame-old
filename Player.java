@@ -1,10 +1,11 @@
 import java.util.Scanner;
 
 public class Player extends Character{
-    public Player() {
+    public Player(Room firstRoom) {
         this.prone = true;
         this.sitting = false;
         this.standing = false;
+        this.currentRoom = firstRoom;
         Scanner conScanner = new Scanner(System.in);
         do {
         System.out.println("What is your preferred nomenclature?(M, F, NB)?");

@@ -17,6 +17,7 @@ public class Character {
     protected int end;
     protected int mnd;
     protected int cha;
+    protected Room currentRoom;
 
     public Character(){
         
@@ -72,6 +73,7 @@ public class Character {
 
     public void Look(){
         System.out.println("You look around a bit.");
+        System.out.println("The room seems to be " + currentRoom.getTerrainType());
     }
 
     public void openDoor(Door door) {
