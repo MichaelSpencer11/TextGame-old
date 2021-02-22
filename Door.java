@@ -1,10 +1,11 @@
 public class Door {
-    private int id;
+    private static int id;
+    private int thisDoorId;
     private boolean isOpened;
     private boolean isLocked;
 
     public Door(){
-
+        this.thisDoorId = id++;
     }
 
     public boolean getOpened(){
@@ -29,6 +30,10 @@ public class Door {
 
     public void setUnlocked(){
         isLocked = false;
+    }
+
+    public void printId(){
+        System.out.println(thisDoorId);
     }
 
     //public void unlock(Key key){
