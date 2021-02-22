@@ -59,6 +59,7 @@ public class Player extends Character{
             break;
             case "3":
             this.areaString = area.Space.toString();
+            break;
             default:
             System.out.println("Please enter 1, 2, or 3.");
 
@@ -67,7 +68,7 @@ public class Player extends Character{
 
         do {
         System.out.println("You are lying down in a bed. Would you like to try to stand up? Type 'stand' to stand up.");
-        if (conScanner.nextLine().equals("stand")){
+        if (conScanner.nextLine().toLowerCase().equals("stand")){
             System.out.println("You stand up.");
             this.prone = false;
             this.standing = true;
@@ -97,6 +98,7 @@ public class Player extends Character{
             break;
             case "5":
             this.str = 12;
+            break;
             default:
             System.out.println("Please tell me how difficult it was to get up(1-5).");
         }
@@ -128,6 +130,7 @@ public class Player extends Character{
             break;
             case "5":
             this.dex = 12;
+            break;
             default:
             System.out.println("Please tell me how hard it was to write your name.(1-5)");
         

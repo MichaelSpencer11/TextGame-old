@@ -75,6 +75,7 @@ public class Character {
     public static void look(){
         System.out.println("You look around a bit.");
         System.out.println("The room seems to be of type " + currentRoom.getTerrainType() + ".");
+        System.out.println("There is a door to the " + currentRoom.getDoor());
     }
 
     public void openDoor(Door door) {

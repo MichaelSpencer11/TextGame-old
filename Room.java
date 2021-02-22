@@ -1,3 +1,5 @@
+
+
 public class Room {
     private enum dirs{N, NE, E, SE, S, SW, W, NW, U, D};
     public enum Terrain{ROCKY, WETLAND, FIELD, INTERIOR, GRASS, FOREST };
@@ -34,10 +36,16 @@ public class Room {
         else if(terrainType.equals("FOREST")){
             this.roomTerrain = Terrain.FOREST;
         }
+
+        
     }
 
     public String getTerrainType(){
         return this.roomTerrain.toString();
+    }
+
+    public String getDoor(Door[] doors){
+        return doors[0].getDoorDir();
     }
 
 }
