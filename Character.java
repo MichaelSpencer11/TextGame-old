@@ -18,7 +18,7 @@ public class Character {
     protected int mnd;
     protected int cha;
     protected int luc;
-    protected Room currentRoom;
+    protected static Room currentRoom;
 
     public Character(){
         
@@ -72,7 +72,7 @@ public class Character {
         this.cha = newCha;
     }
 
-    public void look(){
+    public static void look(){
         System.out.println("You look around a bit.");
         System.out.println("The room seems to be of type " + currentRoom.getTerrainType() + ".");
     }

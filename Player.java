@@ -129,20 +129,21 @@ public class Player extends Character{
             case "5":
             this.dex = 12;
             default:
-            System.out.println("Please tell me how hard it was to write your name.(1-3)");
+            System.out.println("Please tell me how hard it was to write your name.(1-5)");
         
         }
         }while(this.dex < 8 || this.dex > 12);
 
         
-        
 
     }
 
-    Scanner pScanner = new Scanner(System.in);
-    if(pScanner.nextLine().equals("look")){
-        this.look()
-    }
+
+}
+    
 
     
-}
+
+    
+
+
