@@ -1,17 +1,32 @@
 import java.util.Scanner;
-import java.awt.*;
-import java.awt.event.*;
 
 public class Input{
 
     Scanner scanner = new Scanner(System.in);
+    Player thisPlayer;
     
-    {if(scanner.nextLine().equals("look")){
-        Player.look();
-    }}
+    public void input(){
+        while(true){
+            
+            switch (scanner.nextLine()){
+            case "look":
+            thisPlayer.look(thisPlayer.currentRoom);
+            break;
+            case "look door":
+            thisPlayer.look(thisPlayer.currentRoom, thisPlayer.currentRoom.doors);
+            case "exit":
+            System.exit(0);
+            break;
+            
+            
+        }
 
-    public Input(){
+    }
+    }
 
+
+    public Input(Player player){
+        this.thisPlayer = player;
     }
     
 }

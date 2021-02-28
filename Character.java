@@ -18,7 +18,7 @@ public class Character {
     protected int mnd;
     protected int cha;
     protected int luc;
-    protected static Room currentRoom;
+    protected Room currentRoom;
 
     public Character(){
         
@@ -64,7 +64,7 @@ public class Character {
         this.end = newEnd;
     }
 
-    public void setInte(int newMnd){
+    public void setMnd(int newMnd){
         this.mnd = newMnd;
     }
 
@@ -72,10 +72,17 @@ public class Character {
         this.cha = newCha;
     }
 
-    public static void look(){
+    public void look(Room currentRoom){
         System.out.println("You look around a bit.");
         System.out.println("The room seems to be of type " + currentRoom.getTerrainType() + ".");
-        System.out.println("There is a door to the " + currentRoom.getDoor());
+        //System.out.println("There is a door to the " + currentRoom.getDoors());
+        for (int i = 0; i < currentRoom.doors.length; i++){
+            System.out.println("There is a door to the " + currentRoom.doors[i].getDoorDir());
+        }
+    }
+
+    public void look(Room currentRoom, Door[] doors){
+
     }
 
     public void openDoor(Door door) {
@@ -87,5 +94,6 @@ public class Character {
         door.setClosed();
         System.out.println("You close the door.");
     }
+
     
 }

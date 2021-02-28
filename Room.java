@@ -5,6 +5,7 @@ public class Room {
     public enum Terrain{ROCKY, WETLAND, FIELD, INTERIOR, GRASS, FOREST };
     private String description;
     private Terrain roomTerrain;
+    public Door[] doors;
 
     private boolean hasN;
     private boolean hasNE;
@@ -17,7 +18,7 @@ public class Room {
     private boolean hasU;
     private boolean hasD;
     
-    public Room(String terrainType){
+    public Room(String terrainType, Door[] doors){
         if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
         }
@@ -37,6 +38,8 @@ public class Room {
             this.roomTerrain = Terrain.FOREST;
         }
 
+        this.doors = doors;
+
         
     }
 
@@ -44,8 +47,8 @@ public class Room {
         return this.roomTerrain.toString();
     }
 
-    public String getDoor(Door[] doors){
-        return doors[0].getDoorDir();
+    public Door[] getDoors(){
+        return doors;
     }
 
 }
