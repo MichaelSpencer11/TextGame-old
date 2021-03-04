@@ -6,6 +6,7 @@ public class Room {
     private String description;
     private Terrain roomTerrain;
     public Door[] doors;
+    private int doorsNum;
 
     private boolean hasN;
     private boolean hasNE;
@@ -40,6 +41,9 @@ public class Room {
 
         this.doors = doors;
 
+        for (Door door : doors){
+            doorsNum++;
+        }
         
     }
 
@@ -49,6 +53,10 @@ public class Room {
 
     public Door[] getDoors(){
         return doors;
+    }
+
+    public int getDoorsNum(){
+        return doorsNum;
     }
 
 }

@@ -8,21 +8,26 @@ public class Input{
     public void input(){
         while(true){
             
-            switch (scanner.nextLine()){
-            case "look":
-            thisPlayer.look(thisPlayer.currentRoom);
-            break;
-            case "look door":
-            thisPlayer.look(thisPlayer.currentRoom, thisPlayer.currentRoom.doors);
-            case "exit":
-            System.exit(0);
-            break;
+            String inputString = scanner.nextLine();
+            if(inputString.equals("")){
+                continue;
+            }
+            else if (inputString.length() > 3 && inputString.substring(0,4).equals("look")){
+                thisPlayer.look(thisPlayer.currentRoom, inputString);
+            }
+            else if (inputString.length() > 3 && inputString.substring(0,4).equals("exit")){
+                System.exit(0);
+            }
+            else if(inputString.length() > 3 && inputString.substring(0,4).equals("open")){
+                thisPlayer.open(thisPlayer.currentRoom, inputString);
+            }
+            else continue;
             
             
         }
 
     }
-    }
+    
 
 
     public Input(Player player){

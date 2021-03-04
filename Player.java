@@ -6,6 +6,7 @@ public class Player extends Character{
         this.sitting = false;
         this.standing = false;
         this.currentRoom = firstRoom;
+        /*
         Scanner conScanner = new Scanner(System.in);
         do {
         System.out.println("What is your preferred nomenclature?(M, F, NB)?");
@@ -136,7 +137,7 @@ public class Player extends Character{
         
         }
         }while(this.dex < 8 || this.dex > 12);
-
+        */
         
 
     }
