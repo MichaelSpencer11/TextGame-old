@@ -394,7 +394,15 @@ public class Character {
     }
 
     public void move(Room currentRoom, String inputString){
-        
+        if (inputString.equals("n")){
+            for (Door door : currentRoom.doors){
+                if(door.getDoorDir().equals("north") && door.getOpened()){
+                    System.out.println("You move to the north.");
+                    
+                }
+            }
+
+        }
     }
 
     public void closeDoor(Door door){
