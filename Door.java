@@ -5,6 +5,7 @@ public class Door {
     private String doorDir;
     private boolean isOpened;
     private boolean isLocked;
+    private String doorType;
 
     public Door(String dir){
         this.thisDoorId = id++;
