@@ -1,8 +1,8 @@
 
 
 public class Room {
-	private int id;
-	public static int idTracker;
+	private int RoomId;
+	public static int RoomIdTracker;
     private enum dirs{N, NE, E, SE, S, SW, W, NW, U, D};
     public enum Terrain{ROCKY, WETLAND, FIELD, INTERIOR, GRASS, FOREST };
     private String description;
@@ -21,8 +21,8 @@ public class Room {
     private boolean hasU;
     private boolean hasD;
     
-    public Room(String terrainType, Door[] doors, ){
-    	this.id = idTracker++;
+    public Room(String terrainType, Door[] doors ){
+    	this.RoomId = RoomIdTracker++;
         if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
         }
