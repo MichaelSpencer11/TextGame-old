@@ -410,5 +410,9 @@ public class Character {
         System.out.println("You close the door.");
     }
 
+    public void setCurrentRoom(int newRoom) {
+    	this.currentRoom = newRoom;
+    }
+    
     
 }
