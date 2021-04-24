@@ -1,14 +1,14 @@
 public class Door {
     private enum dirs{N, NE, E, SE, S, SW, W, NW, U, D};
-    private static int id;
-    private int thisDoorId;
+    private static int DoorIdTracker;
+    private int DoorId;
     private String doorDir;
     private boolean isOpened;
     private boolean isLocked;
     private String doorType;
 
     public Door(String dir){
-        this.thisDoorId = id++;
+        this.DoorId = DoorIdTracker++;
         this.setClosed();
         this.doorDir = dir;
         
@@ -38,8 +38,8 @@ public class Door {
         isLocked = false;
     }
 
-    public void printId(){
-        System.out.println(thisDoorId);
+    public void printDoorId(){
+        System.out.println(DoorId);
     }
 
     public String getDoorDir(){
