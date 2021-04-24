@@ -1,6 +1,7 @@
 
 
 public class Room {
+	//testing stuff
 	private int roomId;
 	public static int RoomIdTracker;
     private enum dirs{N, NE, E, SE, S, SW, W, NW, U, D};
