@@ -76,9 +76,15 @@ public class Character {
         int count = 0;
         if (inputString.equals("look")){
         System.out.println("You look around a bit.");
+        System.out.println(currentRoom.getDescription());
         System.out.println("The room seems to be of type " + currentRoom.getTerrainType() + ".");
-        for (int i = 0; i < currentRoom.doors.length; i++){
-            System.out.println("There is a door to the " + currentRoom.doors[i].getDoorDir());
+        for (int i = 0; i < currentRoom.getDirs().size(); i++){
+            if(currentRoom.getDirs().get(i).equals("north")) {
+            	System.out.println("There is a way to the north.");
+            }
+            else if(currentRoom.getDirs().get(i).equals("northeast")) {
+            	System.out.println("There is a way to the northeast.");
+            }
         }
         return;
         }
