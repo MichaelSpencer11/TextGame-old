@@ -3,10 +3,13 @@
 public class World {
 	
 	public World() {
-    Room room1 = new Room("INTERIOR");
-    Room room2 = new Room("INTERIOR", room1);
-    Path path1 = new Path(room1, room2);
-    Player player = new Player(room1);
+	String[] d1 = {"n"};
+	
+    Room room1 = new Room("INTERIOR", d1);
+    String[] d2 = {"s"};
+    Room room2 = new Room("INTERIOR", room1, d2);
+    Room room3 = new Room("FIELD", room2);
+    Player player = new Player(room2);
     Input input = new Input(player);
     input.input();
 	}

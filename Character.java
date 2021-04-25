@@ -395,15 +395,77 @@ public class Character {
 
     public void move(Room currentRoom, String inputString){
         if (inputString.equals("n")){
-            for (Door door : currentRoom.doors){
-                if(door.getDoorDir().equals("north") && door.getOpened()){
+                if(currentRoom.getHasN()){
+                	currentRoom = currentRoom.getnRoom();
                     System.out.println("You move to the north.");
-                    
                 }
-            }
-
         }
+        
+        if (inputString.equals("ne")){
+            if(currentRoom.getHasNE()){
+            	currentRoom = currentRoom.getNeRoom();
+                System.out.println("You move to the northeast.");
+            }
     }
+        
+        if (inputString.equals("e")){
+            if(currentRoom.getHasE()){
+            	currentRoom = currentRoom.geteRoom();
+                System.out.println("You move to the east.");
+            }
+    }
+        
+        if (inputString.equals("se")){
+            if(currentRoom.getHasSE()){
+            	currentRoom = currentRoom.getSeRoom();
+                System.out.println("You move to the southeast.");
+            }
+    }
+        
+        if (inputString.equals("s")){
+            if(currentRoom.getHasS()){
+            	currentRoom = currentRoom.getsRoom();
+                System.out.println("You move to the south.");
+            }
+    }
+        
+        if (inputString.equals("sw")){
+            if(currentRoom.getHasSW()){
+            	currentRoom = currentRoom.getSwRoom();
+                System.out.println("You move to the southwest.");
+            }
+    }
+        
+        if (inputString.equals("w")){
+            if(currentRoom.getHasW()){
+            	currentRoom = currentRoom.getwRoom();
+                System.out.println("You move to the west.");
+            }
+    }
+        
+        if (inputString.equals("nw")){
+            if(currentRoom.getHasNW()){
+            	currentRoom = currentRoom.getNwRoom();
+                System.out.println("You move to the northwest.");
+            }
+    }
+        
+        if (inputString.equals("u")){
+            if(currentRoom.getHasU()){
+            	currentRoom = currentRoom.getuRoom();
+                System.out.println("You move up.");
+            }
+    }
+        
+        if (inputString.equals("d")){
+            if(currentRoom.getHasD()){
+            	currentRoom = currentRoom.getdRoom();
+                System.out.println("You move down.");
+            }
+    }
+
+    }
+    
 
     public void closeDoor(Door door){
         door.setClosed();

@@ -7,10 +7,11 @@ public class Room {
     public enum Terrain{ROCKY, WETLAND, FIELD, INTERIOR, GRASS, FOREST };
     private String description;
     private Terrain roomTerrain;
-    public Door[] doors;
+    private Door[] doors;
     private int doorsNum;
     private ArrayList<Room> adjacentRooms;
-
+    private boolean[] hasDirs;
+    
     private boolean hasN;
     private boolean hasNE;
     private boolean hasE;
@@ -33,7 +34,7 @@ public class Room {
     private Room uRoom;
     private Room dRoom;
     
-    public Room(String terrainType) {
+    public Room(String terrainType, String[] dirs) {
     	this.roomId = RoomIdTracker;
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
@@ -53,7 +54,11 @@ public class Room {
         else if(terrainType.equals("FOREST")){
             this.roomTerrain = Terrain.FOREST;
         }
+    	
+    	
     }
+    
+    
     
     public Room(String terrainType, Room room1 ){
     	this.roomId = RoomIdTracker;
