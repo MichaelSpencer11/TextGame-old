@@ -74,7 +74,7 @@ public class Character {
 
     public void look(Room currentRoom, String inputString){
         int count = 0;
-        if (inputString.equals("look")){
+        if (inputString.equals("look") || inputString.equals("l")){
         System.out.println("You look around a bit.");
         System.out.println(currentRoom.getDescription());
         System.out.println("The room seems to be of type " + currentRoom.getTerrainType() + ".");

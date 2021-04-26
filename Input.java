@@ -15,6 +15,9 @@ public class Input{
             else if (inputString.length() > 3 && inputString.substring(0,4).equals("look")){
                 thisPlayer.look(thisPlayer.currentRoom, inputString);
             }
+            else if (inputString.equals("l")){
+                thisPlayer.look(thisPlayer.currentRoom, inputString);
+            }
             else if (inputString.length() > 3 && inputString.substring(0,4).equals("exit")){
                 System.exit(0);
             }

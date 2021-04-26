@@ -40,7 +40,7 @@ public class Room {
     public Room(String terrainType, String[] dirs, String desc) {
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
-    	this.roomId = RoomIdTracker;
+    	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
@@ -111,7 +111,7 @@ public class Room {
     public Room(String terrainType, Room room1, String[] dirs, String desc){
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
-    	this.roomId = RoomIdTracker;
+    	this.roomId = RoomIdTracker++;
     	this.description = desc;
         if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
@@ -269,7 +269,7 @@ public class Room {
     public Room(String terrainType, Room room1, Room room2, String[] dirs, String desc ){
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
-    	this.roomId = RoomIdTracker;
+    	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
@@ -393,7 +393,7 @@ public class Room {
     public Room(String terrainType, Room room1, Room room2, Room room3, String[] dirs, String desc ){
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
-    	this.roomId = RoomIdTracker;
+    	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
@@ -519,7 +519,7 @@ public class Room {
     		String desc){
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
-    	this.roomId = RoomIdTracker;
+    	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
@@ -647,7 +647,7 @@ public class Room {
     		String[] dirs, String desc ){
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
-    	this.roomId = RoomIdTracker;
+    	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
@@ -776,7 +776,7 @@ public class Room {
     		Room room6, String[] dirs, String desc){
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
-    	this.roomId = RoomIdTracker;
+    	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
@@ -905,7 +905,7 @@ public class Room {
     		Room room6, Room room7, String[] dirs, String desc){
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
-    	this.roomId = RoomIdTracker;
+    	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
@@ -1035,7 +1035,7 @@ public class Room {
     		Room room6, Room room7, Room room8, String[] dirs, String desc){
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
-    	this.roomId = RoomIdTracker;
+    	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
@@ -1166,7 +1166,7 @@ public class Room {
     		Room room6, Room room7, Room room8, Room room9, String[] dirs, String desc){
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
-    	this.roomId = RoomIdTracker;
+    	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
@@ -1298,7 +1298,7 @@ public class Room {
     		Room room6, Room room7, Room room8, Room room9, Room room10, String[] dirs, String desc){
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
-    	this.roomId = RoomIdTracker;
+    	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
