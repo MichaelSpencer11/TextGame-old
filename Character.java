@@ -79,19 +79,14 @@ public class Character {
         System.out.println(currentRoom.getDescription());
         System.out.println("The room seems to be of type " + currentRoom.getTerrainType() + ".");
         for (int i = 0; i < currentRoom.getDirs().size(); i++){
-            if(currentRoom.getDirs().get(i).equals("north")) {
-            	System.out.println("There is a way to the north.");
-            }
-            else if(currentRoom.getDirs().get(i).equals("northeast")) {
-            	System.out.println("There is a way to the northeast.");
-            }
+            System.out.println("There is a way to the " + currentRoom.getDirs().get(i));
         }
         return;
         }
         
         if(currentRoom.getDoorsNum() == 1 && inputString.equals("look door")){
             System.out.println("There is a door here.");
-            if(currentRoom.doors[0].getOpened()){
+            if(currentRoom.getDoors()[0].getOpened()){
                 System.out.println("The door is open.");
             }
             else {
@@ -104,7 +99,7 @@ public class Character {
         }
 
         if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("n")){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
                 if(door.getDoorDir().equals("north") && door.getOpened()){
                     System.out.println("The door to the north is open.");
                     count++;
@@ -121,7 +116,7 @@ public class Character {
             return;
         }
         else if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("e") ){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
                 if(door.getDoorDir().equals("east") && door.getOpened()){
                     System.out.println("The door to the east is open.");
                     count++;
@@ -138,7 +133,7 @@ public class Character {
             return;
         }
         else if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("s")){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
                 if(door.getDoorDir().equals("south") && door.getOpened()){
                     System.out.println("The door to the south is open.");
                     count++;
@@ -156,7 +151,7 @@ public class Character {
             return;
         }
         else if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("w") ){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
                 if(door.getDoorDir().equals("west") && door.getOpened()){
                     System.out.println("The door to the west is open.");
                     count++;
@@ -173,7 +168,7 @@ public class Character {
             return;
         }
         else if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("ne")){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
                 if(door.getDoorDir().equals("northeast") && door.getOpened()){
                     System.out.println("The door to the northeast is open.");
                     count++;
@@ -191,7 +186,7 @@ public class Character {
         }
         
         else if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("se") ){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
                 if(door.getDoorDir().equals("southeast") && door.getOpened()){
                     System.out.println("The door to the southeast is open.");
                     count++;
@@ -209,7 +204,7 @@ public class Character {
         }
         
         else if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("sw") ){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
                 if(door.getDoorDir().equals("southwest") && door.getOpened()){
                     System.out.println("The door to the southwest is open.");
                     count++;
@@ -227,7 +222,7 @@ public class Character {
         }
         
         else if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("nw") ){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
                 if(door.getDoorDir().equals("northwest") && door.getOpened()){
                     System.out.println("The door to the northwest is open.");
                     count++;
@@ -253,7 +248,7 @@ public class Character {
         //check if the door is locked
         //open door
         if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("n")){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("north") && door.getLocked()){
                 System.out.println("The door to the north is locked.");
                 return;
@@ -271,7 +266,7 @@ public class Character {
             }
         }
         if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("ne")){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("northeast") && door.getLocked()){
                 System.out.println("The door to the northeast is locked.");
                 return;
@@ -289,7 +284,7 @@ public class Character {
             }
         }
         if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("e")){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("east") && door.getLocked()){
                 System.out.println("The door to the east is locked.");
                 return;
@@ -307,7 +302,7 @@ public class Character {
             }
         }
         if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("se")){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("southeast") && door.getLocked()){
                 System.out.println("The door to the southeast is locked.");
                 return;
@@ -325,7 +320,7 @@ public class Character {
             }
         }
         if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("s")){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("south") && door.getLocked()){
                 System.out.println("The door to the south is locked.");
                 return;
@@ -343,7 +338,7 @@ public class Character {
             }
         }
         if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("sw")){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("southwest") && door.getLocked()){
                 System.out.println("The door to the southwest is locked.");
                 return;
@@ -361,7 +356,7 @@ public class Character {
             }
         }
         if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("w")){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("west") && door.getLocked()){
                 System.out.println("The door to the west is locked.");
                 return;
@@ -379,7 +374,7 @@ public class Character {
             }
         }
         if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("nw")){
-            for(Door door : currentRoom.doors){
+            for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("northwest") && door.getLocked()){
                 System.out.println("The door to the northwest is locked.");
                 return;
@@ -402,70 +397,70 @@ public class Character {
     public void move(Room currentRoom, String inputString){
         if (inputString.equals("n")){
                 if(currentRoom.getHasN()){
-                	currentRoom = currentRoom.getnRoom();
+                	this.setCurrentRoom(currentRoom.getnRoom());
                     System.out.println("You move to the north.");
                 }
         }
         
         if (inputString.equals("ne")){
             if(currentRoom.getHasNE()){
-            	currentRoom = currentRoom.getNeRoom();
+            	this.setCurrentRoom(currentRoom.getNeRoom());
                 System.out.println("You move to the northeast.");
             }
     }
         
         if (inputString.equals("e")){
             if(currentRoom.getHasE()){
-            	currentRoom = currentRoom.geteRoom();
+            	this.setCurrentRoom(currentRoom.geteRoom());
                 System.out.println("You move to the east.");
             }
     }
         
         if (inputString.equals("se")){
             if(currentRoom.getHasSE()){
-            	currentRoom = currentRoom.getSeRoom();
+            	this.setCurrentRoom(currentRoom.getSeRoom());
                 System.out.println("You move to the southeast.");
             }
     }
         
         if (inputString.equals("s")){
             if(currentRoom.getHasS()){
-            	currentRoom = currentRoom.getsRoom();
+            	this.setCurrentRoom(currentRoom.getsRoom());
                 System.out.println("You move to the south.");
             }
     }
         
         if (inputString.equals("sw")){
             if(currentRoom.getHasSW()){
-            	currentRoom = currentRoom.getSwRoom();
+            	this.setCurrentRoom(currentRoom.getSwRoom());
                 System.out.println("You move to the southwest.");
             }
     }
         
         if (inputString.equals("w")){
             if(currentRoom.getHasW()){
-            	currentRoom = currentRoom.getwRoom();
+            	this.setCurrentRoom(currentRoom.getwRoom());
                 System.out.println("You move to the west.");
             }
     }
         
         if (inputString.equals("nw")){
             if(currentRoom.getHasNW()){
-            	currentRoom = currentRoom.getNwRoom();
+            	this.setCurrentRoom(currentRoom.getNwRoom());
                 System.out.println("You move to the northwest.");
             }
     }
         
         if (inputString.equals("u")){
             if(currentRoom.getHasU()){
-            	currentRoom = currentRoom.getuRoom();
+            	this.setCurrentRoom(currentRoom.getuRoom());
                 System.out.println("You move up.");
             }
     }
         
         if (inputString.equals("d")){
             if(currentRoom.getHasD()){
-            	currentRoom = currentRoom.getdRoom();
+            	this.setCurrentRoom(currentRoom.getdRoom());
                 System.out.println("You move down.");
             }
     }

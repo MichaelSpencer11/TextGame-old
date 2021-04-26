@@ -35,7 +35,11 @@ public class Room {
     private Room uRoom;
     private Room dRoom;
     
+    
+    //Maybe don't use this constructor as it makes a room with no connections
     public Room(String terrainType, String[] dirs, String desc) {
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
@@ -68,35 +72,35 @@ public class Room {
     		}
     		else if (d.equals("e")) {
     			this.hasE = true;
-    			hasDirs.add(hasE);
+    			this.dirs.add("east");
     		}
     		else if (d.equals("se")) {
     			this.hasSE = true;
-    			hasDirs.add(hasSE);
+    			this.dirs.add("southeast");
     		}
     		else if (d.equals("s")) {
     			this.hasS = true;
-    			hasDirs.add(hasS);
+    			this.dirs.add("south");
     		}
     		else if (d.equals("sw")) {
     			this.hasSW = true;
-    			hasDirs.add(hasSW);
+    			this.dirs.add("southwest");
     		}
     		else if (d.equals("w")) {
     			this.hasW = true;
-    			hasDirs.add(hasW);
+    			this.dirs.add("west");
     		}
     		else if (d.equals("nw")) {
     			this.hasNW = true;
-    			hasDirs.add(hasNW);
+    			this.dirs.add("northwest");
     		}
     		else if (d.equals("u")) {
     			this.hasU = true;
-    			hasDirs.add(hasU);
+    			this.dirs.add("up");
     		}
     		else if (d.equals("d")) {
     			this.hasD = true;
-    			hasDirs.add(hasD);
+    			this.dirs.add("down");
     		}
     	}
     	
@@ -105,6 +109,8 @@ public class Room {
     
     
     public Room(String terrainType, Room room1, String[] dirs, String desc){
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker;
     	this.description = desc;
         if(terrainType.equals("ROCKY")){
@@ -163,43 +169,43 @@ public class Room {
         for(String d : dirs) {
     		if(d.equals("n")) {
     			this.hasN = true;
-    			hasDirs.add(hasN);
+    			this.dirs.add("north");
     		}
     		else if (d.equals("ne")) {
     			this.hasNE = true;
-    			hasDirs.add(hasNE);
+    			this.dirs.add("northeast");
     		}
     		else if (d.equals("e")) {
     			this.hasE = true;
-    			hasDirs.add(hasE);
+    			this.dirs.add("east");
     		}
     		else if (d.equals("se")) {
     			this.hasSE = true;
-    			hasDirs.add(hasSE);
+    			this.dirs.add("southeast");
     		}
     		else if (d.equals("s")) {
     			this.hasS = true;
-    			hasDirs.add(hasS);
+    			this.dirs.add("south");
     		}
     		else if (d.equals("sw")) {
     			this.hasSW = true;
-    			hasDirs.add(hasSW);
+    			this.dirs.add("southwest");
     		}
     		else if (d.equals("w")) {
     			this.hasW = true;
-    			hasDirs.add(hasW);
+    			this.dirs.add("west");
     		}
     		else if (d.equals("nw")) {
     			this.hasNW = true;
-    			hasDirs.add(hasNW);
+    			this.dirs.add("northwest");
     		}
     		else if (d.equals("u")) {
     			this.hasU = true;
-    			hasDirs.add(hasU);
+    			this.dirs.add("up");
     		}
     		else if (d.equals("d")) {
     			this.hasD = true;
-    			hasDirs.add(hasD);
+    			this.dirs.add("down");
     		}
     	}
         
@@ -207,33 +213,53 @@ public class Room {
         for (Room r : adjacentRooms) {
         if (r.getHasS()) {
         	this.nRoom = r;
+        	r.setsRoom(this);
+        	r.getAdjacentRooms().add(this);
         }
         else if (r.getHasSW()) {
         	this.neRoom = r;
+        	r.setSwRoom(this);
+        	r.getAdjacentRooms().add(this);
         }
         else if (r.getHasW()) {
         	this.eRoom = r;
+        	r.setwRoom(this);
+        	r.getAdjacentRooms().add(this);
         }
         else if (r.getHasNW()) {
         	this.seRoom = r;
+        	r.setNwRoom(this);
+        	r.getAdjacentRooms().add(this);
         }
         else if (r.getHasN()) {
-        	this.seRoom = r;
+        	this.sRoom = r;
+        	r.setnRoom(this);
+        	r.getAdjacentRooms().add(this);
         }
         else if(r.getHasNE()) {
         	this.swRoom = r;
+        	r.setNeRoom(this);
+        	r.getAdjacentRooms().add(this);
         }
         else if(r.getHasE()) {
         	this.wRoom = r;
+        	r.seteRoom(this);
+        	r.getAdjacentRooms().add(this);
         }
         else if (r.getHasSE()) {
         	this.nwRoom = r;
+        	r.setSeRoom(this);
+        	r.getAdjacentRooms().add(this);
         }
         else if (r.getHasU()) {
         	this.dRoom = r;
+        	r.setuRoom(this);
+        	r.getAdjacentRooms().add(this);
         }
         else if (r.getHasD()) {
         	this.uRoom = r;
+        	r.setdRoom(this);
+        	r.getAdjacentRooms().add(this);
         }
         }
         
@@ -241,6 +267,8 @@ public class Room {
     }
     
     public Room(String terrainType, Room room1, Room room2, String[] dirs, String desc ){
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
@@ -268,81 +296,93 @@ public class Room {
     	for(String d : dirs) {
     		if(d.equals("n")) {
     			this.hasN = true;
-    			hasDirs.add(hasN);
+    			this.dirs.add("north");
     		}
     		else if (d.equals("ne")) {
     			this.hasNE = true;
-    			hasDirs.add(hasNE);
+    			this.dirs.add("northeast");
     		}
     		else if (d.equals("e")) {
     			this.hasE = true;
-    			hasDirs.add(hasE);
+    			this.dirs.add("east");
     		}
     		else if (d.equals("se")) {
     			this.hasSE = true;
-    			hasDirs.add(hasSE);
+    			this.dirs.add("southeast");
     		}
     		else if (d.equals("s")) {
     			this.hasS = true;
-    			hasDirs.add(hasS);
+    			this.dirs.add("south");
     		}
     		else if (d.equals("sw")) {
     			this.hasSW = true;
-    			hasDirs.add(hasSW);
+    			this.dirs.add("southwest");
     		}
     		else if (d.equals("w")) {
     			this.hasW = true;
-    			hasDirs.add(hasW);
+    			this.dirs.add("west");
     		}
     		else if (d.equals("nw")) {
     			this.hasNW = true;
-    			hasDirs.add(hasNW);
+    			this.dirs.add("northwest");
     		}
     		else if (d.equals("u")) {
     			this.hasU = true;
-    			hasDirs.add(hasU);
+    			this.dirs.add("up");
     		}
     		else if (d.equals("d")) {
     			this.hasD = true;
-    			hasDirs.add(hasD);
+    			this.dirs.add("down");
     		}
     	}
     	
     	for (Room r : adjacentRooms) {
             if (r.getHasS()) {
             	this.nRoom = r;
+            	r.setsRoom(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
+            	r.setSwRoom(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
+            	r.setwRoom(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
+            	r.setNwRoom(this);
             }
             else if (r.getHasN()) {
             	this.seRoom = r;
+            	r.setnRoom(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
+            	r.setNeRoom(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
+            	r.seteRoom(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
+            	r.setSeRoom(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
+            	r.setuRoom(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
+            	r.setdRoom(this);
             }
             }
     }
     
     public Room(String terrainType, Room room1, Room room2, Room room3, String[] dirs, String desc ){
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
@@ -371,82 +411,94 @@ public class Room {
     	for(String d : dirs) {
     		if(d.equals("n")) {
     			this.hasN = true;
-    			hasDirs.add(hasN);
+    			this.dirs.add("north");
     		}
     		else if (d.equals("ne")) {
     			this.hasNE = true;
-    			hasDirs.add(hasNE);
+    			this.dirs.add("northeast");
     		}
     		else if (d.equals("e")) {
     			this.hasE = true;
-    			hasDirs.add(hasE);
+    			this.dirs.add("east");
     		}
     		else if (d.equals("se")) {
     			this.hasSE = true;
-    			hasDirs.add(hasSE);
+    			this.dirs.add("southeast");
     		}
     		else if (d.equals("s")) {
     			this.hasS = true;
-    			hasDirs.add(hasS);
+    			this.dirs.add("south");
     		}
     		else if (d.equals("sw")) {
     			this.hasSW = true;
-    			hasDirs.add(hasSW);
+    			this.dirs.add("southwest");
     		}
     		else if (d.equals("w")) {
     			this.hasW = true;
-    			hasDirs.add(hasW);
+    			this.dirs.add("west");
     		}
     		else if (d.equals("nw")) {
     			this.hasNW = true;
-    			hasDirs.add(hasNW);
+    			this.dirs.add("northwest");
     		}
     		else if (d.equals("u")) {
     			this.hasU = true;
-    			hasDirs.add(hasU);
+    			this.dirs.add("up");
     		}
     		else if (d.equals("d")) {
     			this.hasD = true;
-    			hasDirs.add(hasD);
+    			this.dirs.add("down");
     		}
     	}
     	
     	for (Room r : adjacentRooms) {
             if (r.getHasS()) {
             	this.nRoom = r;
+            	r.setsRoom(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
+            	r.setSwRoom(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
+            	r.setwRoom(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
+            	r.setNwRoom(this);
             }
             else if (r.getHasN()) {
             	this.seRoom = r;
+            	r.setnRoom(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
+            	r.setNeRoom(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
+            	r.seteRoom(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
+            	r.setSeRoom(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
+            	r.setuRoom(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
+            	r.setdRoom(this);
             }
             }
     }
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, String[] dirs,
     		String desc){
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
@@ -476,76 +528,86 @@ public class Room {
     	for(String d : dirs) {
     		if(d.equals("n")) {
     			this.hasN = true;
-    			hasDirs.add(hasN);
+    			this.dirs.add("north");
     		}
     		else if (d.equals("ne")) {
     			this.hasNE = true;
-    			hasDirs.add(hasNE);
+    			this.dirs.add("northeast");
     		}
     		else if (d.equals("e")) {
     			this.hasE = true;
-    			hasDirs.add(hasE);
+    			this.dirs.add("east");
     		}
     		else if (d.equals("se")) {
     			this.hasSE = true;
-    			hasDirs.add(hasSE);
+    			this.dirs.add("southeast");
     		}
     		else if (d.equals("s")) {
     			this.hasS = true;
-    			hasDirs.add(hasS);
+    			this.dirs.add("south");
     		}
     		else if (d.equals("sw")) {
     			this.hasSW = true;
-    			hasDirs.add(hasSW);
+    			this.dirs.add("southwest");
     		}
     		else if (d.equals("w")) {
     			this.hasW = true;
-    			hasDirs.add(hasW);
+    			this.dirs.add("west");
     		}
     		else if (d.equals("nw")) {
     			this.hasNW = true;
-    			hasDirs.add(hasNW);
+    			this.dirs.add("northwest");
     		}
     		else if (d.equals("u")) {
     			this.hasU = true;
-    			hasDirs.add(hasU);
+    			this.dirs.add("up");
     		}
     		else if (d.equals("d")) {
     			this.hasD = true;
-    			hasDirs.add(hasD);
+    			this.dirs.add("down");
     		}
     	}
     	
     	for (Room r : adjacentRooms) {
             if (r.getHasS()) {
             	this.nRoom = r;
+            	r.setsRoom(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
+            	r.setSwRoom(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
+            	r.setwRoom(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
+            	r.setNwRoom(this);
             }
             else if (r.getHasN()) {
             	this.seRoom = r;
+            	r.setnRoom(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
+            	r.setNeRoom(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
+            	r.seteRoom(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
+            	r.setSeRoom(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
+            	r.setuRoom(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
+            	r.setdRoom(this);
             }
             }
     	
@@ -553,6 +615,8 @@ public class Room {
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5, 
     		String[] dirs, String desc ){
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
@@ -583,76 +647,86 @@ public class Room {
     	for(String d : dirs) {
     		if(d.equals("n")) {
     			this.hasN = true;
-    			hasDirs.add(hasN);
+    			this.dirs.add("north");
     		}
     		else if (d.equals("ne")) {
     			this.hasNE = true;
-    			hasDirs.add(hasNE);
+    			this.dirs.add("northeast");
     		}
     		else if (d.equals("e")) {
     			this.hasE = true;
-    			hasDirs.add(hasE);
+    			this.dirs.add("east");
     		}
     		else if (d.equals("se")) {
     			this.hasSE = true;
-    			hasDirs.add(hasSE);
+    			this.dirs.add("southeast");
     		}
     		else if (d.equals("s")) {
     			this.hasS = true;
-    			hasDirs.add(hasS);
+    			this.dirs.add("south");
     		}
     		else if (d.equals("sw")) {
     			this.hasSW = true;
-    			hasDirs.add(hasSW);
+    			this.dirs.add("southwest");
     		}
     		else if (d.equals("w")) {
     			this.hasW = true;
-    			hasDirs.add(hasW);
+    			this.dirs.add("west");
     		}
     		else if (d.equals("nw")) {
     			this.hasNW = true;
-    			hasDirs.add(hasNW);
+    			this.dirs.add("northwest");
     		}
     		else if (d.equals("u")) {
     			this.hasU = true;
-    			hasDirs.add(hasU);
+    			this.dirs.add("up");
     		}
     		else if (d.equals("d")) {
     			this.hasD = true;
-    			hasDirs.add(hasD);
+    			this.dirs.add("down");
     		}
     	}
     	
     	for (Room r : adjacentRooms) {
             if (r.getHasS()) {
             	this.nRoom = r;
+            	r.setsRoom(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
+            	r.setSwRoom(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
+            	r.setwRoom(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
+            	r.setNwRoom(this);
             }
             else if (r.getHasN()) {
             	this.seRoom = r;
+            	r.setnRoom(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
+            	r.setNeRoom(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
+            	r.seteRoom(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
+            	r.setSeRoom(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
+            	r.setuRoom(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
+            	r.setdRoom(this);
             }
             }
     	
@@ -660,6 +734,8 @@ public class Room {
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, String[] dirs, String desc){
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
@@ -691,82 +767,94 @@ public class Room {
     	for(String d : dirs) {
     		if(d.equals("n")) {
     			this.hasN = true;
-    			hasDirs.add(hasN);
+    			this.dirs.add("north");
     		}
     		else if (d.equals("ne")) {
     			this.hasNE = true;
-    			hasDirs.add(hasNE);
+    			this.dirs.add("northeast");
     		}
     		else if (d.equals("e")) {
     			this.hasE = true;
-    			hasDirs.add(hasE);
+    			this.dirs.add("east");
     		}
     		else if (d.equals("se")) {
     			this.hasSE = true;
-    			hasDirs.add(hasSE);
+    			this.dirs.add("southeast");
     		}
     		else if (d.equals("s")) {
     			this.hasS = true;
-    			hasDirs.add(hasS);
+    			this.dirs.add("south");
     		}
     		else if (d.equals("sw")) {
     			this.hasSW = true;
-    			hasDirs.add(hasSW);
+    			this.dirs.add("southwest");
     		}
     		else if (d.equals("w")) {
     			this.hasW = true;
-    			hasDirs.add(hasW);
+    			this.dirs.add("west");
     		}
     		else if (d.equals("nw")) {
     			this.hasNW = true;
-    			hasDirs.add(hasNW);
+    			this.dirs.add("northwest");
     		}
     		else if (d.equals("u")) {
     			this.hasU = true;
-    			hasDirs.add(hasU);
+    			this.dirs.add("up");
     		}
     		else if (d.equals("d")) {
     			this.hasD = true;
-    			hasDirs.add(hasD);
+    			this.dirs.add("down");
     		}
     	}
     	
     	for (Room r : adjacentRooms) {
             if (r.getHasS()) {
             	this.nRoom = r;
+            	r.setsRoom(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
+            	r.setSwRoom(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
+            	r.setwRoom(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
+            	r.setNwRoom(this);
             }
             else if (r.getHasN()) {
             	this.seRoom = r;
+            	r.setnRoom(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
+            	r.setNeRoom(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
+            	r.seteRoom(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
+            	r.setSeRoom(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
+            	r.setuRoom(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
+            	r.setdRoom(this);
             }
             }
     }
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, Room room7, String[] dirs, String desc){
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
@@ -799,82 +887,94 @@ public class Room {
     	for(String d : dirs) {
     		if(d.equals("n")) {
     			this.hasN = true;
-    			hasDirs.add(hasN);
+    			this.dirs.add("north");
     		}
     		else if (d.equals("ne")) {
     			this.hasNE = true;
-    			hasDirs.add(hasNE);
+    			this.dirs.add("northeast");
     		}
     		else if (d.equals("e")) {
     			this.hasE = true;
-    			hasDirs.add(hasE);
+    			this.dirs.add("east");
     		}
     		else if (d.equals("se")) {
     			this.hasSE = true;
-    			hasDirs.add(hasSE);
+    			this.dirs.add("southeast");
     		}
     		else if (d.equals("s")) {
     			this.hasS = true;
-    			hasDirs.add(hasS);
+    			this.dirs.add("south");
     		}
     		else if (d.equals("sw")) {
     			this.hasSW = true;
-    			hasDirs.add(hasSW);
+    			this.dirs.add("southwest");
     		}
     		else if (d.equals("w")) {
     			this.hasW = true;
-    			hasDirs.add(hasW);
+    			this.dirs.add("west");
     		}
     		else if (d.equals("nw")) {
     			this.hasNW = true;
-    			hasDirs.add(hasNW);
+    			this.dirs.add("northwest");
     		}
     		else if (d.equals("u")) {
     			this.hasU = true;
-    			hasDirs.add(hasU);
+    			this.dirs.add("up");
     		}
     		else if (d.equals("d")) {
     			this.hasD = true;
-    			hasDirs.add(hasD);
+    			this.dirs.add("down");
     		}
     	}
     	
     	for (Room r : adjacentRooms) {
             if (r.getHasS()) {
             	this.nRoom = r;
+            	r.setsRoom(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
+            	r.setSwRoom(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
+            	r.setwRoom(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
+            	r.setNwRoom(this);
             }
             else if (r.getHasN()) {
             	this.seRoom = r;
+            	r.setnRoom(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
+            	r.setNeRoom(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
+            	r.seteRoom(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
+            	r.setSeRoom(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
+            	r.setuRoom(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
+            	r.setdRoom(this);
             }
             }
     }
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, Room room7, Room room8, String[] dirs, String desc){
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
@@ -908,82 +1008,94 @@ public class Room {
     	for(String d : dirs) {
     		if(d.equals("n")) {
     			this.hasN = true;
-    			hasDirs.add(hasN);
+    			this.dirs.add("north");
     		}
     		else if (d.equals("ne")) {
     			this.hasNE = true;
-    			hasDirs.add(hasNE);
+    			this.dirs.add("northeast");
     		}
     		else if (d.equals("e")) {
     			this.hasE = true;
-    			hasDirs.add(hasE);
+    			this.dirs.add("east");
     		}
     		else if (d.equals("se")) {
     			this.hasSE = true;
-    			hasDirs.add(hasSE);
+    			this.dirs.add("southeast");
     		}
     		else if (d.equals("s")) {
     			this.hasS = true;
-    			hasDirs.add(hasS);
+    			this.dirs.add("south");
     		}
     		else if (d.equals("sw")) {
     			this.hasSW = true;
-    			hasDirs.add(hasSW);
+    			this.dirs.add("southwest");
     		}
     		else if (d.equals("w")) {
     			this.hasW = true;
-    			hasDirs.add(hasW);
+    			this.dirs.add("west");
     		}
     		else if (d.equals("nw")) {
     			this.hasNW = true;
-    			hasDirs.add(hasNW);
+    			this.dirs.add("northwest");
     		}
     		else if (d.equals("u")) {
     			this.hasU = true;
-    			hasDirs.add(hasU);
+    			this.dirs.add("up");
     		}
     		else if (d.equals("d")) {
     			this.hasD = true;
-    			hasDirs.add(hasD);
+    			this.dirs.add("down");
     		}
     	}
     	
     	for (Room r : adjacentRooms) {
             if (r.getHasS()) {
             	this.nRoom = r;
+            	r.setsRoom(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
+            	r.setSwRoom(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
+            	r.setwRoom(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
+            	r.setNwRoom(this);
             }
             else if (r.getHasN()) {
             	this.seRoom = r;
+            	r.setnRoom(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
+            	r.setNeRoom(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
+            	r.seteRoom(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
+            	r.setSeRoom(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
+            	r.setuRoom(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
+            	r.setdRoom(this);
             }
             }
     }
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, Room room7, Room room8, Room room9, String[] dirs, String desc){
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
@@ -1018,82 +1130,94 @@ public class Room {
     	for(String d : dirs) {
     		if(d.equals("n")) {
     			this.hasN = true;
-    			hasDirs.add(hasN);
+    			this.dirs.add("north");
     		}
     		else if (d.equals("ne")) {
     			this.hasNE = true;
-    			hasDirs.add(hasNE);
+    			this.dirs.add("northeast");
     		}
     		else if (d.equals("e")) {
     			this.hasE = true;
-    			hasDirs.add(hasE);
+    			this.dirs.add("east");
     		}
     		else if (d.equals("se")) {
     			this.hasSE = true;
-    			hasDirs.add(hasSE);
+    			this.dirs.add("southeast");
     		}
     		else if (d.equals("s")) {
     			this.hasS = true;
-    			hasDirs.add(hasS);
+    			this.dirs.add("south");
     		}
     		else if (d.equals("sw")) {
     			this.hasSW = true;
-    			hasDirs.add(hasSW);
+    			this.dirs.add("southwest");
     		}
     		else if (d.equals("w")) {
     			this.hasW = true;
-    			hasDirs.add(hasW);
+    			this.dirs.add("west");
     		}
     		else if (d.equals("nw")) {
     			this.hasNW = true;
-    			hasDirs.add(hasNW);
+    			this.dirs.add("northwest");
     		}
     		else if (d.equals("u")) {
     			this.hasU = true;
-    			hasDirs.add(hasU);
+    			this.dirs.add("up");
     		}
     		else if (d.equals("d")) {
     			this.hasD = true;
-    			hasDirs.add(hasD);
+    			this.dirs.add("down");
     		}
     	}
     	
     	for (Room r : adjacentRooms) {
             if (r.getHasS()) {
             	this.nRoom = r;
+            	r.setsRoom(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
+            	r.setSwRoom(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
+            	r.setwRoom(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
+            	r.setNwRoom(this);
             }
             else if (r.getHasN()) {
             	this.seRoom = r;
+            	r.setnRoom(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
+            	r.setNeRoom(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
+            	r.seteRoom(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
+            	r.setSeRoom(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
+            	r.setuRoom(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
+            	r.setdRoom(this);
             }
             }
     }
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, Room room7, Room room8, Room room9, Room room10, String[] dirs, String desc){
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker;
     	this.description = desc;
     	if(terrainType.equals("ROCKY")){
@@ -1129,76 +1253,86 @@ public class Room {
     	for(String d : dirs) {
     		if(d.equals("n")) {
     			this.hasN = true;
-    			hasDirs.add(hasN);
+    			this.dirs.add("north");
     		}
     		else if (d.equals("ne")) {
     			this.hasNE = true;
-    			hasDirs.add(hasNE);
+    			this.dirs.add("northeast");
     		}
     		else if (d.equals("e")) {
     			this.hasE = true;
-    			hasDirs.add(hasE);
+    			this.dirs.add("east");
     		}
     		else if (d.equals("se")) {
     			this.hasSE = true;
-    			hasDirs.add(hasSE);
+    			this.dirs.add("southeast");
     		}
     		else if (d.equals("s")) {
     			this.hasS = true;
-    			hasDirs.add(hasS);
+    			this.dirs.add("south");
     		}
     		else if (d.equals("sw")) {
     			this.hasSW = true;
-    			hasDirs.add(hasSW);
+    			this.dirs.add("southwest");
     		}
     		else if (d.equals("w")) {
     			this.hasW = true;
-    			hasDirs.add(hasW);
+    			this.dirs.add("west");
     		}
     		else if (d.equals("nw")) {
     			this.hasNW = true;
-    			hasDirs.add(hasNW);
+    			this.dirs.add("northwest");
     		}
     		else if (d.equals("u")) {
     			this.hasU = true;
-    			hasDirs.add(hasU);
+    			this.dirs.add("up");
     		}
     		else if (d.equals("d")) {
     			this.hasD = true;
-    			hasDirs.add(hasD);
+    			this.dirs.add("down");
     		}
     	}
     	
     	for (Room r : adjacentRooms) {
             if (r.getHasS()) {
             	this.nRoom = r;
+            	r.setsRoom(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
+            	r.setSwRoom(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
+            	r.setwRoom(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
+            	r.setNwRoom(this);
             }
             else if (r.getHasN()) {
             	this.seRoom = r;
+            	r.setnRoom(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
+            	r.setNeRoom(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
+            	r.seteRoom(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
+            	r.setSeRoom(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
+            	r.setuRoom(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
+            	r.setdRoom(this);
             }
             }
     }
@@ -1396,6 +1530,16 @@ public class Room {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+
+
+	public void setDoors(Door[] doors) {
+		this.doors = doors;
+	}
+	
+	public ArrayList<Room> getAdjacentRooms(){
+		return adjacentRooms;
 	}
 
 
