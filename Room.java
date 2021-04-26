@@ -340,42 +340,52 @@ public class Room {
             if (r.getHasS()) {
             	this.nRoom = r;
             	r.setsRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
             	r.setSwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
             	r.setwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
             	r.setNwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasN()) {
-            	this.seRoom = r;
+            	this.sRoom = r;
             	r.setnRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
             	r.setNeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
             	r.seteRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
             	r.setSeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
             	r.setuRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
             	r.setdRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             }
     }
@@ -455,42 +465,52 @@ public class Room {
             if (r.getHasS()) {
             	this.nRoom = r;
             	r.setsRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
             	r.setSwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
             	r.setwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
             	r.setNwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasN()) {
-            	this.seRoom = r;
+            	this.sRoom = r;
             	r.setnRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
             	r.setNeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
             	r.seteRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
             	r.setSeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
             	r.setuRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
             	r.setdRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             }
     }
@@ -572,42 +592,52 @@ public class Room {
             if (r.getHasS()) {
             	this.nRoom = r;
             	r.setsRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
             	r.setSwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
             	r.setwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
             	r.setNwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasN()) {
-            	this.seRoom = r;
+            	this.sRoom = r;
             	r.setnRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
             	r.setNeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
             	r.seteRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
             	r.setSeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
             	r.setuRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
             	r.setdRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             }
     	
@@ -691,42 +721,52 @@ public class Room {
             if (r.getHasS()) {
             	this.nRoom = r;
             	r.setsRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
             	r.setSwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
             	r.setwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
             	r.setNwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasN()) {
-            	this.seRoom = r;
+            	this.sRoom = r;
             	r.setnRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
             	r.setNeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
             	r.seteRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
             	r.setSeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
             	r.setuRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
             	r.setdRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             }
     	
@@ -811,42 +851,52 @@ public class Room {
             if (r.getHasS()) {
             	this.nRoom = r;
             	r.setsRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
             	r.setSwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
             	r.setwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
             	r.setNwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasN()) {
-            	this.seRoom = r;
+            	this.sRoom = r;
             	r.setnRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
             	r.setNeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
             	r.seteRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
             	r.setSeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
             	r.setuRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
             	r.setdRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             }
     }
@@ -931,42 +981,52 @@ public class Room {
             if (r.getHasS()) {
             	this.nRoom = r;
             	r.setsRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
             	r.setSwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
             	r.setwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
             	r.setNwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasN()) {
-            	this.seRoom = r;
+            	this.sRoom = r;
             	r.setnRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
             	r.setNeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
             	r.seteRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
             	r.setSeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
             	r.setuRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
             	r.setdRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             }
     }
@@ -1052,42 +1112,52 @@ public class Room {
             if (r.getHasS()) {
             	this.nRoom = r;
             	r.setsRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
             	r.setSwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
             	r.setwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
             	r.setNwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasN()) {
-            	this.seRoom = r;
+            	this.sRoom = r;
             	r.setnRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
             	r.setNeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
             	r.seteRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
             	r.setSeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
             	r.setuRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
             	r.setdRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             }
     }
@@ -1174,42 +1244,52 @@ public class Room {
             if (r.getHasS()) {
             	this.nRoom = r;
             	r.setsRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
             	r.setSwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
             	r.setwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
             	r.setNwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasN()) {
-            	this.seRoom = r;
+            	this.sRoom = r;
             	r.setnRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
             	r.setNeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
             	r.seteRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
             	r.setSeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
             	r.setuRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
             	r.setdRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             }
     }
@@ -1297,42 +1377,52 @@ public class Room {
             if (r.getHasS()) {
             	this.nRoom = r;
             	r.setsRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSW()) {
             	this.neRoom = r;
             	r.setSwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasW()) {
             	this.eRoom = r;
             	r.setwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasNW()) {
             	this.seRoom = r;
             	r.setNwRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasN()) {
-            	this.seRoom = r;
+            	this.sRoom = r;
             	r.setnRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasNE()) {
             	this.swRoom = r;
             	r.setNeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if(r.getHasE()) {
             	this.wRoom = r;
             	r.seteRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasSE()) {
             	this.nwRoom = r;
             	r.setSeRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasU()) {
             	this.dRoom = r;
             	r.setuRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             else if (r.getHasD()) {
             	this.uRoom = r;
             	r.setdRoom(this);
+            	r.getAdjacentRooms().add(this);
             }
             }
     }
