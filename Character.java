@@ -24,53 +24,7 @@ public class Character {
         
     }
 
-    public String getName(){
-        return this.name;
-    }
-
-    //public String getPronoun() {
-        
-    //}
-
-    public int getStr(){
-        return this.str;
-    }
-
-    public int getDex(){
-        return this.dex;
-    }
-
-    public int getCon(){
-        return this.end;
-    }
-
-    public int getMnd(){
-        return this.mnd;
-    }
-
-    public int getCha(){
-        return this.cha;
-    }
-
-    public void setStr(int newStr){
-        this.str = newStr;
-    }
-
-    public void setDex(int newDex){
-        this.str = newDex;
-    }
-
-    public void setEnd(int newEnd){
-        this.end = newEnd;
-    }
-
-    public void setMnd(int newMnd){
-        this.mnd = newMnd;
-    }
-
-    public void setCha(int newCha){
-        this.cha = newCha;
-    }
+    
 
     public void look(Room currentRoom, String inputString){
         int count = 0;
@@ -475,6 +429,54 @@ public class Character {
 
     public void setCurrentRoom(Room newRoom) {
     	this.currentRoom = newRoom;
+    }
+    
+    public String getName(){
+        return this.name;
+    }
+
+    //public String getPronoun() {
+        
+    //}
+
+    public int getStr(){
+        return this.str;
+    }
+
+    public int getDex(){
+        return this.dex;
+    }
+
+    public int getCon(){
+        return this.end;
+    }
+
+    public int getMnd(){
+        return this.mnd;
+    }
+
+    public int getCha(){
+        return this.cha;
+    }
+
+    public void setStr(int newStr){
+        this.str = newStr;
+    }
+
+    public void setDex(int newDex){
+        this.str = newDex;
+    }
+
+    public void setEnd(int newEnd){
+        this.end = newEnd;
+    }
+
+    public void setMnd(int newMnd){
+        this.mnd = newMnd;
+    }
+
+    public void setCha(int newCha){
+        this.cha = newCha;
     }
     
     

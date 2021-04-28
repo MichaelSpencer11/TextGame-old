@@ -16,6 +16,7 @@ public class Player extends Character{
             break;
             case "F":
             this.pronounString = pronoun.M.toString();
+             ---------------------
             break;
             case "NB":
             this.pronounString = pronoun.NB.toString();
