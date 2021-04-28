@@ -1,7 +1,12 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Player extends Character{
+	
+	private ArrayList<Item> inventory;
+	
     public Player(Room firstRoom) {
+    	this.inventory = new ArrayList<Item>();
         this.prone = true;
         this.sitting = false;
         this.standing = false;
@@ -141,6 +146,14 @@ public class Player extends Character{
         */
         
 
+    }
+    
+    public ArrayList<Item> getInventory() {
+    	return this.inventory;
+    }
+    
+    public void addItem(Item item) {
+    	this.inventory.add(item);
     }
 
 
