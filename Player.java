@@ -155,6 +155,8 @@ public class Player extends Character{
     public void addItem(Item item) {
     	this.inventory.add(item);
     }
+    
+    
 
 
 }
