@@ -19,6 +19,7 @@ public class Character {
     protected int cha;
     protected int luc;
     protected Room currentRoom;
+    protected boolean asleep;
 
     public Character(){
         
@@ -32,6 +33,7 @@ public class Character {
         System.out.println("You look around a bit.");
         System.out.println(currentRoom.getDescription());
         System.out.println("The room seems to be of type " + currentRoom.getTerrainType() + ".");
+        currentRoom.printItems();
         for (int i = 0; i < currentRoom.getDirs().size(); i++){
             System.out.println("There is a way to the " + currentRoom.getDirs().get(i));
         }
@@ -419,6 +421,15 @@ public class Character {
             }
     }
 
+    }
+    
+    public void stand() {
+    	if(sitting || prone) {
+    		sitting = false;
+    		prone = false;
+    		standing = true;
+    		System.out.println("You stand up.");
+    	}
     }
     
 

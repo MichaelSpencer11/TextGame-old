@@ -11,6 +11,7 @@ public class Room {
     private int doorsNum;
     private ArrayList<Room> adjacentRooms;
     private ArrayList<String> dirs;
+    private ArrayList<Item> inventory;
     
     private boolean hasN;
     private boolean hasNE;
@@ -109,6 +110,7 @@ public class Room {
     
     
     public Room(String terrainType, Room room1, String[] dirs, String desc){
+    	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
@@ -267,6 +269,7 @@ public class Room {
     }
     
     public Room(String terrainType, Room room1, Room room2, String[] dirs, String desc ){
+    	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
@@ -391,6 +394,7 @@ public class Room {
     }
     
     public Room(String terrainType, Room room1, Room room2, Room room3, String[] dirs, String desc ){
+    	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
@@ -517,6 +521,7 @@ public class Room {
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, String[] dirs,
     		String desc){
+    	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
@@ -645,6 +650,7 @@ public class Room {
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5, 
     		String[] dirs, String desc ){
+    	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
@@ -774,6 +780,7 @@ public class Room {
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, String[] dirs, String desc){
+    	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
@@ -903,6 +910,7 @@ public class Room {
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, Room room7, String[] dirs, String desc){
+    	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
@@ -1033,6 +1041,7 @@ public class Room {
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, Room room7, Room room8, String[] dirs, String desc){
+    	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
@@ -1164,6 +1173,7 @@ public class Room {
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, Room room7, Room room8, Room room9, String[] dirs, String desc){
+    	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
@@ -1296,6 +1306,7 @@ public class Room {
     
     public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, Room room7, Room room8, Room room9, Room room10, String[] dirs, String desc){
+    	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
@@ -1426,6 +1437,17 @@ public class Room {
             }
             }
     }
+    
+    public void addItem() {
+    	
+    }
+    
+    public void printItems() {
+    	for(Item i : inventory) {
+    		System.out.println(i.getItemName());
+    	}
+    }
+    
     
     public void addDoor(String dir1, String dir2, Room room1, Room room2) {
     	
