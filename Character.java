@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 public class Character {
     protected String name;
@@ -20,6 +20,8 @@ public class Character {
     protected int luc;
     protected Room currentRoom;
     protected boolean asleep;
+    protected ArrayList<Item> inventory;
+    protected int invLength = 38;
 
     public Character(){
         
@@ -32,12 +34,31 @@ public class Character {
         if (inputString.equals("look") || inputString.equals("l")){
         System.out.println("You look around a bit.");
         System.out.println(currentRoom.getDescription());
-        System.out.println("The room seems to be of type " + currentRoom.getTerrainType() + ".");
+        System.out.println("The room seems to be of type " 
+        + currentRoom.getTerrainType() + ".");
         currentRoom.printItems();
         for (int i = 0; i < currentRoom.getDirs().size(); i++){
-            System.out.println("There is a way to the " + currentRoom.getDirs().get(i));
+            System.out.println("There is a way to the " 
+        + currentRoom.getDirs().get(i));
         }
         return;
+        }
+        
+        for (Item i : currentRoom.getInventory()) {
+        	if(inputString.substring(5).equals(i.getItemName())) {
+        		System.out.println(i.getDescription());
+        		return;
+        	}
+        }
+        
+        if (inputString.substring(0,4).equals("look") && 
+        		inputString.substring(5,8).equals("inv")) {
+        	for (Item i : this.inventory) {
+        		if (inputString.substring(9).equals(i.getItemName())) {
+        			System.out.println(i.getDescription());
+        			return;
+        		}
+        	}
         }
         
         if(currentRoom.getDoorsNum() == 1 && inputString.equals("look door")){
@@ -421,6 +442,36 @@ public class Character {
             }
     }
 
+    }
+    
+    public void take(Room currentRoom, String inputString) {
+    	if (currentRoom.getInventory().size() == 0) {
+    		System.out.println("There is nothing here to take.");
+    	} else {
+    	for (Item i : currentRoom.getInventory()) {
+        	if(inputString.substring(5).equals(i.getItemName())) {
+        		this.inventory.add(i);
+        		System.out.println("You take the " + i.getItemName() + ".");
+        		currentRoom.getInventory().remove(i);
+        		return;
+        	}
+        }
+    	}
+    }
+    
+    public void printInv() {
+    	System.out.println("/========================================\\");
+    	System.out.println("|                Inventory               |");
+    	System.out.println("|                                        |");
+    	for (Item i : this.inventory) {
+    		System.out.print("| " + i.getItemName());
+    		for (int j = 0; j < (this.invLength - i.getItemName().length()); j++) {
+    			System.out.print(" ");
+    		}
+    		System.out.println(" |");
+    	}
+    	System.out.println("|                                        |");
+    	System.out.println("\\========================================/");
     }
     
     public void stand() {

@@ -39,6 +39,7 @@ public class Room {
     
     //Maybe don't use this constructor as it makes a room with no connections
     public Room(String terrainType, String[] dirs, String desc) {
+    	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
@@ -1438,13 +1439,13 @@ public class Room {
             }
     }
     
-    public void addItem() {
-    	
+    public void addItem(Item item) {
+    	inventory.add(item);
     }
     
     public void printItems() {
     	for(Item i : inventory) {
-    		System.out.println(i.getItemName());
+    		System.out.println("There is a " + i.getItemName() + " here.");
     	}
     }
     
@@ -1452,6 +1453,10 @@ public class Room {
     public void addDoor(String dir1, String dir2, Room room1, Room room2) {
     	
     	
+    }
+    
+    public ArrayList<Item> getInventory(){
+    	return inventory;
     }
 
     public String getTerrainType(){
