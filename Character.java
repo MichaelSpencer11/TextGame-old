@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 public class Character {
     protected String name;
@@ -20,6 +20,7 @@ public class Character {
     protected int luc;
     protected Room currentRoom;
     protected boolean asleep;
+    protected ArrayList<Item> inventory;
 
     public Character(){
         
@@ -38,6 +39,13 @@ public class Character {
             System.out.println("There is a way to the " + currentRoom.getDirs().get(i));
         }
         return;
+        }
+        
+        for (Item i : currentRoom.getInventory()) {
+        	if(inputString.substring(5).equals(i.getItemName())) {
+        		System.out.println(i.getDescription());
+        		return;
+        	}
         }
         
         if(currentRoom.getDoorsNum() == 1 && inputString.equals("look door")){
@@ -421,6 +429,16 @@ public class Character {
             }
     }
 
+    }
+    
+    public void take(Room currentRoom, String inputString) {
+    	for (Item i : currentRoom.getInventory()) {
+        	if(inputString.substring(5).equals(i.getItemName())) {
+        		this.inventory.add(i);
+        		currentRoom.getInventory().remove(i);
+        		return;
+        	}
+        }
     }
     
     public void stand() {

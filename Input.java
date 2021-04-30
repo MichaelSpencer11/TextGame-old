@@ -7,8 +7,9 @@ public class Input{
     
     public void input(){
         while(true){
-            
+            System.out.print(">>>");
             String inputString = scanner.nextLine();
+            try {
             if(inputString.equals("")){
                 continue;
             }
@@ -26,6 +27,9 @@ public class Input{
             }
             else if(inputString.equals("stand")) {
             	thisPlayer.stand();
+            }
+            else if(inputString.length() > 3 && inputString.substring(0,4).equals("take")) {
+            	thisPlayer.take(thisPlayer.currentRoom, inputString);
             }
             else if(inputString.equals("n")){
                 thisPlayer.move(thisPlayer.currentRoom, inputString);
@@ -55,7 +59,10 @@ public class Input{
                 thisPlayer.move(thisPlayer.currentRoom, inputString);
             }
             else continue;
-            
+            } catch (StringIndexOutOfBoundsException e) {
+            	System.out.println("That didn't work, please try that again.");
+            	continue;
+            }
             
         }
 
