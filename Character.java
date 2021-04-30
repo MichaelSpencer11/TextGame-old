@@ -21,6 +21,7 @@ public class Character {
     protected Room currentRoom;
     protected boolean asleep;
     protected ArrayList<Item> inventory;
+    protected int invLength = 36;
 
     public Character(){
         
@@ -439,6 +440,21 @@ public class Character {
         		return;
         	}
         }
+    }
+    
+    public void printInv() {
+    	System.out.println("/======================================\\");
+    	System.out.println("|               Inventory              |");
+    	System.out.println("|                                      |");
+    	for (Item i : this.inventory) {
+    		System.out.print("| " + i.getItemName());
+    		for (int j = 0; j < (this.invLength - i.getItemName().length()); j++) {
+    			System.out.print(" ");
+    		}
+    		System.out.println(" |");
+    	}
+    	System.out.println("|                                      |");
+    	System.out.println("\\======================================/");
     }
     
     public void stand() {

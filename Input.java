@@ -58,6 +58,9 @@ public class Input{
             else if(inputString.equals("d")){
                 thisPlayer.move(thisPlayer.currentRoom, inputString);
             }
+            else if(inputString.equals("i")){
+                thisPlayer.printInv();
+            }
             else continue;
             } catch (StringIndexOutOfBoundsException e) {
             	System.out.println("That didn't work, please try that again.");
