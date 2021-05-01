@@ -22,6 +22,7 @@ public class Character {
     protected boolean asleep;
     protected ArrayList<Item> inventory;
     protected int invLength = 38;
+    protected Item mainHand;
 
     public Character(){
         
@@ -34,12 +35,10 @@ public class Character {
         if (inputString.equals("look") || inputString.equals("l")){
         System.out.println("You look around a bit.");
         System.out.println(currentRoom.getDescription());
-        System.out.println("The room seems to be of type " 
-        + currentRoom.getTerrainType() + ".");
+        System.out.println("The room seems to be of type " + currentRoom.getTerrainType() + ".");
         currentRoom.printItems();
         for (int i = 0; i < currentRoom.getDirs().size(); i++){
-            System.out.println("There is a way to the " 
-        + currentRoom.getDirs().get(i));
+            System.out.println("There is a way to the " + currentRoom.getDirs().get(i));
         }
         return;
         }
@@ -55,7 +54,7 @@ public class Character {
         		inputString.substring(5,8).equals("inv")) {
         	for (Item i : this.inventory) {
         		if (inputString.substring(9).equals(i.getItemName())) {
-        			System.out.println(i.getDescription());
+        			System.out.println(i.getDescription() + " " + i.getDesc2());
         			return;
         		}
         	}
@@ -474,6 +473,17 @@ public class Character {
     	System.out.println("\\========================================/");
     }
     
+    public void equip(String inputString) {
+    	for (Item i : this.inventory) {
+    		if(inputString.substring(6).equals(i.getItemName())) {
+    			if(i.typeToString().equals("Weapon")){
+    				this.mainHand = i;
+    				System.out.println("You equip the " + i.getItemName() + ".");
+    			}
+    		}
+    	}
+    }
+    
     public void stand() {
     	if(sitting || prone) {
     		sitting = false;
@@ -482,6 +492,8 @@ public class Character {
     		System.out.println("You stand up.");
     	}
     }
+    
+    
     
 
     public void closeDoor(Door door){

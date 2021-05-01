@@ -31,6 +31,9 @@ public class Input{
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("take")) {
             	thisPlayer.take(thisPlayer.currentRoom, inputString);
             }
+            else if(inputString.length() > 3 && inputString.substring(0,5).equals("equip")) {
+            	thisPlayer.equip(inputString);
+            }
             else if(inputString.equals("n")){
                 thisPlayer.move(thisPlayer.currentRoom, inputString);
             }
