@@ -12,6 +12,7 @@ public class Room {
     private ArrayList<Room> adjacentRooms;
     private ArrayList<String> dirs;
     private ArrayList<Item> inventory;
+    protected ArrayList<Character> people;
     
     private boolean hasN;
     private boolean hasNE;
@@ -39,6 +40,7 @@ public class Room {
     
     //Maybe don't use this constructor as it makes a room with no connections
     public Room(String terrainType, String desc, String... dirs) {
+    	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -111,6 +113,7 @@ public class Room {
     
     
     public Room(String terrainType, String desc, Room room1, String... dirs){
+    	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -270,6 +273,7 @@ public class Room {
     }
     
     public Room(String terrainType, String desc, Room room1, Room room2, String... dirs ){
+    	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -394,7 +398,8 @@ public class Room {
             }
     }
     
-    public Room(String terrainType, Room room1, Room room2, Room room3, String[] dirs, String desc ){
+    public Room(String terrainType, String desc, Room room1, Room room2, Room room3, String... dirs ){
+    	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -520,8 +525,9 @@ public class Room {
             }
     }
     
-    public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, String[] dirs,
-    		String desc){
+    public Room(String terrainType,
+    		String desc, Room room1, Room room2, Room room3, Room room4, String... dirs){
+    	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -649,8 +655,9 @@ public class Room {
     	
     }
     
-    public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5, 
-    		String[] dirs, String desc ){
+    public Room(String terrainType, String desc, Room room1, Room room2, Room room3, Room room4, Room room5, 
+    		String... dirs ){
+    	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -779,8 +786,9 @@ public class Room {
     	
     }
     
-    public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
-    		Room room6, String[] dirs, String desc){
+    public Room(String terrainType, String desc, Room room1, Room room2, Room room3, Room room4, Room room5,
+    		Room room6, String... dirs){
+    	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -909,8 +917,9 @@ public class Room {
             }
     }
     
-    public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
-    		Room room6, Room room7, String[] dirs, String desc){
+    public Room(String terrainType, String desc, Room room1, Room room2, Room room3, Room room4, Room room5,
+    		Room room6, Room room7, String... dirs){
+    	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -1040,8 +1049,9 @@ public class Room {
             }
     }
     
-    public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
-    		Room room6, Room room7, Room room8, String[] dirs, String desc){
+    public Room(String terrainType, String desc, Room room1, Room room2, Room room3, Room room4, Room room5,
+    		Room room6, Room room7, Room room8, String... dirs){
+    	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -1172,8 +1182,9 @@ public class Room {
             }
     }
     
-    public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
-    		Room room6, Room room7, Room room8, Room room9, String[] dirs, String desc){
+    public Room(String terrainType, String desc, Room room1, Room room2, Room room3, Room room4, Room room5,
+    		Room room6, Room room7, Room room8, Room room9, String... dirs){
+    	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -1305,8 +1316,9 @@ public class Room {
             }
     }
     
-    public Room(String terrainType, Room room1, Room room2, Room room3, Room room4, Room room5,
-    		Room room6, Room room7, Room room8, Room room9, Room room10, String[] dirs, String desc){
+    public Room(String terrainType, String desc, Room room1, Room room2, Room room3, Room room4, Room room5,
+    		Room room6, Room room7, Room room8, Room room9, Room room10, String... dirs){
+    	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -1446,6 +1458,14 @@ public class Room {
     public void printItems() {
     	for(Item i : inventory) {
     		System.out.println("There is a " + i.getItemName() + " here.");
+    	}
+    }
+    
+    public void printChars() {
+    	for(Character c : people) {
+    		if(c.hasName == false) {
+    			System.out.println("There is someone here.");
+    		}
     	}
     }
     

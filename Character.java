@@ -12,6 +12,7 @@ public class Character {
     protected boolean standing;
     protected boolean sitting;
     protected boolean prone;
+    protected boolean floating;
     protected int str;
     protected int dex;
     protected int end;
@@ -21,21 +22,39 @@ public class Character {
     protected Room currentRoom;
     protected boolean asleep;
     protected ArrayList<Item> inventory;
-    protected ArrayList<Character> people;
     protected int invLength = 38;
     protected Item mainHand;
+    protected boolean hasName;
 
     public Character() {
     	
     }
     
+    //Constructor for familiars who do not have predetermined names in the beginning
+    //Generally, the player will name these characters later
     public Character(Room firstRoom){
+    	this.hasName = false;
     	this.inventory = new ArrayList<Item>();
     	this.asleep = false;
         this.prone = false;
         this.sitting = false;
-        this.standing = true;;
+        this.standing = true;
+        firstRoom.people.add(this);
         this.currentRoom = firstRoom;
+        
+        
+    }
+    
+    //Constructor for named characters
+    public Character(String name, Room firstRoom){
+    	this.inventory = new ArrayList<Item>();
+    	this.asleep = false;
+        this.prone = false;
+        this.sitting = false;
+        this.standing = true;
+        firstRoom.people.add(this);
+        this.currentRoom = firstRoom;
+        
     }
 
     
@@ -528,6 +547,10 @@ public class Character {
     
     public String getName(){
         return this.name;
+    }
+    
+    public boolean getHasName() {
+    	return this.hasName;
     }
 
     //public String getPronoun() {

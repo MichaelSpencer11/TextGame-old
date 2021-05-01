@@ -11,6 +11,7 @@ public class Player extends Character{
         this.prone = true;
         this.sitting = false;
         this.standing = false;
+        this.hasName = false;
         this.currentRoom = firstRoom;
         /*
         Scanner conScanner = new Scanner(System.in);
