@@ -7,6 +7,8 @@ public class Weapon extends Item {
 		this.desc2 = desc2;
 		this.itemId = itemTracker++;
 		this.roomIn = room;
+		
+		room.getInventory().add(this);
 	}
 	
 }

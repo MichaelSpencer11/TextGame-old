@@ -38,7 +38,7 @@ public class Room {
     
     
     //Maybe don't use this constructor as it makes a room with no connections
-    public Room(String terrainType, String[] dirs, String desc) {
+    public Room(String terrainType, String desc, String... dirs) {
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -110,7 +110,7 @@ public class Room {
     
     
     
-    public Room(String terrainType, Room room1, String[] dirs, String desc){
+    public Room(String terrainType, String desc, Room room1, String... dirs){
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -269,7 +269,7 @@ public class Room {
         
     }
     
-    public Room(String terrainType, Room room1, Room room2, String[] dirs, String desc ){
+    public Room(String terrainType, String desc, Room room1, Room room2, String... dirs ){
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
@@ -1439,9 +1439,9 @@ public class Room {
             }
     }
     
-    public void addItem(Item item) {
-    	inventory.add(item);
-    }
+    //public void addItem(Item item) {
+    //	inventory.add(item);
+   // }
     
     public void printItems() {
     	for(Item i : inventory) {

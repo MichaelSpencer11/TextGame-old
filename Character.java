@@ -21,11 +21,21 @@ public class Character {
     protected Room currentRoom;
     protected boolean asleep;
     protected ArrayList<Item> inventory;
+    protected ArrayList<Character> people;
     protected int invLength = 38;
     protected Item mainHand;
 
-    public Character(){
-        
+    public Character() {
+    	
+    }
+    
+    public Character(Room firstRoom){
+    	this.inventory = new ArrayList<Item>();
+    	this.asleep = false;
+        this.prone = false;
+        this.sitting = false;
+        this.standing = true;;
+        this.currentRoom = firstRoom;
     }
 
     
@@ -37,6 +47,7 @@ public class Character {
         System.out.println(currentRoom.getDescription());
         System.out.println("The room seems to be of type " + currentRoom.getTerrainType() + ".");
         currentRoom.printItems();
+        currentRoom.printChars();
         for (int i = 0; i < currentRoom.getDirs().size(); i++){
             System.out.println("There is a way to the " + currentRoom.getDirs().get(i));
         }
@@ -463,11 +474,19 @@ public class Character {
     	System.out.println("|                Inventory               |");
     	System.out.println("|                                        |");
     	for (Item i : this.inventory) {
+    		if (i.equipped) {
+    			System.out.print("| [e]" + i.getItemName());
+    			for (int j = 0; j < (this.invLength - i.getItemName().length()) - 3; j++) {
+        			System.out.print(" ");
+        		}
+    			System.out.println(" |");
+    		} else {
     		System.out.print("| " + i.getItemName());
     		for (int j = 0; j < (this.invLength - i.getItemName().length()); j++) {
     			System.out.print(" ");
     		}
     		System.out.println(" |");
+    		}
     	}
     	System.out.println("|                                        |");
     	System.out.println("\\========================================/");
@@ -479,6 +498,8 @@ public class Character {
     			if(i.typeToString().equals("Weapon")){
     				this.mainHand = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
+    				i.equipped = true;
+    				return;
     			}
     		}
     	}
