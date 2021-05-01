@@ -68,7 +68,7 @@ public class Character {
         currentRoom.printItems();
         currentRoom.printChars();
         for (int i = 0; i < currentRoom.getDirs().size(); i++){
-            System.out.println("There is a way to the " + currentRoom.getDirs().get(i));
+            System.out.println("There is a way to the " + currentRoom.getDirs().get(i) + ".");
         }
         return;
         }
@@ -89,7 +89,7 @@ public class Character {
         		}
         	}
         }
-        
+        /*
         if(currentRoom.getDoorsNum() == 1 && inputString.equals("look door")){
             System.out.println("There is a door here.");
             if(currentRoom.getDoors()[0].getOpened()){
@@ -247,6 +247,7 @@ public class Character {
         else {
             System.out.println("There is no door in that direction.");
         }
+        */
     }
 
     public void open(Room currentRoom, String inputString) {
@@ -489,7 +490,7 @@ public class Character {
     }
     
     public void printInv() {
-    	System.out.println("/========================================\\");
+    	System.out.println("/`^^~~vv.._,_,..vv~~^^~~vv..,_,_..vv~~^^`\\");
     	System.out.println("|                Inventory               |");
     	System.out.println("|                                        |");
     	for (Item i : this.inventory) {
@@ -508,7 +509,7 @@ public class Character {
     		}
     	}
     	System.out.println("|                                        |");
-    	System.out.println("\\========================================/");
+    	System.out.println("\\v~~^^\"'``\"'``''^^~~vv~~^^'\"``'\"``'\"^^~~v/");
     }
     
     public void equip(String inputString) {
