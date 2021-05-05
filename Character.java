@@ -487,7 +487,7 @@ public class Character {
         	}
         }
     	}
-    }
+    }                            
     
     public void printInv() {
     	System.out.println("/`^^~~vv.._,_,..vv~~^^~~vv..,_,_..vv~~^^`\\");
@@ -515,11 +515,13 @@ public class Character {
     public void equip(String inputString) {
     	for (Item i : this.inventory) {
     		if(inputString.substring(6).equals(i.getItemName())) {
-    			if(i.typeToString().equals("Weapon")){
+    			if(i.typeToString().equals("Weapon") && this.mainHand == null)  {
     				this.mainHand = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
     				return;
+    			} else {
+    				System.out.println("Something is already equipped to the main hand.");
     			}
     		}
     	}
