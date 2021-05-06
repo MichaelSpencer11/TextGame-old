@@ -34,6 +34,9 @@ public class Input{
             else if(inputString.length() > 3 && inputString.substring(0,5).equals("equip")) {
             	thisPlayer.equip(inputString);
             }
+            else if(inputString.length() > 3 && inputString.substring(0,7).equals("unequip")) {
+            	thisPlayer.unequip(inputString);
+            }
             else if(inputString.equals("n")){
                 thisPlayer.move(thisPlayer.currentRoom, inputString);
             }

@@ -9,23 +9,37 @@ public class Character {
     protected String areaString;
     protected enum area{Land, Sea, Space};
     protected String areaRace;
+    
     protected boolean standing;
     protected boolean sitting;
     protected boolean prone;
     protected boolean floating;
+    
     protected int str;
     protected int dex;
     protected int end;
     protected int mnd;
     protected int cha;
     protected int luc;
+    
     protected Room currentRoom;
     protected boolean asleep;
     protected ArrayList<Item> inventory;
     protected int invLength = 38;
-    protected Item mainHand;
     protected boolean hasName;
-
+    
+    protected Item mainHand;
+    protected Item offHand;
+    protected Item head;
+    protected Item hands;
+    protected Item body;
+    protected Item back;
+    protected Item legs;
+    protected Item feet;
+    protected Item ring1;
+    protected Item ring2;
+    
+    
     public Character() {
     	
     }
@@ -522,6 +536,25 @@ public class Character {
     				return;
     			} else {
     				System.out.println("Something is already equipped to the main hand.");
+    			}
+    			
+    			if(i.typeToString().equals("Head") && this.head == null){
+    				this.head = i;
+    				System.out.println("You equip the " + i.getItemName() + ".");
+    				i.equipped = true;
+    			}
+    			
+    		}
+    	}
+    }
+    
+    public void unequip(String inputString) {
+    	for (Item i : this.inventory) {
+    		if(inputString.substring(8).equals(i.getItemName()) && i.equipped == true) {
+    			if(i.typeToString().equals("Weapon") && this.mainHand == i) {
+    			System.out.println("You unequip the " + i.getItemName() + ".");
+    			i.equipped = false;
+    			this.mainHand = null;
     			}
     		}
     	}
