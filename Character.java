@@ -543,7 +543,41 @@ public class Character {
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
     			}
-    			
+    			if(i.typeToString().equals("Hands") && this.hands == null){
+    				this.hands = i;
+    				System.out.println("You equip the " + i.getItemName() + ".");
+    				i.equipped = true;
+    			}
+    			if(i.typeToString().equals("Body") && this.body == null){
+    				this.body = i;
+    				System.out.println("You equip the " + i.getItemName() + ".");
+    				i.equipped = true;
+    			}
+    			if(i.typeToString().equals("Back") && this.back == null){
+    				this.back = i;
+    				System.out.println("You equip the " + i.getItemName() + ".");
+    				i.equipped = true;
+    			}
+    			if(i.typeToString().equals("Legs") && this.legs == null){
+    				this.legs = i;
+    				System.out.println("You equip the " + i.getItemName() + ".");
+    				i.equipped = true;
+    			}
+    			if(i.typeToString().equals("Feet") && this.feet == null){
+    				this.feet = i;
+    				System.out.println("You equip the " + i.getItemName() + ".");
+    				i.equipped = true;
+    			}
+    			if(i.typeToString().equals("Ring") && this.ring1 == null){
+    				this.ring1 = i;
+    				System.out.println("You equip the " + i.getItemName() + ".");
+    				i.equipped = true;
+    			}
+    			if(i.typeToString().equals("Ring") && this.ring1 != null){
+    				this.ring2 = i;
+    				System.out.println("You equip the " + i.getItemName() + ".");
+    				i.equipped = true;
+    			}
     		}
     	}
     }
@@ -552,9 +586,9 @@ public class Character {
     	for (Item i : this.inventory) {
     		if(inputString.substring(8).equals(i.getItemName()) && i.equipped == true) {
     			if(i.typeToString().equals("Weapon") && this.mainHand == i) {
-    			System.out.println("You unequip the " + i.getItemName() + ".");
-    			i.equipped = false;
-    			this.mainHand = null;
+    				System.out.println("You unequip the " + i.getItemName() + ".");
+    				i.equipped = false;
+    				this.mainHand = null;
     			}
     		}
     	}
