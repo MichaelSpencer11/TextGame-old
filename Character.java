@@ -418,70 +418,90 @@ public class Character {
     public void move(Room currentRoom, String inputString){
         if (inputString.equals("n")){
                 if(currentRoom.getHasN()){
+                	currentRoom.people.remove(this);
                 	this.setCurrentRoom(currentRoom.getnRoom());
+                	currentRoom.people.add(this);
                     System.out.println("You move to the north.");
                 }
         }
         
         if (inputString.equals("ne")){
             if(currentRoom.getHasNE()){
+            	currentRoom.people.remove(this);
             	this.setCurrentRoom(currentRoom.getNeRoom());
+            	currentRoom.people.add(this);
                 System.out.println("You move to the northeast.");
             }
     }
         
         if (inputString.equals("e")){
             if(currentRoom.getHasE()){
+            	currentRoom.people.remove(this);
             	this.setCurrentRoom(currentRoom.geteRoom());
+            	currentRoom.people.add(this);
                 System.out.println("You move to the east.");
             }
     }
         
         if (inputString.equals("se")){
             if(currentRoom.getHasSE()){
+            	currentRoom.people.remove(this);
             	this.setCurrentRoom(currentRoom.getSeRoom());
+            	currentRoom.people.add(this);
                 System.out.println("You move to the southeast.");
             }
     }
         
         if (inputString.equals("s")){
             if(currentRoom.getHasS()){
+            	currentRoom.people.remove(this);
             	this.setCurrentRoom(currentRoom.getsRoom());
+            	currentRoom.people.add(this);
                 System.out.println("You move to the south.");
             }
     }
         
         if (inputString.equals("sw")){
             if(currentRoom.getHasSW()){
+            	currentRoom.people.remove(this);
             	this.setCurrentRoom(currentRoom.getSwRoom());
+            	currentRoom.people.add(this);
                 System.out.println("You move to the southwest.");
             }
     }
         
         if (inputString.equals("w")){
             if(currentRoom.getHasW()){
+            	currentRoom.people.remove(this);
             	this.setCurrentRoom(currentRoom.getwRoom());
+            	currentRoom.people.add(this);
                 System.out.println("You move to the west.");
             }
     }
         
         if (inputString.equals("nw")){
             if(currentRoom.getHasNW()){
+            	currentRoom.people.remove(this);
             	this.setCurrentRoom(currentRoom.getNwRoom());
+            	currentRoom.people.add(this);
                 System.out.println("You move to the northwest.");
             }
     }
         
         if (inputString.equals("u")){
             if(currentRoom.getHasU()){
+            	currentRoom.people.remove(this);
             	this.setCurrentRoom(currentRoom.getuRoom());
+            	currentRoom.people.add(this);
                 System.out.println("You move up.");
             }
     }
         
         if (inputString.equals("d")){
             if(currentRoom.getHasD()){
+            	currentRoom.people.remove(this);
             	this.setCurrentRoom(currentRoom.getdRoom());
+            	currentRoom.people.add(this);
                 System.out.println("You move down.");
             }
     }
@@ -493,7 +513,10 @@ public class Character {
     		System.out.println("There is nothing here to take.");
     	} else {
     	for (Item i : currentRoom.getInventory()) {
-        	if(inputString.substring(5).equals(i.getItemName())) {
+    		if(inputString.substring(5).equals(i.getItemName()) && i.typeToString().equals("Chest")) {
+    			System.out.println("You cannot pick up this chest.");
+    		}
+    		else if(inputString.substring(5).equals(i.getItemName())) {
         		this.inventory.add(i);
         		System.out.println("You take the " + i.getItemName() + ".");
         		currentRoom.getInventory().remove(i);
@@ -543,41 +566,42 @@ public class Character {
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
     			}
-    			if(i.typeToString().equals("Hands") && this.hands == null){
+    			else if(i.typeToString().equals("Hands") && this.hands == null){
     				this.hands = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
     			}
-    			if(i.typeToString().equals("Body") && this.body == null){
+    			else if(i.typeToString().equals("Body") && this.body == null){
     				this.body = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
     			}
-    			if(i.typeToString().equals("Back") && this.back == null){
+    			else if(i.typeToString().equals("Back") && this.back == null){
     				this.back = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
     			}
-    			if(i.typeToString().equals("Legs") && this.legs == null){
+    			else if(i.typeToString().equals("Legs") && this.legs == null){
     				this.legs = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
     			}
-    			if(i.typeToString().equals("Feet") && this.feet == null){
+    			else if(i.typeToString().equals("Feet") && this.feet == null){
     				this.feet = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
     			}
-    			if(i.typeToString().equals("Ring") && this.ring1 == null){
+    			else if(i.typeToString().equals("Ring") && this.ring1 == null){
     				this.ring1 = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
     			}
-    			if(i.typeToString().equals("Ring") && this.ring1 != null){
+    			else if(i.typeToString().equals("Ring") && this.ring1 != null){
     				this.ring2 = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
     			}
+    			
     		}
     	}
     }
@@ -590,8 +614,62 @@ public class Character {
     				i.equipped = false;
     				this.mainHand = null;
     			}
+    			else if(i.typeToString().equals("Head") && this.head == i) {
+    				System.out.println("You unequip the " + i.getItemName() + ".");
+    				i.equipped = false;
+    				this.head = null;
+    			}
+    			else if(i.typeToString().equals("Hands") && this.hands == i) {
+    				System.out.println("You unequip the " + i.getItemName() + ".");
+    				i.equipped = false;
+    				this.hands = null;
+    			}
+    			else if(i.typeToString().equals("Body") && this.body == i) {
+    				System.out.println("You unequip the " + i.getItemName() + ".");
+    				i.equipped = false;
+    				this.body = null;
+    			}
+    			else if(i.typeToString().equals("Back") && this.back == i) {
+    				System.out.println("You unequip the " + i.getItemName() + ".");
+    				i.equipped = false;
+    				this.back = null;
+    			}
+    			else if(i.typeToString().equals("Legs") && this.legs == i) {
+    				System.out.println("You unequip the " + i.getItemName() + ".");
+    				i.equipped = false;
+    				this.legs = null;
+    			}
+    			else if(i.typeToString().equals("Feet") && this.feet == i) {
+    				System.out.println("You unequip the " + i.getItemName() + ".");
+    				i.equipped = false;
+    				this.feet = null;
+    			}
+    			else if(i.typeToString().equals("Ring") && this.ring1 == i) {
+    				System.out.println("You unequip the " + i.getItemName() + ".");
+    				i.equipped = false;
+    				this.ring1 = null;
+    			}
+    			else if(i.typeToString().equals("Ring") && this.ring2 == i) {
+    				System.out.println("You unequip the " + i.getItemName() + ".");
+    				i.equipped = false;
+    				this.ring2 = null;
+    			}
     		}
     	}
+    }
+    
+    public void drop(Room currentRoom, String inputString) {
+    	for(Item i : inventory) {
+    		if (inputString.substring(5).equals(i.getItemName())) {
+    			currentRoom.getInventory().add(i);
+    			this.inventory.remove(i);
+    			System.out.println("You drop the " + i.getItemName() + ".");
+    		}
+    	}
+    }
+    
+    public void give(Room currentRoom, String inputString) {
+    	
     }
     
     public void stand() {

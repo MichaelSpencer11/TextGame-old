@@ -1457,7 +1457,12 @@ public class Room {
     
     public void printItems() {
     	for(Item i : inventory) {
+    		if(i.plural == false) {
     		System.out.println("There is a " + i.getItemName() + " here.");
+    		}
+    		else {
+    			System.out.println("There are " + i.getItemName() + " here.");
+    		}
     	}
     }
     

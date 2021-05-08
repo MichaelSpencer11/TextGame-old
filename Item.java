@@ -7,13 +7,15 @@ public class Item {
 		protected String desc2;
 		protected Room roomIn;
 		protected boolean equipped;
+		protected boolean plural;
 		
 		public Item() {
 			
 		}
 		
-		public Item(String name, String description, String desc2, Room room) {
+		public Item(String name, boolean plural, String description, String desc2, Room room) {
 			this.itemName = name;
+			this.plural = plural;
 			this.description = description;
 			this.desc2 = desc2;
 			this.itemId = itemTracker++;
