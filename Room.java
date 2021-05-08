@@ -1470,6 +1470,8 @@ public class Room {
     	for(Character c : people) {
     		if(c.hasName == false) {
     			System.out.println("There is someone here.");
+    		} else {
+    			System.out.println(c.name + " is here.");
     		}
     	}
     }

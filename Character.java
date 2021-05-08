@@ -61,6 +61,8 @@ public class Character {
     
     //Constructor for named characters
     public Character(String name, Room firstRoom){
+    	this.name = name;
+    	this.hasName = true;
     	this.inventory = new ArrayList<Item>();
     	this.asleep = false;
         this.prone = false;
@@ -701,6 +703,23 @@ public class Character {
     }
     
     public void give(Room currentRoom, String inputString) {
+    	Item currentItem;
+    	for (Item i : this.inventory) {
+    		if(i.getItemName().equals(inputString.substring(5,inputString.indexOf("to") - 1 ))) {
+    			currentItem = i;
+    			this.inventory.remove(currentItem);
+    			for (Character c : currentRoom.people) {
+    	    		if(c.getName().equals(inputString.substring(inputString.indexOf("to") + 3 ))) {
+    	    			c.inventory.add(currentItem);
+    	    			System.out.println("You give the " + currentItem.getItemName() + " to " + c.getName());
+    	    		}
+    	    	}
+    			break;
+    		}
+    	}
+    }
+    
+    public void talk() {
     	
     }
     

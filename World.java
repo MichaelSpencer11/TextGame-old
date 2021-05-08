@@ -24,7 +24,8 @@ public class World {
         Item redRing = new Ring("red ring", false, "A simple lookinng red ring.", "This ring seems to be made out of some fiery red substance.", room1);
         Room room2 = new Room("INTERIOR", "The second room. Congratulations if you made it here!", room1, "n");
         Player player = new Player(room1);
-        Character familiar = new Character(room1);
+        Character familiar = new Character("Familiar", room1);
+        System.out.println("Hi, welcome. Please 'look' or 'l' to look around the room. 'Take' some items and 'equip', 'unequip', and 'drop' them." );
         Input input = new Input(player);
         input.input();
 	}
