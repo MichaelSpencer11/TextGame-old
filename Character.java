@@ -557,50 +557,82 @@ public class Character {
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
     				return;
-    			} else {
-    				System.out.println("Something is already equipped to the main hand.");
+    			} else if (i.typeToString().equals("Weapon") && this.mainHand != null){
+    				System.out.println("You're already holding something in your main hand.");
+    				return;
+    				
     			}
     			
     			if(i.typeToString().equals("Head") && this.head == null){
     				this.head = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
+    				return;
+    			} else if(i.typeToString().equals("Head") && this.head != null) {
+    				System.out.println("Your head already has something on it.");
+    				return;
     			}
-    			else if(i.typeToString().equals("Hands") && this.hands == null){
+    			if(i.typeToString().equals("Hands") && this.hands == null){
     				this.hands = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
+    				return;
+    			} else if (i.typeToString().equals("Hands") && this.hands != null) {
+    				System.out.println("Your hands are already adorned.");
+    				return;
     			}
-    			else if(i.typeToString().equals("Body") && this.body == null){
+    			if(i.typeToString().equals("Body") && this.body == null){
     				this.body = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
+    				return;
+    			} else if (i.typeToString().equals("Body") && this.body != null) {
+    				System.out.println("You're already wearing something on your body.");
+    				return;
     			}
-    			else if(i.typeToString().equals("Back") && this.back == null){
+    			if(i.typeToString().equals("Back") && this.back == null){
     				this.back = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
+    				return;
+    			} else if(i.typeToString().equals("Back") && this.back != null) {
+    				System.out.println("Your back is already adorned with something.");
+    				return;
     			}
-    			else if(i.typeToString().equals("Legs") && this.legs == null){
+    			if(i.typeToString().equals("Legs") && this.legs == null){
     				this.legs = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
+    				return;
+    			} else if (i.typeToString().equals("Legs") && this.legs != null) {
+    				System.out.println("You're already wearing something on your legs.");
+    				return;
     			}
-    			else if(i.typeToString().equals("Feet") && this.feet == null){
+    			if(i.typeToString().equals("Feet") && this.feet == null){
     				this.feet = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
+    				return;
+    			} else if (i.typeToString().equals("Feet") && this.feet != null) {
+    				System.out.println("Your feet are already shod with something.");
+    				return;
     			}
-    			else if(i.typeToString().equals("Ring") && this.ring1 == null){
+    			if(i.typeToString().equals("Ring") && this.ring1 == null){
     				this.ring1 = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
+    				return;
     			}
-    			else if(i.typeToString().equals("Ring") && this.ring1 != null){
+    			if(i.typeToString().equals("Ring") && this.ring1 != null){
     				this.ring2 = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
+    				return;
     			}
+    			if (i.typeToString().equals("Ring") && this.ring1 != null && this.ring2 != null) {
+    				System.out.println("You can't wear any more rings.");
+    			}
+    			
     			
     		}
     	}
