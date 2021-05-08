@@ -25,9 +25,6 @@ public class Input{
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("open")){
                 thisPlayer.open(thisPlayer.currentRoom, inputString);
             }
-            else if(inputString.equals("stand")) {
-            	thisPlayer.stand();
-            }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("take")) {
             	thisPlayer.take(thisPlayer.currentRoom, inputString);
             }
@@ -42,6 +39,15 @@ public class Input{
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("give")) {
             	thisPlayer.give(thisPlayer.currentRoom, inputString);
+            }
+            else if(inputString.length() > 3 && inputString.substring(0,4).equals("talk")) {
+            	thisPlayer.talk(thisPlayer.currentRoom, inputString);
+            }
+            else if (inputString.equals("sit")) {
+            	thisPlayer.sit();
+            }
+            else if(inputString.equals("stand")) {
+            	thisPlayer.stand();
             }
             else if(inputString.equals("n")){
                 thisPlayer.move(thisPlayer.currentRoom, inputString);

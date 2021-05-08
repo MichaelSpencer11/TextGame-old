@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Character {
     protected String name;
+    protected String type;
     protected String pronounString;
     protected enum pronoun{M, F, NB};
     protected String raceString;
@@ -9,6 +10,7 @@ public class Character {
     protected String areaString;
     protected enum area{Land, Sea, Space};
     protected String areaRace;
+    protected Familiar familiar;
     
     protected boolean standing;
     protected boolean sitting;
@@ -719,7 +721,7 @@ public class Character {
     	}
     }
     
-    public void talk() {
+    public void talk(Room currentRoom, String inputString) {
     	
     }
     
@@ -730,6 +732,27 @@ public class Character {
     		standing = true;
     		System.out.println("You stand up.");
     	}
+    }
+    
+    public void sit() {
+    	if(standing) {
+    		standing = false;
+    		sitting = true;
+    		System.out.println("You take a seat.");
+    	}
+    	
+    	if(sitting) {
+    		sitting = false;
+    		standing = true;
+    		System.out.println("You stand up.");
+    	}
+    	
+    	if(prone) {
+    		prone = false;
+    		sitting = true;
+    		System.out.println("You sit up.");
+    	}
+    	
     }
     
     

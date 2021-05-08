@@ -1468,8 +1468,11 @@ public class Room {
     
     public void printChars() {
     	for(Character c : people) {
-    		if(c.hasName == false) {
+    		if(c.hasName == false && c.type == null) {
     			System.out.println("There is someone here.");
+    		}
+    		else if(c.hasName == false) {
+    			System.out.println("A " + c.type + " is here.");
     		} else {
     			System.out.println(c.name + " is here.");
     		}
