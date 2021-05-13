@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Character {
     protected String name;
     protected String type;
+    protected String description;
     protected String pronounString;
     protected enum pronoun{M, F, NB};
     protected String raceString;
@@ -46,7 +47,7 @@ public class Character {
     	
     }
     
-    //Constructor for familiars who do not have predetermined names in the beginning
+    //Constructor for characters who do not have predetermined names in the beginning
     //Generally, the player will name these characters later
     public Character(Room firstRoom){
     	this.hasName = false;
@@ -62,8 +63,9 @@ public class Character {
     }
     
     //Constructor for named characters
-    public Character(String name, Room firstRoom){
+    public Character(String name, String description, Room firstRoom){
     	this.name = name;
+    	this.description = description;
     	this.hasName = true;
     	this.inventory = new ArrayList<Item>();
     	this.asleep = false;
@@ -95,6 +97,13 @@ public class Character {
         	if(inputString.substring(5).equals(i.getItemName())) {
         		System.out.println(i.getDescription());
         		return;
+        	}
+        }
+        
+        for (Character c : currentRoom.getPeople()) {
+        	if(inputString.substring(5).equals(c.name)) {
+        		 System.out.println(c.getDescription());
+        		 return;
         	}
         }
         
@@ -713,7 +722,7 @@ public class Character {
     			for (Character c : currentRoom.people) {
     	    		if(c.getName().equals(inputString.substring(inputString.indexOf("to") + 3 ))) {
     	    			c.inventory.add(currentItem);
-    	    			System.out.println("You give the " + currentItem.getItemName() + " to " + c.getName());
+    	    			System.out.println("You give the " + currentItem.getItemName() + " to " + c.getName() + ".");
     	    		}
     	    	}
     			break;
@@ -722,6 +731,14 @@ public class Character {
     }
     
     public void talk(Room currentRoom, String inputString) {
+    	for (Character c : currentRoom.getPeople()) {
+    		if(inputString.substring(5).toLowerCase().equals(c.getName())){
+    			c.talk();
+    		}
+    	}
+    }
+    
+    public void talk() {
     	
     }
     
@@ -769,6 +786,10 @@ public class Character {
     
     public String getName(){
         return this.name;
+    }
+    
+    public String getDescription() {
+    	return description;
     }
     
     public boolean getHasName() {

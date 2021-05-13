@@ -1474,7 +1474,8 @@ public class Room {
     		else if(c.hasName == false) {
     			System.out.println("A " + c.type + " is here.");
     		} else {
-    			System.out.println(c.name + " is here.");
+    			System.out.print(c.name.substring(0,1).toUpperCase());
+    			System.out.println(c.name.substring(1) + " is here.");
     		}
     	}
     }
@@ -1487,6 +1488,10 @@ public class Room {
     
     public ArrayList<Item> getInventory(){
     	return inventory;
+    }
+    
+    public ArrayList<Character> getPeople(){
+    	return people;
     }
 
     public String getTerrainType(){
