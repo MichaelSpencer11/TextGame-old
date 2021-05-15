@@ -5,6 +5,7 @@ public class Familiar extends Character{
 	
 	private String type;
 	private int famStoryCount = 0;
+	private boolean following;
 	
 	public Familiar(String description, Room firstRoom){
 		this.name = "someone";
@@ -15,8 +16,8 @@ public class Familiar extends Character{
         this.prone = false;
         this.sitting = false;
         this.standing = true;
-        firstRoom.people.add(this);
         this.currentRoom = firstRoom;
+        this.currentRoom.people.add(this);
         
         
     }
@@ -38,9 +39,16 @@ public class Familiar extends Character{
 				} else this.name = "someone";
 			}
 			System.out.println("Thanks. Hmm. " + this.name + ". " + this.name.toUpperCase() + ". I kind of like it.");
+			return;
 		}
 		if(famStoryCount == 1) {
-			
+			System.out.println("Hey, it's me " + this.name + ".");
+			return;
 		}
 	}
+	
+	
+	
 }
+
+

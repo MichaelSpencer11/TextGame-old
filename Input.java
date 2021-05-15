@@ -43,6 +43,12 @@ public class Input{
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("talk")) {
             	thisPlayer.talk(thisPlayer.currentRoom, inputString);
             }
+            else if(inputString.length() > 3 && inputString.substring(0,9).equals("follow me")) {
+            	thisPlayer.followMe(thisPlayer.currentRoom, inputString);
+            }
+            else if(inputString.length() > 3 && inputString.substring(0,9).equals("unfollow me")) {
+            	thisPlayer.unFollowMe(thisPlayer.currentRoom, inputString);
+            }
             else if (inputString.equals("sit")) {
             	thisPlayer.sit();
             }
@@ -50,31 +56,31 @@ public class Input{
             	thisPlayer.stand();
             }
             else if(inputString.equals("n")){
-                thisPlayer.move(thisPlayer.currentRoom, inputString);
+                thisPlayer.move(inputString);
             }
             else if(inputString.equals("ne")){
-                thisPlayer.move(thisPlayer.currentRoom, inputString);
+                thisPlayer.move(inputString);
             }
             else if(inputString.equals("e")){
-                thisPlayer.move(thisPlayer.currentRoom, inputString);
+                thisPlayer.move(inputString);
             }
             else if(inputString.equals("s")){
-                thisPlayer.move(thisPlayer.currentRoom, inputString);
+                thisPlayer.move(inputString);
             }
             else if(inputString.equals("sw")){
-                thisPlayer.move(thisPlayer.currentRoom, inputString);
+                thisPlayer.move(inputString);
             }
             else if(inputString.equals("w")){
-                thisPlayer.move(thisPlayer.currentRoom, inputString);
+                thisPlayer.move(inputString);
             }
             else if(inputString.equals("nw")){
-                thisPlayer.move(thisPlayer.currentRoom, inputString);
+                thisPlayer.move(inputString);
             }
             else if(inputString.equals("u")){
-                thisPlayer.move(thisPlayer.currentRoom, inputString);
+                thisPlayer.move(inputString);
             }
             else if(inputString.equals("d")){
-                thisPlayer.move(thisPlayer.currentRoom, inputString);
+                thisPlayer.move(inputString);
             }
             else if(inputString.equals("i")){
                 thisPlayer.printInv();

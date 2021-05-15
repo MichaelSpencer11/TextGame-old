@@ -12,11 +12,13 @@ public class Character {
     protected enum area{Land, Sea, Space};
     protected String areaRace;
     protected Familiar familiar;
+    protected Character follower;
     
     protected boolean standing;
     protected boolean sitting;
     protected boolean prone;
     protected boolean floating;
+    protected boolean following;
     
     protected int str;
     protected int dex;
@@ -428,96 +430,206 @@ public class Character {
 
     }
 
-    public void move(Room currentRoom, String inputString){
+    public void move(String inputString){
         if (inputString.equals("n")){
                 if(currentRoom.getHasN()){
-                	currentRoom.people.remove(this);
-                	this.setCurrentRoom(currentRoom.getnRoom());
-                	currentRoom.people.add(this);
-                    System.out.println("You move to the north.");
+                	if(this.follower == null) {
+                		currentRoom.people.remove(this);
+                		this.setCurrentRoom(currentRoom.getnRoom());
+                		currentRoom.people.add(this);
+                		System.out.println("You move to the north.");
+                	} 
+                	else {
+                		currentRoom.people.remove(this);
+                		currentRoom.people.remove(follower);
+                		this.setCurrentRoom(currentRoom.getnRoom());
+                		this.follower.setCurrentRoom(currentRoom.getnRoom());
+                		currentRoom.people.add(this);
+                		currentRoom.people.add(follower);
+                		System.out.println("You move to the north and " + follower.getName() + " follows you.");
+                	}
                 }
         }
         
         if (inputString.equals("ne")){
             if(currentRoom.getHasNE()){
-            	currentRoom.people.remove(this);
-            	this.setCurrentRoom(currentRoom.getNeRoom());
-            	currentRoom.people.add(this);
-                System.out.println("You move to the northeast.");
+            	if(this.follower == null) {
+            		currentRoom.people.remove(this);
+            		this.setCurrentRoom(currentRoom.getNeRoom());
+            		currentRoom.people.add(this);
+            		System.out.println("You move to the northeast.");
+            	} 
+            	else {
+            		currentRoom.people.remove(this);
+            		currentRoom.people.remove(follower);
+            		this.setCurrentRoom(currentRoom.getNeRoom());
+            		follower.setCurrentRoom(currentRoom.getNeRoom());
+            		currentRoom.people.add(this);
+            		currentRoom.people.add(follower);
+            		System.out.println("You move to the northeast and " + follower.getName() + " follows you.");
+            	}
             }
-    }
+        }
         
         if (inputString.equals("e")){
             if(currentRoom.getHasE()){
-            	currentRoom.people.remove(this);
-            	this.setCurrentRoom(currentRoom.geteRoom());
-            	currentRoom.people.add(this);
-                System.out.println("You move to the east.");
+            	if(this.follower == null) {
+            		currentRoom.people.remove(this);
+            		this.setCurrentRoom(currentRoom.geteRoom());
+            		currentRoom.people.add(this);
+            		System.out.println("You move to the east.");
+            	} 
+            	else {
+            		currentRoom.people.remove(this);
+            		currentRoom.people.remove(follower);
+            		this.setCurrentRoom(currentRoom.geteRoom());
+            		follower.setCurrentRoom(currentRoom.geteRoom());
+            		currentRoom.people.add(this);
+            		currentRoom.people.add(follower);
+            		System.out.println("You move to the east and " + follower.getName() + " follows you.");
+            	}
             }
-    }
+        }
         
         if (inputString.equals("se")){
             if(currentRoom.getHasSE()){
-            	currentRoom.people.remove(this);
-            	this.setCurrentRoom(currentRoom.getSeRoom());
-            	currentRoom.people.add(this);
-                System.out.println("You move to the southeast.");
+            	if(this.follower == null) {
+            		currentRoom.people.remove(this);
+            		this.setCurrentRoom(currentRoom.getSeRoom());
+            		currentRoom.people.add(this);
+            		System.out.println("You move to the southeast.");
+            	} 
+            	else {
+            		currentRoom.people.remove(this);
+            		currentRoom.people.remove(follower);
+            		this.setCurrentRoom(currentRoom.getSeRoom());
+            		follower.setCurrentRoom(currentRoom.getSeRoom());
+            		currentRoom.people.add(this);
+            		currentRoom.people.add(follower);
+            		System.out.println("You move to the southeast and " + follower.getName() + " follows you.");
+            	}
             }
-    }
+        }
         
         if (inputString.equals("s")){
             if(currentRoom.getHasS()){
-            	currentRoom.people.remove(this);
-            	this.setCurrentRoom(currentRoom.getsRoom());
-            	currentRoom.people.add(this);
-                System.out.println("You move to the south.");
+            	if(this.follower == null) {
+            		currentRoom.people.remove(this);
+            		this.setCurrentRoom(currentRoom.getsRoom());
+            		currentRoom.people.add(this);
+            		System.out.println("You move to the south.");
+            	} 
+            	else {
+            		currentRoom.people.remove(this);
+            		currentRoom.people.remove(follower);
+            		this.setCurrentRoom(currentRoom.getsRoom());
+            		follower.setCurrentRoom(currentRoom.getsRoom());
+            		currentRoom.people.add(this);
+            		currentRoom.people.add(follower);
+            		System.out.println("You move to the south and " + follower.getName() + " follows you.");
+            	}
             }
-    }
+        }
         
         if (inputString.equals("sw")){
             if(currentRoom.getHasSW()){
-            	currentRoom.people.remove(this);
-            	this.setCurrentRoom(currentRoom.getSwRoom());
-            	currentRoom.people.add(this);
-                System.out.println("You move to the southwest.");
+            	if(this.follower == null) {
+            		currentRoom.people.remove(this);
+            		this.setCurrentRoom(currentRoom.getSwRoom());
+            		currentRoom.people.add(this);
+            		System.out.println("You move to the southwest.");
+            	} 
+            	else {
+            		currentRoom.people.remove(this);
+            		currentRoom.people.remove(follower);
+            		this.setCurrentRoom(currentRoom.getSwRoom());
+            		follower.setCurrentRoom(currentRoom.getSwRoom());
+            		currentRoom.people.add(this);
+            		currentRoom.people.add(follower);
+            		System.out.println("You move to the southwest and " + follower.getName() + " follows you.");
+            	}
             }
-    }
+        }
         
         if (inputString.equals("w")){
             if(currentRoom.getHasW()){
-            	currentRoom.people.remove(this);
-            	this.setCurrentRoom(currentRoom.getwRoom());
-            	currentRoom.people.add(this);
-                System.out.println("You move to the west.");
+            	if(this.follower == null) {
+            		currentRoom.people.remove(this);
+            		this.setCurrentRoom(currentRoom.getwRoom());
+            		currentRoom.people.add(this);
+            		System.out.println("You move to the west.");
+            	} 
+            	else {
+            		currentRoom.people.remove(this);
+            		currentRoom.people.remove(follower);
+            		this.setCurrentRoom(currentRoom.getwRoom());
+            		follower.setCurrentRoom(currentRoom.getwRoom());
+            		currentRoom.people.add(this);
+            		currentRoom.people.add(follower);
+            		System.out.println("You move to the west and " + follower.getName() + " follows you.");
+            	}
             }
-    }
+        }
         
         if (inputString.equals("nw")){
             if(currentRoom.getHasNW()){
-            	currentRoom.people.remove(this);
-            	this.setCurrentRoom(currentRoom.getNwRoom());
-            	currentRoom.people.add(this);
-                System.out.println("You move to the northwest.");
+            	if(this.follower == null) {
+            		currentRoom.people.remove(this);
+            		this.setCurrentRoom(currentRoom.getNwRoom());
+            		currentRoom.people.add(this);
+            		System.out.println("You move to the northwest.");
+            	} 
+            	else {
+            		currentRoom.people.remove(this);
+            		currentRoom.people.remove(follower);
+            		this.setCurrentRoom(currentRoom.getNwRoom());
+            		follower.setCurrentRoom(currentRoom.getNwRoom());
+            		currentRoom.people.add(this);
+            		currentRoom.people.add(follower);
+            		System.out.println("You move to the northwest and " + follower.getName() + " follows you.");
+            	}
             }
-    }
+        }
         
         if (inputString.equals("u")){
             if(currentRoom.getHasU()){
-            	currentRoom.people.remove(this);
-            	this.setCurrentRoom(currentRoom.getuRoom());
-            	currentRoom.people.add(this);
-                System.out.println("You move up.");
+            	if(this.follower == null) {
+            		currentRoom.people.remove(this);
+            		this.setCurrentRoom(currentRoom.getuRoom());
+            		currentRoom.people.add(this);
+            		System.out.println("You move up.");
+            	} 
+            	else {
+            		currentRoom.people.remove(this);
+            		currentRoom.people.remove(follower);
+            		this.setCurrentRoom(currentRoom.getuRoom());
+            		follower.setCurrentRoom(currentRoom.getuRoom());
+            		currentRoom.people.add(this);
+            		currentRoom.people.add(follower);
+            		System.out.println("You move up and " + follower.getName() + " follows you.");
+            	}
             }
-    }
+        }
         
         if (inputString.equals("d")){
             if(currentRoom.getHasD()){
-            	currentRoom.people.remove(this);
-            	this.setCurrentRoom(currentRoom.getdRoom());
-            	currentRoom.people.add(this);
-                System.out.println("You move down.");
+            	if(this.follower == null) {
+            		currentRoom.people.remove(this);
+            		this.setCurrentRoom(currentRoom.getdRoom());
+            		currentRoom.people.add(this);
+            		System.out.println("You move down.");
+            	} 
+            	else {
+            		currentRoom.people.remove(this);
+            		currentRoom.people.remove(follower);
+            		this.setCurrentRoom(currentRoom.getdRoom());
+            		follower.setCurrentRoom(currentRoom.getdRoom());
+            		currentRoom.people.add(this);
+            		currentRoom.people.add(follower);
+            		System.out.println("You move down and " + follower.getName() + " follows you.");
+            	}
             }
-    }
+        }
 
     }
     
@@ -738,6 +850,26 @@ public class Character {
     	}
     }
     
+    public void followMe(Room currentRoom, String inputString) {
+    	for(Character c : currentRoom.people) {
+    		if(inputString.substring(10).equals(c.getName()) && c.typeToString().equals("Familiar")) {
+    			c.setFollowing(true);
+    			this.follower = c;
+    			System.out.println(c.name + ": Ok, I'll go with you.");
+    		}
+    	}
+    }
+    
+    public void unFollowMe(Room currentRoom, String inputString) {
+    	for(Character c : currentRoom.people) {
+    		if(inputString.substring(12).equals(c.getName()) && c.typeToString().equals("Familiar")) {
+    			c.setFollowing(false);
+    			this.follower = null;
+    			System.out.println(c.name + ": I'll just be waiting right here then.");
+    		}
+    	}
+    }
+    
     public void talk() {
     	
     }
@@ -795,6 +927,18 @@ public class Character {
     public boolean getHasName() {
     	return this.hasName;
     }
+    
+    public String typeToString(){
+		return this.getClass().toString().substring(6);
+	}
+    
+    public boolean getFollowing() {
+		return this.following;
+	}
+	
+	public void setFollowing(boolean following) {
+		this.following = following;
+	}
 
     //public String getPronoun() {
         

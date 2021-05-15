@@ -13,6 +13,7 @@ public class Player extends Character{
         this.standing = false;
         this.hasName = false;
         this.currentRoom = firstRoom;
+        this.currentRoom.people.add(this);
         /*
         Scanner conScanner = new Scanner(System.in);
         do {
