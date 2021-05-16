@@ -6,6 +6,7 @@ public class Player extends Character{
 	
 	
     public Player(Room firstRoom) {
+    	this.name = "player";
     	this.inventory = new ArrayList<Item>();
     	this.asleep = false;
         this.prone = true;

@@ -14,19 +14,19 @@ public class Input{
                 continue;
             }
             else if (inputString.length() > 3 && inputString.substring(0,4).equals("look")){
-                thisPlayer.look(thisPlayer.currentRoom, inputString);
+                thisPlayer.look(inputString);
             }
             else if(inputString.equals("l")) {
-            	thisPlayer.look(thisPlayer.currentRoom, inputString);
+            	thisPlayer.look(inputString);
             }
             else if (inputString.length() > 3 && inputString.substring(0,4).equals("exit")){
                 System.exit(0);
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("open")){
-                thisPlayer.open(thisPlayer.currentRoom, inputString);
+                thisPlayer.open(inputString);
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("take")) {
-            	thisPlayer.take(thisPlayer.currentRoom, inputString);
+            	thisPlayer.take(inputString);
             }
             else if(inputString.length() > 3 && inputString.substring(0,5).equals("equip")) {
             	thisPlayer.equip(inputString);
@@ -35,19 +35,19 @@ public class Input{
             	thisPlayer.unequip(inputString);
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("drop")) {
-            	thisPlayer.drop(thisPlayer.currentRoom, inputString);
+            	thisPlayer.drop(inputString);
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("give")) {
-            	thisPlayer.give(thisPlayer.currentRoom, inputString);
+            	thisPlayer.give(inputString);
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("talk")) {
-            	thisPlayer.talk(thisPlayer.currentRoom, inputString);
+            	thisPlayer.talk(inputString);
             }
             else if(inputString.length() > 3 && inputString.substring(0,9).equals("follow me")) {
-            	thisPlayer.followMe(thisPlayer.currentRoom, inputString);
+            	thisPlayer.followMe(inputString);
             }
-            else if(inputString.length() > 3 && inputString.substring(0,9).equals("unfollow me")) {
-            	thisPlayer.unFollowMe(thisPlayer.currentRoom, inputString);
+            else if(inputString.length() > 3 && inputString.substring(0,11).equals("unfollow me")) {
+            	thisPlayer.unFollowMe(inputString);
             }
             else if (inputString.equals("sit")) {
             	thisPlayer.sit();

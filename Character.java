@@ -81,7 +81,7 @@ public class Character {
 
     
 
-    public void look(Room currentRoom, String inputString){
+    public void look(String inputString){
         int count = 0;
         if (inputString.equals("look") || inputString.equals("l")){
         System.out.println("You look around a bit.");
@@ -279,7 +279,7 @@ public class Character {
         */
     }
 
-    public void open(Room currentRoom, String inputString) {
+    public void open(String inputString) {
         //check if the door is open or closed
         //check if the door is locked
         //open door
@@ -633,7 +633,7 @@ public class Character {
 
     }
     
-    public void take(Room currentRoom, String inputString) {
+    public void take(String inputString) {
     	if (currentRoom.getInventory().size() == 0) {
     		System.out.println("There is nothing here to take.");
     	} else {
@@ -815,7 +815,7 @@ public class Character {
     	}
     }
     
-    public void drop(Room currentRoom, String inputString) {
+    public void drop(String inputString) {
     	for(Item i : inventory) {
     		if (inputString.substring(5).equals(i.getItemName())) {
     			currentRoom.getInventory().add(i);
@@ -825,7 +825,7 @@ public class Character {
     	}
     }
     
-    public void give(Room currentRoom, String inputString) {
+    public void give(String inputString) {
     	Item currentItem;
     	for (Item i : this.inventory) {
     		if(i.getItemName().equals(inputString.substring(5,inputString.indexOf("to") - 1 ))) {
@@ -842,7 +842,7 @@ public class Character {
     	}
     }
     
-    public void talk(Room currentRoom, String inputString) {
+    public void talk(String inputString) {
     	for (Character c : currentRoom.getPeople()) {
     		if(inputString.substring(5).toLowerCase().equals(c.getName())){
     			c.talk();
@@ -850,21 +850,22 @@ public class Character {
     	}
     }
     
-    public void followMe(Room currentRoom, String inputString) {
+    public void followMe(String inputString) {
     	for(Character c : currentRoom.people) {
     		if(inputString.substring(10).equals(c.getName()) && c.typeToString().equals("Familiar")) {
     			c.setFollowing(true);
-    			this.follower = c;
+    			follower = c;
     			System.out.println(c.name + ": Ok, I'll go with you.");
     		}
     	}
     }
+
     
-    public void unFollowMe(Room currentRoom, String inputString) {
+    public void unFollowMe(String inputString) {
     	for(Character c : currentRoom.people) {
-    		if(inputString.substring(12).equals(c.getName()) && c.typeToString().equals("Familiar")) {
+    		if(inputString.substring(12).equals(c.getName())) {
     			c.setFollowing(false);
-    			this.follower = null;
+    			follower = null;
     			System.out.println(c.name + ": I'll just be waiting right here then.");
     		}
     	}
