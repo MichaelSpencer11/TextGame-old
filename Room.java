@@ -1458,7 +1458,7 @@ public class Room {
     public void printItems() {
     	for(Item i : inventory) {
     		if(i.plural == false) {
-    		System.out.println("There is a " + i.getItemName() + " here.");
+    			System.out.println("There is a " + i.getItemName() + " here.");
     		}
     		else {
     			System.out.println("There are " + i.getItemName() + " here.");
@@ -1468,14 +1468,16 @@ public class Room {
     
     public void printChars() {
     	for(Character c : people) {
-    		if(c.hasName == false && c.type == null) {
-    			System.out.println("There is someone here.");
-    		}
-    		else if(c.hasName == false) {
-    			System.out.println("A " + c.type + " is here.");
-    		} else {
-    			System.out.print(c.name.substring(0,1).toUpperCase());
-    			System.out.println(c.name.substring(1) + " is here.");
+    		if(!c.typeToString().equals("Player")) {
+    			if(c.hasName == false && c.type == null) {
+    				System.out.println("There is someone here.");
+    			}
+    			else if(c.hasName == false) {
+    				System.out.println("A " + c.type + " is here.");
+    			} else {
+    				System.out.print(c.name.substring(0,1).toUpperCase());
+    				System.out.println(c.name.substring(1) + " is here.");
+    			}
     		}
     	}
     }
