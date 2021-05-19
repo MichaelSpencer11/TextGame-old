@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 public class Familiar extends Character{
 	
-	private String type;
 	private int famStoryCount = 0;
 	private boolean following;
 	
 	public Familiar(String description, Room firstRoom){
 		this.name = "someone";
+		this.type = this.typeToString();
 		this.description = description;
     	this.hasName = true;
     	this.inventory = new ArrayList<Item>();

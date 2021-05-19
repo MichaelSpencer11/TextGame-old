@@ -1466,6 +1466,7 @@ public class Room {
     	}
     }
     
+    				
     public void printChars() {
     	for(Character c : people) {
     		if(!c.typeToString().equals("Player")) {
@@ -1473,8 +1474,12 @@ public class Room {
     				System.out.println("There is someone here.");
     			}
     			else if(c.hasName == false) {
-    				System.out.println("A " + c.type + " is here.");
-    			} else {
+    				System.out.println(World.capAAn(c.type) + c.type + " is here.");
+    			} 
+    			else if(c.hasName == false && c.name == null) {
+    				System.out.println(World.capAAn(c.type) + c.type + " is here.");
+    			}
+    			else {
     				System.out.print(c.name.substring(0,1).toUpperCase());
     				System.out.println(c.name.substring(1) + " is here.");
     			}

@@ -64,8 +64,23 @@ public class Character {
         
     }
     
+    //For nameless characters with a type, like monsters or something
+    public Character(String type, Room firstRoom){
+    	this.type = type;
+    	this.hasName = false;
+    	this.inventory = new ArrayList<Item>();
+    	this.asleep = false;
+        this.prone = false;
+        this.sitting = false;
+        this.standing = true;
+        firstRoom.people.add(this);
+        this.currentRoom = firstRoom;
+        
+        
+    }
+    
     //Constructor for named characters
-    public Character(String name, String description, Room firstRoom){
+    public Character(String name, String type, String description, Room firstRoom){
     	this.name = name;
     	this.description = description;
     	this.hasName = true;
