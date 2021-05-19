@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//This is a the Familiar class which governs the Familiar, a helper for the player
 public class Familiar extends Character{
 	
 	private int famStoryCount = 0;
@@ -22,6 +23,7 @@ public class Familiar extends Character{
         
     }
 	
+	//checks for the story marker famStoryCount before starting some dialog
 	public void talk() {
 		Scanner sc = new Scanner(System.in);
 		if(famStoryCount == 0) {

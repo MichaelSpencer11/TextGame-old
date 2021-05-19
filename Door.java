@@ -1,3 +1,6 @@
+
+//not used at the moment, might work on this later
+//doors are for sure things in the world
 public class Door {
     private enum dirs{N, NE, E, SE, S, SW, W, NW, U, D};
     private static int DoorIdTracker;

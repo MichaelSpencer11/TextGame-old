@@ -1,4 +1,5 @@
 
+//there are items in the game, here are some attributes and stuff
 public class Item {
 		protected int itemId;
 		protected static int itemTracker;

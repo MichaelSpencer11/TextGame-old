@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Automaton extends Character {
 	
-	private int famStoryCount = 0;
+	private int autoStoryCount = 0;
 	private boolean following;
 	
 	public Automaton(String description, Room firstRoom){

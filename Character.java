@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Character {
+	//regular RPG data fields I guess
     protected String name;
     protected String type;
     protected String description;
@@ -14,12 +15,15 @@ public class Character {
     protected Familiar familiar;
     protected Character follower;
     
+    //states
     protected boolean standing;
     protected boolean sitting;
     protected boolean prone;
     protected boolean floating;
     protected boolean following;
+    protected boolean asleep;
     
+    //stats
     protected int str;
     protected int dex;
     protected int end;
@@ -27,12 +31,13 @@ public class Character {
     protected int cha;
     protected int luc;
     
+    //location and other stuff
     protected Room currentRoom;
-    protected boolean asleep;
     protected ArrayList<Item> inventory;
     protected int invLength = 38;
     protected boolean hasName;
     
+    //equipped items
     protected Item mainHand;
     protected Item offHand;
     protected Item head;
@@ -95,7 +100,7 @@ public class Character {
     }
 
     
-
+    //multipurpose look command. you can look at the room or look at an item or character
     public void look(String inputString){
         int count = 0;
         if (inputString.equals("look") || inputString.equals("l")){
@@ -133,6 +138,7 @@ public class Character {
         		}
         	}
         }
+        //there were doors early on but now they're gone, they may come back sometimes and later
         /*
         if(currentRoom.getDoorsNum() == 1 && inputString.equals("look door")){
             System.out.println("There is a door here.");
@@ -293,7 +299,8 @@ public class Character {
         }
         */
     }
-
+    
+    //for opening doors, still here even though doors are gone
     public void open(String inputString) {
         //check if the door is open or closed
         //check if the door is locked
@@ -445,6 +452,7 @@ public class Character {
 
     }
 
+    //method used for moving from room to room
     public void move(String inputString){
         if (inputString.equals("n")){
                 if(currentRoom.getHasN()){
@@ -648,6 +656,7 @@ public class Character {
 
     }
     
+    //for picking things up
     public void take(String inputString) {
     	if (currentRoom.getInventory().size() == 0) {
     		System.out.println("There is nothing here to take.");
@@ -666,6 +675,7 @@ public class Character {
     	}
     }                            
     
+    //the inventory
     public void printInv() {
     	System.out.println("/`^^~~vv.._,_,..vv~~^^~~vv..,_,_..vv~~^^`\\");
     	System.out.println("|                Inventory               |");
@@ -689,6 +699,7 @@ public class Character {
     	System.out.println("\\v~~^^\"'``\"'``''^^~~vv~~^^'\"``'\"``'\"^^~~v/");
     }
     
+    //equip a weapon or clothing
     public void equip(String inputString) {
     	for (Item i : this.inventory) {
     		if(inputString.substring(6).equals(i.getItemName())) {
@@ -778,6 +789,8 @@ public class Character {
     	}
     }
     
+    
+    //unequip a weapon or clothing
     public void unequip(String inputString) {
     	for (Item i : this.inventory) {
     		if(inputString.substring(8).equals(i.getItemName()) && i.equipped == true) {
@@ -830,6 +843,7 @@ public class Character {
     	}
     }
     
+    //drop something in the room
     public void drop(String inputString) {
     	for(Item i : inventory) {
     		if (inputString.substring(5).equals(i.getItemName())) {
@@ -840,6 +854,7 @@ public class Character {
     	}
     }
     
+    //give something to a character
     public void give(String inputString) {
     	Item currentItem;
     	for (Item i : this.inventory) {
@@ -857,6 +872,7 @@ public class Character {
     	}
     }
     
+    //talk to a character
     public void talk(String inputString) {
     	for (Character c : currentRoom.getPeople()) {
     		if(inputString.substring(5).toLowerCase().equals(c.getName())){
@@ -865,6 +881,7 @@ public class Character {
     	}
     }
     
+    //get a character to follow the player, will follow when player moves from room to room
     public void followMe(String inputString) {
     	for(Character c : currentRoom.people) {
     		if(inputString.substring(10).equals(c.getName()) && c.typeToString().equals("Familiar")) {
@@ -875,7 +892,7 @@ public class Character {
     	}
     }
 
-    
+    //character will unfollow the player
     public void unFollowMe(String inputString) {
     	for(Character c : currentRoom.people) {
     		if(inputString.substring(12).equals(c.getName())) {

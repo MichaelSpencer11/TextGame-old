@@ -1,4 +1,5 @@
 
+//thinking of renaming this to Tool so its less violent
 public class Weapon extends Item {
 
 	public Weapon(String name, String description, String desc2, Room room) {

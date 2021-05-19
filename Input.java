@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+//this is where all the commands live. 
+//there is an instance of the player so you can call the player's methods
 public class Input{
 
     Scanner scanner = new Scanner(System.in);

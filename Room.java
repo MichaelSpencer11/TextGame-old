@@ -1,5 +1,6 @@
 import java.util.*;
 
+//the world is made of rooms so this one is pretty important
 public class Room {
 	private int roomId;
 	public static int RoomIdTracker;
@@ -39,13 +40,17 @@ public class Room {
     
     
     //Maybe don't use this constructor as it makes a room with no connections
+    //Still works. Room1 is one of these
+    //a room will retroactively make a connection to a new room that is connected to it
     public Room(String terrainType, String desc, String... dirs) {
+    	//initialize the vars for Room
     	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
+    	//init the vars for terrain
     	if(terrainType.equals("ROCKY")){
             this.roomTerrain = Terrain.ROCKY;
         }
@@ -65,6 +70,7 @@ public class Room {
             this.roomTerrain = Terrain.FOREST;
         }
     	
+    	//take the directions passed and create the directions
     	for(String d : dirs) {
     		if(d.equals("n")) {
     			this.hasN = true;
@@ -170,6 +176,9 @@ public class Room {
         }
         */
         
+        //each constructor in this series has this section, and it is critical
+        //these lines add rooms to each room's adjacency list adjacentRooms
+        //the world graph is based on these
         adjacentRooms.add(room1);
         
         for(String d : dirs) {
@@ -215,7 +224,8 @@ public class Room {
     		}
     	}
         
-        
+        //for each room in the adjacency list, it will populate the actual rooms that are adjacent to this one
+        //I'm not sure if there is redundancy here but it works
         for (Room r : adjacentRooms) {
         if (r.getHasS()) {
         	this.nRoom = r;
@@ -1455,6 +1465,7 @@ public class Room {
     //	inventory.add(item);
    // }
     
+    //print items in the room
     public void printItems() {
     	for(Item i : inventory) {
     		if(i.plural == false) {
@@ -1466,7 +1477,7 @@ public class Room {
     	}
     }
     
-    				
+    //print the characters in the room				
     public void printChars() {
     	for(Character c : people) {
     		if(!c.typeToString().equals("Player")) {
@@ -1488,11 +1499,14 @@ public class Room {
     }
     
     
+    //i dunno, we'll see
     public void addDoor(String dir1, String dir2, Room room1, Room room2) {
     	
     	
     }
     
+    
+    //getters and setters for encapsulation!
     public ArrayList<Item> getInventory(){
     	return inventory;
     }

@@ -9,6 +9,9 @@ public class World {
 		
 	}
 	
+	//this section before createWorld() will be for global helper methods
+	
+	//these will print "a" or "an" depending on if the word passed starts with a vowel or a consonant
 	public static String aAn(String thing) {
 		if(thing.toLowerCase().startsWith("a") ||
 				thing.toLowerCase().startsWith("e") ||
@@ -31,6 +34,7 @@ public class World {
 		} else return "A ";
 	}
 	
+	//this creates the world and begins the game. This is where you will place all the things to go in the world.
 	public void createWorld() {
 		
         Room room1 = new Room("INTERIOR", "This is your room. Your twin size bed is against one wall. Your desk is against another. There is a black computer monitor, a keyboard and a mouse on the desk.", "s");
@@ -47,7 +51,7 @@ public class World {
         Room room2 = new Room("INTERIOR", "The second room. Congratulations if you made it here!", room1, "n");
         Player player = new Player(room1);
         Character familiar = new Familiar("Someone is standing or floating here, it is very hard to see them, they are almost not there but you know that there is definitely a presence here.", room1);
-        Character practiceRobot = new Automaton("An ordinary looking automaton with mechanical limbs and a rudimentary programmed action stack." , room2);
+        Character practiceRobot = new Automaton("An ordinary looking automaton with mechanical limbs and a rudimentary programmed action stack. It is currently sitting in a corner non-functionally." , room2);
         System.out.println("Hi, welcome. Please 'look' or 'l' to look around the room. 'Take' some items and 'equip', 'unequip', and 'drop' them." );
         Input input = new Input(player);
         input.input();
