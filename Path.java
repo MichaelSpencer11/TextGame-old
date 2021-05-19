@@ -1,4 +1,5 @@
-
+//this was going to replace doors and be the edges to the graph
+//it was never used but its interesting to keep around
 public class Path {
 	
 	private Room r1;

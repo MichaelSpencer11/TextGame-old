@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Character {
 	//regular RPG data fields I guess
@@ -123,7 +124,8 @@ public class Character {
         }
         
         for (Character c : currentRoom.getPeople()) {
-        	if(inputString.substring(5).equals(c.name)) {
+        	if(inputString.substring(5).equals(c.name) || 
+        			inputString.substring(5).equals(c.typeToString().toLowerCase())) {
         		 System.out.println(c.getDescription());
         		 return;
         	}
@@ -472,6 +474,9 @@ public class Character {
                 		System.out.println("You move to the north and " + follower.getName() + " follows you.");
                 	}
                 }
+                else {
+                	System.out.println(nothingOverThere());
+                }
         }
         
         if (inputString.equals("ne")){
@@ -491,6 +496,9 @@ public class Character {
             		currentRoom.people.add(follower);
             		System.out.println("You move to the northeast and " + follower.getName() + " follows you.");
             	}
+            }
+            else {
+            	System.out.println(nothingOverThere());
             }
         }
         
@@ -512,6 +520,9 @@ public class Character {
             		System.out.println("You move to the east and " + follower.getName() + " follows you.");
             	}
             }
+            else {
+            	System.out.println(nothingOverThere());
+            }
         }
         
         if (inputString.equals("se")){
@@ -532,6 +543,9 @@ public class Character {
             		System.out.println("You move to the southeast and " + follower.getName() + " follows you.");
             	}
             }
+            else {
+            	System.out.println(nothingOverThere());
+            }
         }
         
         if (inputString.equals("s")){
@@ -551,6 +565,9 @@ public class Character {
             		currentRoom.people.add(follower);
             		System.out.println("You move to the south and " + follower.getName() + " follows you.");
             	}
+            } 
+            else {
+            	System.out.println(nothingOverThere());
             }
         }
         
@@ -572,6 +589,9 @@ public class Character {
             		System.out.println("You move to the southwest and " + follower.getName() + " follows you.");
             	}
             }
+            else {
+            	System.out.println(nothingOverThere());
+            }
         }
         
         if (inputString.equals("w")){
@@ -591,6 +611,9 @@ public class Character {
             		currentRoom.people.add(follower);
             		System.out.println("You move to the west and " + follower.getName() + " follows you.");
             	}
+            }
+            else {
+            	System.out.println(nothingOverThere());
             }
         }
         
@@ -612,6 +635,9 @@ public class Character {
             		System.out.println("You move to the northwest and " + follower.getName() + " follows you.");
             	}
             }
+            else {
+            	System.out.println(nothingOverThere());
+            }
         }
         
         if (inputString.equals("u")){
@@ -631,6 +657,9 @@ public class Character {
             		currentRoom.people.add(follower);
             		System.out.println("You move up and " + follower.getName() + " follows you.");
             	}
+            }
+            else {
+            	System.out.println(nothingOverThere());
             }
         }
         
@@ -652,9 +681,47 @@ public class Character {
             		System.out.println("You move down and " + follower.getName() + " follows you.");
             	}
             }
+            else {
+            	System.out.println(nothingOverThere());
+            }
         }
 
     }
+    
+public String nothingOverThere() {
+		
+		String[] phrases = {"There is nothing over there.", 
+				"You don't really feel like going that way.", 
+				"You see nothing very interesting in that direction.", 
+				"You take a step in that direction and then change your mind.", 
+				"You decide against it.", 
+				"Nothing exists over there.", 
+				"Until now, you thought the world was limitless, now you have found a limit.",
+				"You change your mind about going that way.", 
+				"Nothing really warrants going that way.", 
+				"An invisible barrier gets in your way.",
+				"Something in your mind stops you from going there.",
+				"A mental blockage is preventing you from going there.",
+				"Something is telling you not to go that way.",
+				"In your mind's eye a swarm of bees is blocking that direction, only when you try to go there.", 
+				"You can feel the wind gently pushing you back from that direction.",
+				"The elements are not aligned to go that direction.", 
+				"Sorry, you just can't go that way.",
+				"The color zomp is telling you not to go that way.",
+				"You see something dreadful in that direction and decide not to go.",
+				//The next line with the mental block becoming tangible must be the last string in this array
+				"A mental block is stopping you from going that way, the block is getting more tangible..."};
+		Random rand = new Random();
+		int r2 = rand.nextInt(phrases.length);
+		if(r2 == phrases.length - 1) {
+			Item block = new Block();
+			this.inventory.add(block);
+			return phrases[r2];
+		}
+		else {
+			return phrases[r2];
+		}
+	}
     
     //for picking things up
     public void take(String inputString) {
@@ -703,7 +770,7 @@ public class Character {
     public void equip(String inputString) {
     	for (Item i : this.inventory) {
     		if(inputString.substring(6).equals(i.getItemName())) {
-    			if(i.typeToString().equals("Weapon") && this.mainHand == null)  {
+    			if(i.typeToString().equals("Tool") && this.mainHand == null)  {
     				this.mainHand = i;
     				System.out.println("You equip the " + i.getItemName() + ".");
     				i.equipped = true;
@@ -794,7 +861,7 @@ public class Character {
     public void unequip(String inputString) {
     	for (Item i : this.inventory) {
     		if(inputString.substring(8).equals(i.getItemName()) && i.equipped == true) {
-    			if(i.typeToString().equals("Weapon") && this.mainHand == i) {
+    			if(i.typeToString().equals("Tool") && this.mainHand == i) {
     				System.out.println("You unequip the " + i.getItemName() + ".");
     				i.equipped = false;
     				this.mainHand = null;

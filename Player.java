@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Random;
 
 //subclass of Character, this is where the player does stuff
 //most of the player's methods are inherited from character because more characters than the player might do some actions

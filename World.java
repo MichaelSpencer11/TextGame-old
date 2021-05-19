@@ -1,4 +1,4 @@
-
+import java.util.Random;
 
 public class World {
 	public Input input;
@@ -34,12 +34,13 @@ public class World {
 		} else return "A ";
 	}
 	
+	
 	//this creates the world and begins the game. This is where you will place all the things to go in the world.
 	public void createWorld() {
 		
         Room room1 = new Room("INTERIOR", "This is your room. Your twin size bed is against one wall. Your desk is against another. There is a black computer monitor, a keyboard and a mouse on the desk.", "s");
-        Item practiceStaff = new Weapon("wooden staff", "A wooden practice staff. It has a few nicks and cuts in it and is quite worn.", "The staff feels as heavy as a metal staff in your hand, but it is still made out of wood.", room1);
-        Item practicesword = new Weapon("wooden sword", "A wooden practice sword. It has a few nicks and cuts in it and is quite worn.", "The sword feels as heavy as a metal sword in your hand, but it is still made out of wood.", room1);
+        Item practiceStaff = new Tool("wooden staff", "A wooden practice staff. It has a few nicks and cuts in it and is quite worn.", "The staff feels as heavy as a metal staff in your hand, but it is still made out of wood.", room1);
+        Item practicesword = new Tool("wooden sword", "A wooden practice sword. It has a few nicks and cuts in it and is quite worn.", "The sword feels as heavy as a metal sword in your hand, but it is still made out of wood.", room1);
         Item noviceHood = new Head("novice hood", "A basic looking hood made of cotton.", "This hood is lined with some thick fabric on the inside.", room1);
         Item bracelets = new Hands("bracelets", true, "A pair of bracelets made out of small colorful beads.", "The beads are made up of tiny crystals.", room1);
         Item shirt = new Body("cotton shirt", "A white cotton shirt.", "The brand on the tag is unreadable.", room1);

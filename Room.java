@@ -1485,10 +1485,10 @@ public class Room {
     				System.out.println("There is someone here.");
     			}
     			else if(c.hasName == false) {
-    				System.out.println(World.capAAn(c.type) + c.type + " is here.");
+    				System.out.println(World.capAAn(c.type) + c.typeToString().toLowerCase() + " is here.");
     			} 
     			else if(c.hasName == false && c.name == null) {
-    				System.out.println(World.capAAn(c.type) + c.type + " is here.");
+    				System.out.println(World.capAAn(c.type) + c.typeToString().toLowerCase() + " is here.");
     			}
     			else {
     				System.out.print(c.name.substring(0,1).toUpperCase());

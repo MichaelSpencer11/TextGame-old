@@ -6,7 +6,6 @@ public class Door {
     private static int DoorIdTracker;
     private int DoorId;
     private String doorDir;
-	//private String doorDir2;
     private boolean isOpened;
     private boolean isLocked;
     private String doorType;

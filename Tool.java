@@ -1,8 +1,7 @@
 
-//thinking of renaming this to Tool so its less violent
-public class Weapon extends Item {
+public class Tool extends Item {
 
-	public Weapon(String name, String description, String desc2, Room room) {
+	public Tool(String name, String description, String desc2, Room room) {
 		this.itemName = name;
 		this.description = description;
 		this.desc2 = desc2;
@@ -11,5 +10,4 @@ public class Weapon extends Item {
 		
 		room.getInventory().add(this);
 	}
-	
 }
