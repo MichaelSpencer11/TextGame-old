@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Character {
 	//regular RPG data fields I guess
@@ -35,6 +36,7 @@ public class Character {
     //location and other stuff
     protected Room currentRoom;
     protected ArrayList<Item> inventory;
+    protected ArrayList<String> thoughts;
     protected int invLength = 38;
     protected boolean hasName;
     
@@ -456,7 +458,11 @@ public class Character {
 
     //method used for moving from room to room
     public void move(String inputString){
-        if (inputString.equals("n")){
+    	if(sitting || prone) {
+    		System.out.println("You can't move very well when you're not standing.");
+    	}
+    	else {
+    		if (inputString.equals("n")){
                 if(currentRoom.getHasN()){
                 	if(this.follower == null) {
                 		currentRoom.people.remove(this);
@@ -685,7 +691,7 @@ public class Character {
             	System.out.println(nothingOverThere());
             }
         }
-
+    }
     }
     
 public String nothingOverThere() {
@@ -850,6 +856,9 @@ public String nothingOverThere() {
     			if (i.typeToString().equals("Ring") && this.ring1 != null && this.ring2 != null) {
     				System.out.println("You can't wear any more rings.");
     			}
+    			else {
+    				System.out.println("You cannot equip that.");
+    			}
     			
     			
     		}
@@ -942,7 +951,7 @@ public String nothingOverThere() {
     //talk to a character
     public void talk(String inputString) {
     	for (Character c : currentRoom.getPeople()) {
-    		if(inputString.substring(5).toLowerCase().equals(c.getName())){
+    		if(inputString.substring(inputString.indexOf("to") + 3).toLowerCase().equals(c.getName())){
     			c.talk();
     		}
     	}
@@ -970,8 +979,45 @@ public String nothingOverThere() {
     	}
     }
     
-    public void talk() {
+    public void help(String inputString) {
+    	Scanner sc = new Scanner(System.in);
+    	String choice;
+    	System.out.println("How can I help you? Please choose an option. ");
+    	System.out.println("1. How to play");
+    	System.out.println("2. Commands");
+    	choice = sc.nextLine();
+    	if(choice.equals("1")) {
+    		System.out.println("This game is about exploration, perception and creativity. Use your wits to advance along the path, whatever that is. Look at everything, talk to people, do stuff how you would do it. Maybe it works and maybe it doesn't, but doesn't it feel great when it finally works after not working for so long?");
+    	}
+    	else if(choice.equals("2")) {
+    		System.out.println("look: look at the current location and the things and people in it");
+    		System.out.println("n, ne, e, se, s, sw, w, nw, n, u, d: travel in a direction, up or down");
+    		System.out.println("i: inventory display. Equipped items have an [e] next to them");
+    		System.out.println("look inv <item>: look at an item in your inventory");
+    		System.out.println("exit: exit the game ");
+    		System.out.println("take: pick up an item from the environment");
+    		System.out.println("equip <item>: equip an item. The item will automatically be equipped to the appropriate slot if available");
+    		System.out.println("unequip <item>: unequip an item ");
+    		System.out.println("drop <item>: drop an item in the current area");
+    		System.out.println("give <item> to <someone>: give an item to someone");
+    		System.out.println("talk to <someone>: talk to someone");
+    		System.out.println("talk: talk to yourself");
+    		System.out.println("follow me <someone>: ask someone to follow you");
+    		System.out.println("unfollow me <someone>: ask someone to unfollow you");
+    		System.out.println("sit: sit down");
+    		System.out.println("stand: stand up");
+    	}
     	
+    }
+    
+    public void talk() {
+    	Scanner sc = new Scanner(System.in);
+    	String thought;
+    	System.out.println("What do you want to say to yourself?");
+    	System.out.println("Thought:");
+    	thought = sc.nextLine();
+    	thoughts.add(thought);
+    	System.out.println("You can think about that later.");
     }
     
     public void stand() {
@@ -988,18 +1034,21 @@ public String nothingOverThere() {
     		standing = false;
     		sitting = true;
     		System.out.println("You take a seat.");
+    		return;
     	}
     	
     	if(sitting) {
     		sitting = false;
     		standing = true;
     		System.out.println("You stand up.");
+    		return;
     	}
     	
     	if(prone) {
     		prone = false;
     		sitting = true;
     		System.out.println("You sit up.");
+    		return;
     	}
     	
     }

@@ -5,7 +5,7 @@ public class Room {
 	private int roomId;
 	public static int RoomIdTracker;
     //private enum dirs{N, NE, E, SE, S, SW, W, NW, U, D};
-    public enum Terrain{ROCKY, WETLAND, FIELD, INTERIOR, GRASS, FOREST };
+    public enum Terrain{rocky, wetland, field, interior, grass, forest, snow };
     private String description;
     private Terrain roomTerrain;
     private Door[] doors;
@@ -51,23 +51,23 @@ public class Room {
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	//init the vars for terrain
-    	if(terrainType.equals("ROCKY")){
-            this.roomTerrain = Terrain.ROCKY;
+    	if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
         }
-        else if (terrainType.equals("WETLAND")){
-            this.roomTerrain = Terrain.WETLAND;
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
         }
-        else if(terrainType.equals("FIELD")){
-            this.roomTerrain = Terrain.FIELD;
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
         }
-        else if(terrainType.equals("INTERIOR")){
-            this.roomTerrain = Terrain.INTERIOR;
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
         }
-        else if(terrainType.equals("GRASS")){
-            this.roomTerrain = Terrain.GRASS;
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
         }
-        else if(terrainType.equals("FOREST")){
-            this.roomTerrain = Terrain.FOREST;
+        else if(terrainType.equals("forest")){
+            this.roomTerrain = Terrain.forest;
         }
     	
     	//take the directions passed and create the directions
@@ -125,23 +125,23 @@ public class Room {
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-        if(terrainType.equals("ROCKY")){
-            this.roomTerrain = Terrain.ROCKY;
+        if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
         }
-        else if (terrainType.equals("WETLAND")){
-            this.roomTerrain = Terrain.WETLAND;
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
         }
-        else if(terrainType.equals("FIELD")){
-            this.roomTerrain = Terrain.FIELD;
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
         }
-        else if(terrainType.equals("INTERIOR")){
-            this.roomTerrain = Terrain.INTERIOR;
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
         }
-        else if(terrainType.equals("GRASS")){
-            this.roomTerrain = Terrain.GRASS;
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
         }
-        else if(terrainType.equals("FOREST")){
-            this.roomTerrain = Terrain.FOREST;
+        else if(terrainType.equals("forest")){
+            this.roomTerrain = Terrain.forest;
         }
 
         //this.doors = doors;
@@ -289,23 +289,23 @@ public class Room {
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-    	if(terrainType.equals("ROCKY")){
-            this.roomTerrain = Terrain.ROCKY;
+    	if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
         }
-        else if (terrainType.equals("WETLAND")){
-            this.roomTerrain = Terrain.WETLAND;
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
         }
-        else if(terrainType.equals("FIELD")){
-            this.roomTerrain = Terrain.FIELD;
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
         }
-        else if(terrainType.equals("INTERIOR")){
-            this.roomTerrain = Terrain.INTERIOR;
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
         }
-        else if(terrainType.equals("GRASS")){
-            this.roomTerrain = Terrain.GRASS;
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
         }
-        else if(terrainType.equals("FOREST")){
-            this.roomTerrain = Terrain.FOREST;
+        else if(terrainType.equals("forest")){
+            this.roomTerrain = Terrain.forest;
         }
     	
     	adjacentRooms.add(room1);
@@ -415,23 +415,23 @@ public class Room {
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-    	if(terrainType.equals("ROCKY")){
-            this.roomTerrain = Terrain.ROCKY;
+    	if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
         }
-        else if (terrainType.equals("WETLAND")){
-            this.roomTerrain = Terrain.WETLAND;
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
         }
-        else if(terrainType.equals("FIELD")){
-            this.roomTerrain = Terrain.FIELD;
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
         }
-        else if(terrainType.equals("INTERIOR")){
-            this.roomTerrain = Terrain.INTERIOR;
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
         }
-        else if(terrainType.equals("GRASS")){
-            this.roomTerrain = Terrain.GRASS;
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
         }
-        else if(terrainType.equals("FOREST")){
-            this.roomTerrain = Terrain.FOREST;
+        else if(terrainType.equals("forest")){
+            this.roomTerrain = Terrain.forest;
         }
     	
     	adjacentRooms.add(room1);
@@ -543,23 +543,23 @@ public class Room {
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-    	if(terrainType.equals("ROCKY")){
-            this.roomTerrain = Terrain.ROCKY;
+    	if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
         }
-        else if (terrainType.equals("WETLAND")){
-            this.roomTerrain = Terrain.WETLAND;
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
         }
-        else if(terrainType.equals("FIELD")){
-            this.roomTerrain = Terrain.FIELD;
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
         }
-        else if(terrainType.equals("INTERIOR")){
-            this.roomTerrain = Terrain.INTERIOR;
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
         }
-        else if(terrainType.equals("GRASS")){
-            this.roomTerrain = Terrain.GRASS;
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
         }
-        else if(terrainType.equals("FOREST")){
-            this.roomTerrain = Terrain.FOREST;
+        else if(terrainType.equals("forest")){
+            this.roomTerrain = Terrain.forest;
         }
     	
     	adjacentRooms.add(room1);
@@ -673,23 +673,23 @@ public class Room {
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-    	if(terrainType.equals("ROCKY")){
-            this.roomTerrain = Terrain.ROCKY;
+    	if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
         }
-        else if (terrainType.equals("WETLAND")){
-            this.roomTerrain = Terrain.WETLAND;
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
         }
-        else if(terrainType.equals("FIELD")){
-            this.roomTerrain = Terrain.FIELD;
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
         }
-        else if(terrainType.equals("INTERIOR")){
-            this.roomTerrain = Terrain.INTERIOR;
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
         }
-        else if(terrainType.equals("GRASS")){
-            this.roomTerrain = Terrain.GRASS;
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
         }
-        else if(terrainType.equals("FOREST")){
-            this.roomTerrain = Terrain.FOREST;
+        else if(terrainType.equals("forest")){
+            this.roomTerrain = Terrain.forest;
         }
     	
     	adjacentRooms.add(room1);
@@ -804,23 +804,23 @@ public class Room {
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-    	if(terrainType.equals("ROCKY")){
-            this.roomTerrain = Terrain.ROCKY;
+    	if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
         }
-        else if (terrainType.equals("WETLAND")){
-            this.roomTerrain = Terrain.WETLAND;
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
         }
-        else if(terrainType.equals("FIELD")){
-            this.roomTerrain = Terrain.FIELD;
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
         }
-        else if(terrainType.equals("INTERIOR")){
-            this.roomTerrain = Terrain.INTERIOR;
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
         }
-        else if(terrainType.equals("GRASS")){
-            this.roomTerrain = Terrain.GRASS;
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
         }
-        else if(terrainType.equals("FOREST")){
-            this.roomTerrain = Terrain.FOREST;
+        else if(terrainType.equals("forest")){
+            this.roomTerrain = Terrain.forest;
         }
     	
     	adjacentRooms.add(room1);
@@ -935,23 +935,23 @@ public class Room {
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-    	if(terrainType.equals("ROCKY")){
-            this.roomTerrain = Terrain.ROCKY;
+    	if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
         }
-        else if (terrainType.equals("WETLAND")){
-            this.roomTerrain = Terrain.WETLAND;
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
         }
-        else if(terrainType.equals("FIELD")){
-            this.roomTerrain = Terrain.FIELD;
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
         }
-        else if(terrainType.equals("INTERIOR")){
-            this.roomTerrain = Terrain.INTERIOR;
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
         }
-        else if(terrainType.equals("GRASS")){
-            this.roomTerrain = Terrain.GRASS;
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
         }
-        else if(terrainType.equals("FOREST")){
-            this.roomTerrain = Terrain.FOREST;
+        else if(terrainType.equals("forest")){
+            this.roomTerrain = Terrain.forest;
         }
     	
     	adjacentRooms.add(room1);
@@ -1067,23 +1067,23 @@ public class Room {
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-    	if(terrainType.equals("ROCKY")){
-            this.roomTerrain = Terrain.ROCKY;
+    	if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
         }
-        else if (terrainType.equals("WETLAND")){
-            this.roomTerrain = Terrain.WETLAND;
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
         }
-        else if(terrainType.equals("FIELD")){
-            this.roomTerrain = Terrain.FIELD;
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
         }
-        else if(terrainType.equals("INTERIOR")){
-            this.roomTerrain = Terrain.INTERIOR;
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
         }
-        else if(terrainType.equals("GRASS")){
-            this.roomTerrain = Terrain.GRASS;
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
         }
-        else if(terrainType.equals("FOREST")){
-            this.roomTerrain = Terrain.FOREST;
+        else if(terrainType.equals("forest")){
+            this.roomTerrain = Terrain.forest;
         }
     	
     	adjacentRooms.add(room1);
@@ -1200,23 +1200,23 @@ public class Room {
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-    	if(terrainType.equals("ROCKY")){
-            this.roomTerrain = Terrain.ROCKY;
+    	if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
         }
-        else if (terrainType.equals("WETLAND")){
-            this.roomTerrain = Terrain.WETLAND;
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
         }
-        else if(terrainType.equals("FIELD")){
-            this.roomTerrain = Terrain.FIELD;
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
         }
-        else if(terrainType.equals("INTERIOR")){
-            this.roomTerrain = Terrain.INTERIOR;
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
         }
-        else if(terrainType.equals("GRASS")){
-            this.roomTerrain = Terrain.GRASS;
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
         }
-        else if(terrainType.equals("FOREST")){
-            this.roomTerrain = Terrain.FOREST;
+        else if(terrainType.equals("forest")){
+            this.roomTerrain = Terrain.forest;
         }
     	
     	adjacentRooms.add(room1);
@@ -1334,23 +1334,23 @@ public class Room {
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-    	if(terrainType.equals("ROCKY")){
-            this.roomTerrain = Terrain.ROCKY;
+    	if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
         }
-        else if (terrainType.equals("WETLAND")){
-            this.roomTerrain = Terrain.WETLAND;
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
         }
-        else if(terrainType.equals("FIELD")){
-            this.roomTerrain = Terrain.FIELD;
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
         }
-        else if(terrainType.equals("INTERIOR")){
-            this.roomTerrain = Terrain.INTERIOR;
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
         }
-        else if(terrainType.equals("GRASS")){
-            this.roomTerrain = Terrain.GRASS;
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
         }
-        else if(terrainType.equals("FOREST")){
-            this.roomTerrain = Terrain.FOREST;
+        else if(terrainType.equals("forest")){
+            this.roomTerrain = Terrain.forest;
         }
     	
     	adjacentRooms.add(room1);

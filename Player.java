@@ -13,9 +13,9 @@ public class Player extends Character{
     	this.name = "player";
     	this.inventory = new ArrayList<Item>();
     	this.asleep = false;
-        this.prone = true;
+        this.prone = false;
         this.sitting = false;
-        this.standing = false;
+        this.standing = true;
         this.hasName = false;
         this.currentRoom = firstRoom;
         this.currentRoom.people.add(this);
