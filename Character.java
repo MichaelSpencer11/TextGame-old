@@ -68,6 +68,7 @@ public class Character {
         this.standing = true;
         firstRoom.people.add(this);
         this.currentRoom = firstRoom;
+        this.thoughts = new ArrayList<String>();
         
         
     }
@@ -77,6 +78,7 @@ public class Character {
     	this.type = type;
     	this.hasName = false;
     	this.inventory = new ArrayList<Item>();
+    	this.thoughts = new ArrayList<String>();
     	this.asleep = false;
         this.prone = false;
         this.sitting = false;
@@ -93,6 +95,7 @@ public class Character {
     	this.description = description;
     	this.hasName = true;
     	this.inventory = new ArrayList<Item>();
+    	this.thoughts = new ArrayList<String>();
     	this.asleep = false;
         this.prone = false;
         this.sitting = false;
@@ -950,9 +953,20 @@ public String nothingOverThere() {
     
     //talk to a character
     public void talk(String inputString) {
-    	for (Character c : currentRoom.getPeople()) {
-    		if(inputString.substring(inputString.indexOf("to") + 3).toLowerCase().equals(c.getName())){
-    			c.talk();
+    	if(inputString.equals("talk")) {
+    		Scanner sc = new Scanner(System.in);
+        	String thought;
+        	System.out.println("What do you want to say to yourself?");
+        	System.out.println("Thought:");
+        	thought = sc.nextLine();
+        	thoughts.add(thought);
+        	System.out.println("You can think about that later.");
+    	}
+    	else {
+    		for (Character c : currentRoom.getPeople()) {
+    			if(inputString.substring(inputString.indexOf("to") + 3).toLowerCase().equals(c.getName())){
+    				c.talk();
+    			}
     		}
     	}
     }
@@ -979,10 +993,11 @@ public String nothingOverThere() {
     	}
     }
     
+    
     public void help(String inputString) {
     	Scanner sc = new Scanner(System.in);
     	String choice;
-    	System.out.println("How can I help you? Please choose an option. ");
+    	System.out.println("How can I help you? ");
     	System.out.println("1. How to play");
     	System.out.println("2. Commands");
     	choice = sc.nextLine();
@@ -1010,14 +1025,15 @@ public String nothingOverThere() {
     	
     }
     
+    
     public void talk() {
-    	Scanner sc = new Scanner(System.in);
-    	String thought;
-    	System.out.println("What do you want to say to yourself?");
-    	System.out.println("Thought:");
-    	thought = sc.nextLine();
-    	thoughts.add(thought);
-    	System.out.println("You can think about that later.");
+    	
+    }
+    
+    public void think(String inputString) {
+    	Random r = new Random();
+    	System.out.println("A thought pops into your head.");
+    	System.out.println(thoughts.get(r.nextInt(thoughts.size())));
     }
     
     public void stand() {
@@ -1053,9 +1069,6 @@ public String nothingOverThere() {
     	
     }
     
-    
-    
-
     public void closeDoor(Door door){
         door.setClosed();
         System.out.println("You close the door.");

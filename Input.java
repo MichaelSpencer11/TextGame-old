@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 //this is where all the commands live. 
@@ -36,6 +37,12 @@ public class Input{
             else if(inputString.equals("stand")) {
             	thisPlayer.stand();
             }
+            else if(inputString.length() > 3 && inputString.substring(0,4).equals("talk")) {
+            	thisPlayer.talk(inputString);
+            }
+            else if (inputString.length() > 3 && inputString.substring(0,5).equals("think")) {
+            	thisPlayer.think(inputString);
+            }
             else if(inputString.length() > 3 && inputString.substring(0,5).equals("equip")) {
             	thisPlayer.equip(inputString);
             }
@@ -47,9 +54,6 @@ public class Input{
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("give")) {
             	thisPlayer.give(inputString);
-            }
-            else if(inputString.length() > 3 && inputString.substring(0,4).equals("talk")) {
-            	thisPlayer.talk(inputString);
             }
             else if(inputString.length() > 3 && inputString.substring(0,9).equals("follow me")) {
             	thisPlayer.followMe(inputString);
