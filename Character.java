@@ -738,8 +738,8 @@ public String nothingOverThere() {
     		System.out.println("There is nothing here to take.");
     	} else {
     	for (Item i : currentRoom.getInventory()) {
-    		if(inputString.substring(5).equals(i.getItemName()) && i.typeToString().equals("Chest")) {
-    			System.out.println("You cannot pick up this chest.");
+    		if(inputString.substring(5).equals(i.getItemName()) && i.takeable == false) {
+    			System.out.println("You cannot pick this up.");
     		}
     		else if(inputString.substring(5).equals(i.getItemName())) {
         		this.inventory.add(i);
@@ -1017,6 +1017,7 @@ public String nothingOverThere() {
     		System.out.println("give <item> to <someone>: give an item to someone");
     		System.out.println("talk to <someone>: talk to someone");
     		System.out.println("talk: talk to yourself");
+    		System.out.println("think: recall a random thought");
     		System.out.println("follow me <someone>: ask someone to follow you");
     		System.out.println("unfollow me <someone>: ask someone to unfollow you");
     		System.out.println("sit: sit down");

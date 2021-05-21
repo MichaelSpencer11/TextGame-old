@@ -9,6 +9,7 @@ public class Item {
 		protected Room roomIn;
 		protected boolean equipped;
 		protected boolean plural;
+		protected boolean takeable;
 		
 		public Item() {
 			
@@ -21,6 +22,7 @@ public class Item {
 			this.desc2 = desc2;
 			this.itemId = itemTracker++;
 			this.roomIn = room;
+			this.takeable = true;
 			
 			room.getInventory().add(this);
 			
