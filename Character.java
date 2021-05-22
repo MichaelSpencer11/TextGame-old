@@ -116,7 +116,15 @@ public class Character {
         currentRoom.printItems();
         currentRoom.printChars();
         for (int i = 0; i < currentRoom.getDirs().size(); i++){
+        	if(currentRoom.getDirs().get(i).equals("up")) {
+        		System.out.println("There is a way up.");
+        	}
+        	else if(currentRoom.getDirs().get(i).equals("down")) {
+        		System.out.println("There is a way down.");
+        	}
+        	else {
             System.out.println("There is a way to the " + currentRoom.getDirs().get(i) + ".");
+        	}
         }
         return;
         }

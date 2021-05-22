@@ -1361,61 +1361,101 @@ public class Room {
     	if(nRoom != null) {
     		nRoom.setsRoom(this);
     		nRoom.setHasS(true);
+    		if (!nRoom.getDirs().contains("south")) {
+    			nRoom.getDirs().add("south");
+    		}
     		this.hasN = true;
+    		this.dirs.add("north");
     	}
     	this.neRoom = room2;
     	if(neRoom != null) {
     		neRoom.setSwRoom(this);
     		neRoom.setHasSW(true);
+    		if(!neRoom.getDirs().contains("southwest")) {
+    			neRoom.getDirs().add("southwest");
+    		}
     		this.hasNE = true;
+    		this.dirs.add("northeast");
     	}
     	this.eRoom = room3;
     	if(eRoom != null) {
     		eRoom.setwRoom(this);
     		eRoom.setHasW(true);
+    		if(!eRoom.getDirs().contains("west")) {
+    			eRoom.getDirs().add("west");
+    		}
     		this.hasE = true;
+    		this.dirs.add("east");
     	}
     	this.seRoom = room4;
     	if(seRoom != null) {
     		seRoom.setNwRoom(this);
     		seRoom.setHasNW(true);
+    		if(!seRoom.getDirs().contains("northwest")) {
+    			seRoom.getDirs().add("northwest");
+    		}
     		this.hasSE = true;
+    		this.dirs.add("southeast");
     	}
     	this.sRoom = room5;
     	if(sRoom != null) {
     		sRoom.setnRoom(this);
     		sRoom.setHasN(true);
+    		if(!sRoom.getDirs().contains("north")) {
+    			sRoom.getDirs().add("north");
+    		}
     		this.hasS = true;
+    		this.dirs.add("south");
     	}
     	this.swRoom = room6;
     	if(swRoom != null) {
     		swRoom.setNeRoom(this);
     		swRoom.setHasNE(true);
+    		if(!swRoom.getDirs().contains("northeast")) {
+    			swRoom.getDirs().add("northeast");
+    		}
     		this.hasSW = true;
+    		this.dirs.add("southwest");
     	}
     	this.wRoom = room7;
     	if(wRoom != null) {
     		wRoom.seteRoom(this);
     		wRoom.setHasE(true);
+    		if(!wRoom.getDirs().contains("east")) {
+    			wRoom.getDirs().add("east");
+    		}
     		this.hasW = true;
+    		this.dirs.add("west");
     	}
     	this.nwRoom = room8;
     	if(nwRoom != null) {
     		nwRoom.setSeRoom(this);
     		nwRoom.setHasSE(true);
+    		if(!nwRoom.getDirs().contains("southeast")) {
+    			nwRoom.getDirs().add("southeast");
+    		}
     		this.hasNW = true;
+    		this.dirs.add("northwest");
     	}
     	this.uRoom = room9;
     	if(uRoom != null) {
     		uRoom.setdRoom(this);
     		uRoom.setHasD(true);
+    		if(!uRoom.getDirs().contains("down")) {
+    			uRoom.getDirs().add("down");
+    		}
     		this.hasU = true;
+    		this.dirs.add("up");
     	}
     	this.dRoom = room10;
     	if(dRoom != null) {
     		dRoom.setuRoom(this);
     		dRoom.setHasU(true);
+    		if(!dRoom.getDirs().contains("up")) {
+    			dRoom.getDirs().add("up");
+    		}
     		this.hasD = true;
+    		this.dirs.add("down");
     	}
     	
     	
@@ -1762,7 +1802,7 @@ public class Room {
 
 
 	public ArrayList<String> getDirs() {
-		return dirs;
+		return this.dirs;
 	}
 
 
