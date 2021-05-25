@@ -19,8 +19,8 @@ public class World {
 				thing.toLowerCase().startsWith("o") ||
 				thing.toLowerCase().startsWith("u") ||
 				thing.toLowerCase().startsWith("y")){
-			return "an ";
-		} else return "a ";
+			return "an";
+		} else return "a";
 	}
 	
 	public static String capAAn(String thing) {
@@ -30,8 +30,8 @@ public class World {
 				thing.toLowerCase().startsWith("o") ||
 				thing.toLowerCase().startsWith("u") ||
 				thing.toLowerCase().startsWith("y")){
-			return "An ";
-		} else return "A ";
+			return "An";
+		} else return "A";
 	}
 	
 	
@@ -44,6 +44,17 @@ public class World {
         Room hallway = new Room("interior", "The upstairs hallway in your house. There is a bannister next to the staircase and a way to the bathroom and your parents' room.", null, null, null, null, null, null, hallwayStairs, null, null, null);
         Room bathroom = new Room("interior", "The upstairs bathroom in your house. There is a large garden tub, a toilet and a sink. The room is decorated in floral drapes and leafy brown towels.", null, null, null, null, hallway, null, null, null, null, null);
         Room parentsRoom = new Room("interior", "Your parents' master bedroom. There is a king size bed with end tables and a dresser.", null, null, null, null, null, null, hallway, null, null, null);
+        Room stairway = new Room("interior", "The bottom of the stairway at your house. The stairs are carpeted with a thick woolish material and are alternating tan and brown.", null, null, null, null, null, null, null, null, hallwayStairs, null);
+        Room kitchen = new Room("interior", "Your home's kitchen. It is pretty well stocked with cooking utensils, spices and various foods. There is also a kitchen island for extra counter space.", null, null, null, null, stairway, null, null, null, null, null);
+        Room diningRoom = new Room("interior", "Your home's dining room. There is an oak table. Against the wall is a cabinet with cookbooks and various trinkets.", null, null, null, null, null, stairway, kitchen, null, null, null);
+        Room livingRoom = new Room("interior", "Your living room is sort of dusty as it hasn't seen much use lately. There is a tv screen on one wall and some paintings.", diningRoom, null, null, null, null, null, stairway, null, null, null);
+        Room backyard = new Room("grass", "The backyard's grass is getting a little long. There is a patio with a table and chairs and an old grill with rust on it. \nA brown fence surrounds the grass and there is a gate at the back.", null, null, null, null, diningRoom, null, null, null, null, null);
+        Room frontYard = new Room("grass", "The front yard in front of your house. There is a small path in front of the house and some tall grass.", livingRoom, null, null, null, null, null, null, null, null, null);
+        Room wpStreet3 = new Room("town", "West Peregrine street in front of your house. It's pretty quiet around here most of the time, an occasional car goes by.", frontYard, null, null, null, null, null, null, null, null, null);
+        Room wpStreet2 = new Room("town", "West Peregrine street in front of house number 2 west. There are some cherry trees on this part of the street.", null, null, null, null, null, null, wpStreet3, null, null, null);
+        Room wpStreet1 = new Room("town", "A quiet part of Peregrine street. There is an oak tree on this part of the street.", null, null, null, null, null, null, wpStreet2, null, null, null);
+        Room mainSquare = new Room("town", "The center of Tsiporim town, where Main and Peregrine streets cross.", null, null, null, null, null, null, wpStreet1, null, null, null);
+        Room epStreet1 = new Room("town", "East Peregrine street. The general store is to the north. There is not much going on around here.", null, null, null, null, null, null, mainSquare, null, null, null );
         Item practiceStaff = new Tool("wooden staff", "A wooden practice staff. It has a few nicks and cuts in it and is quite worn.", "The staff feels as heavy as a metal staff in your hand, but it is still made out of wood.", playerCloset);
         Item practicesword = new Tool("wooden sword", "A wooden practice sword. It has a few nicks and cuts in it and is quite worn.", "The sword feels as heavy as a metal sword in your hand, but it is still made out of wood.", playerCloset);
         Item noviceHood = new Head("novice hood", "A basic looking hood made of cotton.", "This hood is lined with some thick fabric on the inside.", playerCloset);

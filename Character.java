@@ -112,7 +112,7 @@ public class Character {
         if (inputString.equals("look") || inputString.equals("l")){
         System.out.println("You look around a bit.");
         System.out.println(currentRoom.getDescription());
-        System.out.println("The room seems to be of type " + currentRoom.getTerrainType() + ".");
+        System.out.println("This area seems to be " + World.aAn(currentRoom.getTerrainType()) + " " + currentRoom.getTerrainType() + " area.");
         currentRoom.printItems();
         currentRoom.printChars();
         for (int i = 0; i < currentRoom.getDirs().size(); i++){
