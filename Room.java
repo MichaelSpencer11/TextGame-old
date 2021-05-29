@@ -448,6 +448,10 @@ public class Room {
     	
     }
     
+    public void printDirs() {
+    	
+    }
+    
     
     //getters and setters for encapsulation!
     public ArrayList<Item> getInventory(){
@@ -640,6 +644,10 @@ public class Room {
 
 	public String getDescription() {
 		return description;
+	}
+	
+	public void printDescription() {
+		System.out.println(description);
 	}
 
 

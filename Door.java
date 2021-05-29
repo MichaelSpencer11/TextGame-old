@@ -23,7 +23,7 @@ public class Door {
     
     public String getOpenedString() {
     	if(isOpened) {
-    		return "opened";
+    		return "open";
     	}
     	else {
     		return "closed";

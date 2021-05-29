@@ -111,7 +111,7 @@ public class Character {
         int count = 0;
         if (inputString.equals("look") || inputString.equals("l")){
         System.out.println("You look around a bit.");
-        System.out.println(currentRoom.getDescription());
+        currentRoom.printDescription();
         System.out.println("This area seems to be " + World.aAn(currentRoom.getTerrainType()) + " " + currentRoom.getTerrainType() + " area.");
         currentRoom.printItems();
         currentRoom.printChars();
@@ -151,6 +151,7 @@ public class Character {
         return;
         }
         
+        //looking at items in the room
         for (Item i : currentRoom.getInventory()) {
         	if(inputString.substring(5).equals(i.getItemName())) {
         		System.out.println(i.getDescription());
@@ -158,6 +159,7 @@ public class Character {
         	}
         }
         
+        //looking at Characters in the room
         for (Character c : currentRoom.getPeople()) {
         	if(inputString.substring(5).equals(c.name) || 
         			inputString.substring(5).equals(c.typeToString().toLowerCase())) {
@@ -167,7 +169,7 @@ public class Character {
         }
         
         
-        
+        //looking at items in your own inventory
         if (inputString.substring(0,4).equals("look") && 
         		inputString.substring(5,8).equals("inv")) {
         	for (Item i : this.inventory) {
@@ -347,7 +349,7 @@ public class Character {
         //check if the door is open or closed
         //check if the door is locked
         //open door
-        if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("n")){
+        if(inputString.substring(5,9).equals("door") && (inputString.substring(10).equals("n") || inputString.substring(10).equals("north"))){
             for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("north") && door.getLocked()){
                 System.out.println("The door to the north is locked.");
@@ -365,7 +367,7 @@ public class Character {
 
             }
         }
-        if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("ne")){
+        if(inputString.substring(5,9).equals("door") && (inputString.substring(10).equals("ne") || inputString.substring(10).equals("northeast"))){
             for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("northeast") && door.getLocked()){
                 System.out.println("The door to the northeast is locked.");
@@ -383,7 +385,7 @@ public class Character {
 
             }
         }
-        if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("e")){
+        if(inputString.substring(5,9).equals("door") && (inputString.substring(10).equals("e") || inputString.substring(10).equals("east"))){
             for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("east") && door.getLocked()){
                 System.out.println("The door to the east is locked.");
@@ -401,7 +403,7 @@ public class Character {
 
             }
         }
-        if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("se")){
+        if(inputString.substring(5,9).equals("door") && (inputString.substring(10).equals("se") || inputString.substring(10).equals("southeast"))){
             for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("southeast") && door.getLocked()){
                 System.out.println("The door to the southeast is locked.");
@@ -419,7 +421,7 @@ public class Character {
 
             }
         }
-        if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("s")){
+        if(inputString.substring(5,9).equals("door") && (inputString.substring(10).equals("s") || inputString.substring(10).equals("south"))){
             for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("south") && door.getLocked()){
                 System.out.println("The door to the south is locked.");
@@ -437,7 +439,7 @@ public class Character {
 
             }
         }
-        if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("sw")){
+        if(inputString.substring(5,9).equals("door") && (inputString.substring(10).equals("sw") || inputString.substring(10).equals("southwest"))){
             for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("southwest") && door.getLocked()){
                 System.out.println("The door to the southwest is locked.");
@@ -455,7 +457,7 @@ public class Character {
 
             }
         }
-        if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("w")){
+        if(inputString.substring(5,9).equals("door") && (inputString.substring(10).equals("w") || inputString.substring(10).equals("west"))){
             for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("west") && door.getLocked()){
                 System.out.println("The door to the west is locked.");
@@ -473,7 +475,7 @@ public class Character {
 
             }
         }
-        if(inputString.substring(5,9).equals("door") && inputString.substring(10).equals("nw")){
+        if(inputString.substring(5,9).equals("door") && (inputString.substring(10).equals("nw") || inputString.substring(10).equals("northwest"))){
             for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("northwest") && door.getLocked()){
                 System.out.println("The door to the northwest is locked.");
@@ -491,6 +493,44 @@ public class Character {
 
             }
         }
+        
+        if(inputString.substring(5,9).equals("door") && (inputString.substring(10).equals("up") || inputString.substring(10).equals("above"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("up") && door.getLocked()){
+                System.out.println("The door above is locked.");
+                return;
+            }
+            if(door.getDoorDir().equals("up") && door.getOpened()){
+                System.out.println("The door above is already open.");
+                return;
+            }
+            else if(door.getDoorDir().equals("up") && !door.getOpened()){
+                System.out.println("You open the door above.");
+                door.setOpened();
+                return;
+            }
+
+            }
+        }
+        
+        if(inputString.substring(5,9).equals("door") && (inputString.substring(10).equals("down") || inputString.substring(10).equals("below"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("down") && door.getLocked()){
+                System.out.println("The door below is locked.");
+                return;
+            }
+            if(door.getDoorDir().equals("down") && door.getOpened()){
+                System.out.println("The door below is already open.");
+                return;
+            }
+            else if(door.getDoorDir().equals("down") && !door.getOpened()){
+                System.out.println("You open the door below.");
+                door.setOpened();
+                return;
+            }
+
+            }
+        }
 
     }
 
@@ -501,6 +541,14 @@ public class Character {
     	}
     	else {
     		if (inputString.equals("n")){
+    			for (Door d : currentRoom.getDoors()) {
+            		if(d.getDoorDir().equals("north")) {
+            			if(!d.getOpened()) {
+            				System.out.println("The door to the " + d.getDoorDir() + " is closed.");
+            				return;
+            			}
+            		}
+            	}
                 if(currentRoom.getHasN()){
                 	if(this.follower == null) {
                 		currentRoom.people.remove(this);
@@ -524,6 +572,14 @@ public class Character {
         }
         
         if (inputString.equals("ne")){
+        	for (Door d : currentRoom.getDoors()) {
+        		if(d.getDoorDir().equals("northeast")) {
+        			if(!d.getOpened()) {
+        				System.out.println("The door to the " + d.getDoorDir() + " is closed.");
+        				return;
+        			}
+        		}
+        	}
             if(currentRoom.getHasNE()){
             	if(this.follower == null) {
             		currentRoom.people.remove(this);
@@ -547,6 +603,14 @@ public class Character {
         }
         
         if (inputString.equals("e")){
+        	for (Door d : currentRoom.getDoors()) {
+        		if(d.getDoorDir().equals("east")) {
+        			if(!d.getOpened()) {
+        				System.out.println("The door to the " + d.getDoorDir() + " is closed.");
+        				return;
+        			}
+        		}
+        	}
             if(currentRoom.getHasE()){
             	if(this.follower == null) {
             		currentRoom.people.remove(this);
@@ -570,6 +634,14 @@ public class Character {
         }
         
         if (inputString.equals("se")){
+        	for (Door d : currentRoom.getDoors()) {
+        		if(d.getDoorDir().equals("southeast")) {
+        			if(!d.getOpened()) {
+        				System.out.println("The door to the " + d.getDoorDir() + " is closed.");
+        				return;
+        			}
+        		}
+        	}
             if(currentRoom.getHasSE()){
             	if(this.follower == null) {
             		currentRoom.people.remove(this);
@@ -593,6 +665,14 @@ public class Character {
         }
         
         if (inputString.equals("s")){
+        	for (Door d : currentRoom.getDoors()) {
+        		if(d.getDoorDir().equals("south")) {
+        			if(!d.getOpened()) {
+        				System.out.println("The door to the " + d.getDoorDir() + " is closed.");
+        				return;
+        			}
+        		}
+        	}
             if(currentRoom.getHasS()){
             	if(this.follower == null) {
             		currentRoom.people.remove(this);
@@ -616,6 +696,14 @@ public class Character {
         }
         
         if (inputString.equals("sw")){
+        	for (Door d : currentRoom.getDoors()) {
+        		if(d.getDoorDir().equals("southwest")) {
+        			if(!d.getOpened()) {
+        				System.out.println("The door to the " + d.getDoorDir() + " is closed.");
+        				return;
+        			}
+        		}
+        	}
             if(currentRoom.getHasSW()){
             	if(this.follower == null) {
             		currentRoom.people.remove(this);
@@ -670,6 +758,14 @@ public class Character {
         }
         
         if (inputString.equals("nw")){
+        	for (Door d : currentRoom.getDoors()) {
+        		if(d.getDoorDir().equals("northwest")) {
+        			if(!d.getOpened()) {
+        				System.out.println("The door to the " + d.getDoorDir() + " is closed.");
+        				return;
+        			}
+        		}
+        	}
             if(currentRoom.getHasNW()){
             	if(this.follower == null) {
             		currentRoom.people.remove(this);
@@ -693,6 +789,14 @@ public class Character {
         }
         
         if (inputString.equals("u")){
+        	for (Door d : currentRoom.getDoors()) {
+        		if(d.getDoorDir().equals("up")) {
+        			if(!d.getOpened()) {
+        				System.out.println("The door above is closed.");
+        				return;
+        			}
+        		}
+        	}
             if(currentRoom.getHasU()){
             	if(this.follower == null) {
             		currentRoom.people.remove(this);
@@ -716,6 +820,14 @@ public class Character {
         }
         
         if (inputString.equals("d")){
+        	for (Door d : currentRoom.getDoors()) {
+        		if(d.getDoorDir().equals("down")) {
+        			if(!d.getOpened()) {
+        				System.out.println("The door below is closed.");
+        				return;
+        			}
+        		}
+        	}
             if(currentRoom.getHasD()){
             	if(this.follower == null) {
             		currentRoom.people.remove(this);
@@ -1052,7 +1164,7 @@ public String nothingOverThere() {
     		System.out.println("n, ne, e, se, s, sw, w, nw, n, u, d: travel in a direction, up or down");
     		System.out.println("i: inventory display. Equipped items have an [e] next to them");
     		System.out.println("look inv <item>: look at an item in your inventory");
-    		System.out.println("exit: exit the game ");
+    		System.out.println("open door <direction>: opens a door in the specified direction");
     		System.out.println("take: pick up an item from the environment");
     		System.out.println("equip <item>: equip an item. The item will automatically be equipped to the appropriate slot if available");
     		System.out.println("unequip <item>: unequip an item ");
@@ -1065,6 +1177,7 @@ public String nothingOverThere() {
     		System.out.println("unfollow me <someone>: ask someone to unfollow you");
     		System.out.println("sit: sit down");
     		System.out.println("stand: stand up");
+    		System.out.println("exit: exit the game ");
     	}
     	
     }
