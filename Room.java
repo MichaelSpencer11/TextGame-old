@@ -8,8 +8,8 @@ public class Room {
     public enum Terrain{rocky, wetland, field, interior, grass, forest, snow, town };
     private String description;
     private Terrain roomTerrain;
-    private Door[] doors = {};
     private int doorsNum;
+    private ArrayList<Door> doors = new ArrayList<Door>();
     private ArrayList<Room> adjacentRooms;
     private ArrayList<String> dirs;
     private ArrayList<Item> inventory;
@@ -269,7 +269,9 @@ public class Room {
     	this.adjacentRooms = new ArrayList<Room>();
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-    	this.doors = doors;
+    	for(Door d : doors) {
+    		this.doors.add(d);
+    	}
     	if(terrainType.equals("rocky")){
             this.roomTerrain = Terrain.rocky;
         }
@@ -400,6 +402,8 @@ public class Room {
     		this.doorsNum++;
     	}
     	
+    	createDoors(doors);
+    	
     }
     
     //print items in the room
@@ -435,6 +439,14 @@ public class Room {
     	}
     }
     
+    public void createDoors(Door[] doors){
+    	for (Door d : doors) {
+    		if(d.getDoorDir().equals("north")) {
+    			nRoom.doors.add(new Door("south"));
+    		}
+    	}
+    }
+    
     public void printDoors() {
     	for (Door d : doors) {
         	System.out.println("There is a door to the " + d.getDoorDir() + ".");
@@ -466,7 +478,7 @@ public class Room {
         return this.roomTerrain.toString();
     }
 
-    public Door[] getDoors(){
+    public ArrayList<Door> getDoors(){
         return doors;
     }
 
@@ -658,7 +670,7 @@ public class Room {
 
 
 
-	public void setDoors(Door[] doors) {
+	public void setDoors(ArrayList<Door> doors) {
 		this.doors = doors;
 	}
 	

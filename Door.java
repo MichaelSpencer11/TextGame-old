@@ -1,7 +1,7 @@
 
-//not used at the moment, might work on this later
 //doors are for sure things in the world
 public class Door {
+	private String doorName;
     private enum dirs{N, NE, E, SE, S, SW, W, NW, U, D};
     private static int DoorIdTracker;
     private int DoorId;
@@ -9,12 +9,26 @@ public class Door {
     private boolean isOpened;
     private boolean isLocked;
     private String doorType;
+    private String keyName = "";
 
-    public Door(String dir ){
+    public Door(String dir){
         this.DoorId = DoorIdTracker++;
         this.setClosed();
         this.doorDir = dir;
         
+    }
+    
+    //locked door constructor
+    //the key is created before the door
+    //just match the key name to the door with the key's name
+    // a locked door is a named door
+    public Door(String dir, String keyName) {
+    	this.DoorId = DoorIdTracker++;
+    	this.setClosed();
+    	this.doorDir = dir;
+    	this.isLocked = true;
+    	this.keyName = keyName;
+    	
     }
 
     public boolean getOpened(){
