@@ -20,6 +20,15 @@ public class Door {
     public boolean getOpened(){
         return isOpened;
     }
+    
+    public String getOpenedString() {
+    	if(isOpened) {
+    		return "opened";
+    	}
+    	else {
+    		return "closed";
+    	}
+    }
 
     public boolean getLocked(){
         return isLocked;

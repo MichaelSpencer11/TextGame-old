@@ -8,7 +8,7 @@ public class Room {
     public enum Terrain{rocky, wetland, field, interior, grass, forest, snow, town };
     private String description;
     private Terrain roomTerrain;
-    private Door[] doors;
+    private Door[] doors = {};
     private int doorsNum;
     private ArrayList<Room> adjacentRooms;
     private ArrayList<String> dirs;
@@ -123,7 +123,7 @@ public class Room {
     }
     
     
-    //Use this one only, put null for rooms that aren't there
+    //Use this one for rooms without doors, put null for rooms that aren't there
     public Room(String terrainType, String desc, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, Room room7, Room room8, Room room9, Room room10){
     	this.people = new ArrayList<Character>();
@@ -260,6 +260,147 @@ public class Room {
     	
     }	
     	
+    //Constructor of room with doors
+    public Room(String terrainType, String desc, Room room1, Room room2, Room room3, Room room4, Room room5,
+    		Room room6, Room room7, Room room8, Room room9, Room room10, Door[] doors){
+    	this.people = new ArrayList<Character>();
+    	this.inventory = new ArrayList<Item>();
+    	this.dirs = new ArrayList<String>();
+    	this.adjacentRooms = new ArrayList<Room>();
+    	this.roomId = RoomIdTracker++;
+    	this.description = desc;
+    	this.doors = doors;
+    	if(terrainType.equals("rocky")){
+            this.roomTerrain = Terrain.rocky;
+        }
+        else if (terrainType.equals("wetland")){
+            this.roomTerrain = Terrain.wetland;
+        }
+        else if(terrainType.equals("field")){
+            this.roomTerrain = Terrain.field;
+        }
+        else if(terrainType.equals("interior")){
+            this.roomTerrain = Terrain.interior;
+        }
+        else if(terrainType.equals("grass")){
+            this.roomTerrain = Terrain.grass;
+        }
+        else if(terrainType.equals("forest ")){
+            this.roomTerrain = Terrain.forest;
+        }
+        else if(terrainType.equals("snow")){
+            this.roomTerrain = Terrain.snow;
+        }
+        else if(terrainType.equals("town")){
+            this.roomTerrain = Terrain.town;
+        }
+    	
+    	this.nRoom = room1;
+    	if(nRoom != null) {
+    		nRoom.setsRoom(this);
+    		nRoom.setHasS(true);
+    		if (!nRoom.getDirs().contains("south")) {
+    			nRoom.getDirs().add("south");
+    		}
+    		this.hasN = true;
+    		this.dirs.add("north");
+    	}
+    	this.neRoom = room2;
+    	if(neRoom != null) {
+    		neRoom.setSwRoom(this);
+    		neRoom.setHasSW(true);
+    		if(!neRoom.getDirs().contains("southwest")) {
+    			neRoom.getDirs().add("southwest");
+    		}
+    		this.hasNE = true;
+    		this.dirs.add("northeast");
+    	}
+    	this.eRoom = room3;
+    	if(eRoom != null) {
+    		eRoom.setwRoom(this);
+    		eRoom.setHasW(true);
+    		if(!eRoom.getDirs().contains("west")) {
+    			eRoom.getDirs().add("west");
+    		}
+    		this.hasE = true;
+    		this.dirs.add("east");
+    	}
+    	this.seRoom = room4;
+    	if(seRoom != null) {
+    		seRoom.setNwRoom(this);
+    		seRoom.setHasNW(true);
+    		if(!seRoom.getDirs().contains("northwest")) {
+    			seRoom.getDirs().add("northwest");
+    		}
+    		this.hasSE = true;
+    		this.dirs.add("southeast");
+    	}
+    	this.sRoom = room5;
+    	if(sRoom != null) {
+    		sRoom.setnRoom(this);
+    		sRoom.setHasN(true);
+    		if(!sRoom.getDirs().contains("north")) {
+    			sRoom.getDirs().add("north");
+    		}
+    		this.hasS = true;
+    		this.dirs.add("south");
+    	}
+    	this.swRoom = room6;
+    	if(swRoom != null) {
+    		swRoom.setNeRoom(this);
+    		swRoom.setHasNE(true);
+    		if(!swRoom.getDirs().contains("northeast")) {
+    			swRoom.getDirs().add("northeast");
+    		}
+    		this.hasSW = true;
+    		this.dirs.add("southwest");
+    	}
+    	this.wRoom = room7;
+    	if(wRoom != null) {
+    		wRoom.seteRoom(this);
+    		wRoom.setHasE(true);
+    		if(!wRoom.getDirs().contains("east")) {
+    			wRoom.getDirs().add("east");
+    		}
+    		this.hasW = true;
+    		this.dirs.add("west");
+    	}
+    	this.nwRoom = room8;
+    	if(nwRoom != null) {
+    		nwRoom.setSeRoom(this);
+    		nwRoom.setHasSE(true);
+    		if(!nwRoom.getDirs().contains("southeast")) {
+    			nwRoom.getDirs().add("southeast");
+    		}
+    		this.hasNW = true;
+    		this.dirs.add("northwest");
+    	}
+    	this.uRoom = room9;
+    	if(uRoom != null) {
+    		uRoom.setdRoom(this);
+    		uRoom.setHasD(true);
+    		if(!uRoom.getDirs().contains("down")) {
+    			uRoom.getDirs().add("down");
+    		}
+    		this.hasU = true;
+    		this.dirs.add("up");
+    	}
+    	this.dRoom = room10;
+    	if(dRoom != null) {
+    		dRoom.setuRoom(this);
+    		dRoom.setHasU(true);
+    		if(!dRoom.getDirs().contains("up")) {
+    			dRoom.getDirs().add("up");
+    		}
+    		this.hasD = true;
+    		this.dirs.add("down");
+    	}
+    	
+    	for(Door d : doors) {
+    		this.doorsNum++;
+    	}
+    	
+    }
     
     //print items in the room
     public void printItems() {
@@ -281,10 +422,10 @@ public class Room {
     				System.out.println("There is someone here.");
     			}
     			else if(c.hasName == false) {
-    				System.out.println(World.capAAn(c.type) + c.typeToString().toLowerCase() + " is here.");
+    				System.out.println(World.capAAn(c.type) + " " + c.typeToString().toLowerCase() + " is here.");
     			} 
     			else if(c.hasName == false && c.name == null) {
-    				System.out.println(World.capAAn(c.type) + c.typeToString().toLowerCase() + " is here.");
+    				System.out.println(World.capAAn(c.type) + " " + c.typeToString().toLowerCase() + " is here.");
     			}
     			else {
     				System.out.print(c.name.substring(0,1).toUpperCase());
@@ -292,6 +433,12 @@ public class Room {
     			}
     		}
     	}
+    }
+    
+    public void printDoors() {
+    	for (Door d : doors) {
+        	System.out.println("There is a door to the " + d.getDoorDir() + ".");
+        }
     }
     
     

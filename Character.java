@@ -115,15 +115,37 @@ public class Character {
         System.out.println("This area seems to be " + World.aAn(currentRoom.getTerrainType()) + " " + currentRoom.getTerrainType() + " area.");
         currentRoom.printItems();
         currentRoom.printChars();
-        for (int i = 0; i < currentRoom.getDirs().size(); i++){
-        	if(currentRoom.getDirs().get(i).equals("up")) {
-        		System.out.println("There is a way up.");
+        //currentRoom.printDoors();
+        for (String s : currentRoom.getDirs()){
+        	if(s.equals("up")) {
+        		for (Door d : currentRoom.getDoors()) {
+        			if(!d.getDoorDir().equals(s)) {
+        				System.out.println("There is a way up.");
+        			}
+        			else {
+        				System.out.println("There is " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door directly above.");
+        			}
+        		}
         	}
-        	else if(currentRoom.getDirs().get(i).equals("down")) {
-        		System.out.println("There is a way down.");
+        	else if(s.equals("down")) {
+        		for (Door d : currentRoom.getDoors()) {
+        			if(!d.getDoorDir().equals(s)) {
+        				System.out.println("There is a way down.");
+        			}
+        			else {
+        				System.out.println("There is " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + "door on the floor.");
+        			}
+        		}
         	}
         	else {
-            System.out.println("There is a way to the " + currentRoom.getDirs().get(i) + ".");
+        		for(Door d : currentRoom.getDoors()) {
+        			if(d.getDoorDir().equals(s)) {
+        				System.out.println("There is " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door to the " + s + ".");
+        			}
+        			else {
+        				System.out.println("There is a way to the " + s + ".");
+        			}
+        		}
         	}
         }
         return;
@@ -144,6 +166,8 @@ public class Character {
         	}
         }
         
+        
+        
         if (inputString.substring(0,4).equals("look") && 
         		inputString.substring(5,8).equals("inv")) {
         	for (Item i : this.inventory) {
@@ -153,7 +177,10 @@ public class Character {
         		}
         	}
         }
+        
+        
         //there were doors early on but now they're gone, they may come back sometimes and later
+        
         /*
         if(currentRoom.getDoorsNum() == 1 && inputString.equals("look door")){
             System.out.println("There is a door here.");
@@ -612,26 +639,34 @@ public class Character {
         }
         
         if (inputString.equals("w")){
-            if(currentRoom.getHasW()){
-            	if(this.follower == null) {
-            		currentRoom.people.remove(this);
-            		this.setCurrentRoom(currentRoom.getwRoom());
-            		currentRoom.people.add(this);
-            		System.out.println("You move to the west.");
-            	} 
-            	else {
-            		currentRoom.people.remove(this);
-            		currentRoom.people.remove(follower);
-            		this.setCurrentRoom(currentRoom.getwRoom());
-            		follower.setCurrentRoom(currentRoom.getwRoom());
-            		currentRoom.people.add(this);
-            		currentRoom.people.add(follower);
-            		System.out.println("You move to the west and " + follower.getName() + " follows you.");
-            	}
-            }
-            else {
-            	System.out.println(nothingOverThere());
-            }
+        	for (Door d : currentRoom.getDoors()) {
+        		if(d.getDoorDir().equals("west")) {
+        			if(!d.getOpened()) {
+        				System.out.println("The door to the " + d.getDoorDir() + " is closed.");
+        				return;
+        			}
+        		}
+        	}
+	            if(currentRoom.getHasW()){ 
+	            	if(this.follower == null) {
+	            		currentRoom.people.remove(this);
+	            		this.setCurrentRoom(currentRoom.getwRoom());
+	            		currentRoom.people.add(this);
+	            		System.out.println("You move to the west.");
+	            	} 
+	            	else {
+	            		currentRoom.people.remove(this);
+	            		currentRoom.people.remove(follower);
+	            		this.setCurrentRoom(currentRoom.getwRoom());
+	            		follower.setCurrentRoom(currentRoom.getwRoom());
+	            		currentRoom.people.add(this);
+	            		currentRoom.people.add(follower);
+	            		System.out.println("You move to the west and " + follower.getName() + " follows you.");
+	            	}
+	            }
+	            else {
+	            	System.out.println(nothingOverThere());
+	            }
         }
         
         if (inputString.equals("nw")){
