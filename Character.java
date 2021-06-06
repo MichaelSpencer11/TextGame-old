@@ -362,6 +362,11 @@ public class Character {
             else if(door.getDoorDir().equals("north") && !door.getOpened()){
                 System.out.println("You open the door to the north.");
                 door.setOpened();
+                for (Door d : currentRoom.getnRoom().getDoors()) {
+                	if(d.getDoorDir().equals("south")) {
+                		d.setOpened();
+                	}
+                }
                 return;
             }
 
@@ -380,6 +385,11 @@ public class Character {
             else if(door.getDoorDir().equals("northeast") && !door.getOpened()){
                 System.out.println("You open the door to the northeast.");
                 door.setOpened();
+                for (Door d : currentRoom.getNeRoom().getDoors()) {
+                	if(d.getDoorDir().equals("southwest")) {
+                		d.setOpened();
+                	}
+                }
                 return;
             }
 
@@ -398,6 +408,11 @@ public class Character {
             else if(door.getDoorDir().equals("east") && !door.getOpened()){
                 System.out.println("You open the door to the east.");
                 door.setOpened();
+                for (Door d : currentRoom.geteRoom().getDoors()) {
+                	if(d.getDoorDir().equals("west")) {
+                		d.setOpened();
+                	}
+                }
                 return;
             }
 
@@ -416,6 +431,11 @@ public class Character {
             else if(door.getDoorDir().equals("southeast") && !door.getOpened()){
                 System.out.println("You open the door to the southeast.");
                 door.setOpened();
+                for (Door d : currentRoom.getSeRoom().getDoors()) {
+                	if(d.getDoorDir().equals("northwest")) {
+                		d.setOpened();
+                	}
+                }
                 return;
             }
 
@@ -434,6 +454,11 @@ public class Character {
             else if(door.getDoorDir().equals("south") && !door.getOpened()){
                 System.out.println("You open the door to the south.");
                 door.setOpened();
+                for (Door d : currentRoom.getsRoom().getDoors()) {
+                	if(d.getDoorDir().equals("north")) {
+                		d.setOpened();
+                	}
+                }
                 return;
             }
 
@@ -452,6 +477,11 @@ public class Character {
             else if(door.getDoorDir().equals("southwest") && !door.getOpened()){
                 System.out.println("You open the door to the southwest.");
                 door.setOpened();
+                for (Door d : currentRoom.getSwRoom().getDoors()) {
+                	if(d.getDoorDir().equals("northeast")) {
+                		d.setOpened();
+                	}
+                }
                 return;
             }
 
@@ -470,6 +500,11 @@ public class Character {
             else if(door.getDoorDir().equals("west") && !door.getOpened()){
                 System.out.println("You open the door to the west.");
                 door.setOpened();
+                for (Door d : currentRoom.getwRoom().getDoors()) {
+                	if(d.getDoorDir().equals("east")) {
+                		d.setOpened();
+                	}
+                }
                 return;
             }
 
@@ -488,6 +523,11 @@ public class Character {
             else if(door.getDoorDir().equals("northwest") && !door.getOpened()){
                 System.out.println("You open the door to the north.");
                 door.setOpened();
+                for (Door d : currentRoom.getNwRoom().getDoors()) {
+                	if(d.getDoorDir().equals("southeast")) {
+                		d.setOpened();
+                	}
+                }
                 return;
             }
 
@@ -507,6 +547,11 @@ public class Character {
             else if(door.getDoorDir().equals("up") && !door.getOpened()){
                 System.out.println("You open the door above.");
                 door.setOpened();
+                for (Door d : currentRoom.getuRoom().getDoors()) {
+                	if(d.getDoorDir().equals("down")) {
+                		d.setOpened();
+                	}
+                }
                 return;
             }
 
@@ -526,6 +571,11 @@ public class Character {
             else if(door.getDoorDir().equals("down") && !door.getOpened()){
                 System.out.println("You open the door below.");
                 door.setOpened();
+                for (Door d : currentRoom.getdRoom().getDoors()) {
+                	if(d.getDoorDir().equals("up")) {
+                		d.setOpened();
+                	}
+                }
                 return;
             }
 

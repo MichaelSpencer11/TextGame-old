@@ -398,9 +398,6 @@ public class Room {
     		this.dirs.add("down");
     	}
     	
-    	for(Door d : doors) {
-    		this.doorsNum++;
-    	}
     	
     	createDoors(doors);
     	
@@ -441,15 +438,43 @@ public class Room {
     
     public void createDoors(Door[] doors){
     	for (Door d : doors) {
-    		if(d.getDoorDir().equals("north")) {
+    		this.doorsNum++;
+    		if(d.getDoorDir().equals("north") && nRoom != null) {
     			nRoom.doors.add(new Door("south"));
+    		}
+    		else if (d.getDoorDir().equals("northeast") && neRoom != null) {
+    			neRoom.doors.add(new Door("southwest"));
+    		}
+    		else if(d.getDoorDir().equals("east") && eRoom != null) {
+    			eRoom.doors.add(new Door("west"));
+    		}
+    		else if(d.getDoorDir().equals("southeast") && seRoom != null) {
+    			seRoom.doors.add(new Door("northwest"));
+    		}
+    		else if(d.getDoorDir().equals("south") && sRoom != null) {
+    			sRoom.doors.add(new Door("north"));
+    		}
+    		else if(d.getDoorDir().equals("southwest") && swRoom != null) {
+    			swRoom.doors.add(new Door("northeast"));
+    		}
+    		else if(d.getDoorDir().equals("west") && wRoom != null) {
+    			wRoom.doors.add(new Door("east"));
+    		}
+    		else if(d.getDoorDir().equals("northwest") && nwRoom != null) {
+    			nwRoom.doors.add(new Door("southeast"));
+    		}
+    		else if(d.getDoorDir().equals("up") && uRoom != null) {
+    			uRoom.doors.add(new Door("down"));
+    		}
+    		else if(d.getDoorDir().equals("down") && dRoom != null) {
+    			dRoom.doors.add(new Door("up"));
     		}
     	}
     }
     
     public void printDoors() {
     	for (Door d : doors) {
-        	System.out.println("There is a door to the " + d.getDoorDir() + ".");
+        	System.out.println("There is " + World.aAn(d.getOpenedString()) + d.getOpenedString() + " door to the " + d.getDoorDir() + ".");
         }
     }
     

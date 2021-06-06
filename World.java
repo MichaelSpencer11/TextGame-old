@@ -29,9 +29,10 @@ public class World {
 		public void createWorld() {
 
 			
-			    Door[] doors = {new Door("west")};
-		        Room room = new Room("interior", "This is your room. Your twin size bed is against one wall. Your desk is against another. There is a black computer monitor, a keyboard and a mouse on the desk.", null, null, null, null, null, null, null, null, null, null, doors);
-		        Room playerCloset = new Room("interior", "Your walk-in closet. There are clothes hanging up in the closet and some on the floor neatly placed under the racks.", null, null, room, null, null, null, null, null, null, null);
+			    
+		        Room room = new Room("interior", "This is your room. Your twin size bed is against one wall. Your desk is against another. There is a black computer monitor, a keyboard and a mouse on the desk.", null, null, null, null, null, null, null, null, null, null);
+		        Door[] doors = {new Door("east")};
+		        Room playerCloset = new Room("interior", "Your walk-in closet. There are clothes hanging up in the closet and some on the floor neatly placed under the racks.", null, null, room, null, null, null, null, null, null, null, doors);
 		        Room hallwayStairs = new Room("interior", "The upstairs hallway in your home. There is a stairway here that goes down.", room, null, null,null,null,null,null,null,null,null);
 		        Room hallway = new Room("interior", "The upstairs hallway in your house. There is a bannister next to the staircase and a way to the bathroom and your parents' room.", null, null, null, null, null, null, hallwayStairs, null, null, null);
 		        Room bathroom = new Room("interior", "The upstairs bathroom in your house. There is a large garden tub, a toilet and a sink. The room is decorated in floral drapes and leafy brown towels.", null, null, null, null, hallway, null, null, null, null, null);
