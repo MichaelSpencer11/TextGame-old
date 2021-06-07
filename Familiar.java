@@ -16,7 +16,8 @@ public class Familiar extends Character{
     	this.asleep = false;
         this.prone = false;
         this.sitting = false;
-        this.standing = true;
+        this.standing = false;
+        this.floating = true;
         this.currentRoom = firstRoom;
         this.currentRoom.people.add(this);
         
@@ -48,6 +49,10 @@ public class Familiar extends Character{
 			return;
 		}
 	}
+	
+	//public void goToPlayer() {}
+	
+	//public Character findPlayer() {}
 	
 	
 	

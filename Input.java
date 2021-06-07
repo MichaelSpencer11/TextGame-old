@@ -46,6 +46,9 @@ public class Input{
             else if (inputString.length() > 3 && inputString.substring(0,5).equals("think")) {
             	thisPlayer.think(inputString);
             }
+            else if (inputString.length() > 3 && inputString.substring(0,5).equals("sleep")) {
+            	thisPlayer.sleep();
+            }
             else if(inputString.length() > 3 && inputString.substring(0,5).equals("equip")) {
             	thisPlayer.equip(inputString);
             }

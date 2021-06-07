@@ -109,6 +109,10 @@ public class Character {
     //multipurpose look command. you can look at the room or look at an item or character
     public void look(String inputString){
         int count = 0;
+        if(asleep) {
+        	System.out.println("You are asleep.");
+        	return;
+        }
         if (inputString.equals("look") || inputString.equals("l")){
         System.out.println("You look around a bit.");
         currentRoom.printDescription();
@@ -346,6 +350,10 @@ public class Character {
     
     //for opening doors, still here even though doors are gone
     public void open(String inputString) {
+    	if(asleep) {
+    		System.out.println("You can't do that while you are asleep.");
+    		return;
+    	}
         //check if the door is open or closed
         //check if the door is locked
         //open door
@@ -586,6 +594,10 @@ public class Character {
 
     //method used for moving from room to room
     public void move(String inputString){
+    	if(asleep) {
+    		System.out.println("You can't move while you are asleep.");
+    		return;
+    	}
     	if(sitting || prone) {
     		System.out.println("You can't move very well when you're not standing.");
     	}
@@ -939,6 +951,10 @@ public String nothingOverThere() {
     
     //for picking things up
     public void take(String inputString) {
+    	if (asleep) {
+    		System.out.println("You can't really pick something up while in dreamland.");
+    		return;
+    	}
     	if (currentRoom.getInventory().size() == 0) {
     		System.out.println("There is nothing here to take.");
     	} else {
@@ -958,6 +974,10 @@ public String nothingOverThere() {
     
     //the inventory
     public void printInv() {
+    	if (asleep) {
+    		System.out.println("You can't check your things while asleep.");
+    		return;
+    	}
     	System.out.println("/`^^~~vv.._,_,..vv~~^^~~vv..,_,_..vv~~^^`\\");
     	System.out.println("|                Inventory               |");
     	System.out.println("|                                        |");
@@ -982,6 +1002,11 @@ public String nothingOverThere() {
     
     //equip a weapon or clothing
     public void equip(String inputString) {
+    	if (asleep) {
+    		System.out.println("You can't do that while asleep.");
+    		return;
+    	}
+    	
     	for (Item i : this.inventory) {
     		if(inputString.substring(6).equals(i.getItemName())) {
     			if(i.typeToString().equals("Tool") && this.mainHand == null)  {
@@ -1076,6 +1101,10 @@ public String nothingOverThere() {
     
     //unequip a weapon or clothing
     public void unequip(String inputString) {
+    	if (asleep) {
+    		System.out.println("You can't really do that while asleep.");
+    		return;
+    	}
     	for (Item i : this.inventory) {
     		if(inputString.substring(8).equals(i.getItemName()) && i.equipped == true) {
     			if(i.typeToString().equals("Tool") && this.mainHand == i) {
@@ -1129,6 +1158,10 @@ public String nothingOverThere() {
     
     //drop something in the room
     public void drop(String inputString) {
+    	if(asleep) {
+    		System.out.println("Drop out of sleep to do that.");
+    		return;
+    	}
     	for(Item i : inventory) {
     		if (inputString.substring(5).equals(i.getItemName())) {
     			currentRoom.getInventory().add(i);
@@ -1140,6 +1173,10 @@ public String nothingOverThere() {
     
     //give something to a character
     public void give(String inputString) {
+    	if(asleep) {
+    		System.out.println("Give that some more thought while you are awake.");
+    		return;
+    	}
     	Item currentItem;
     	for (Item i : this.inventory) {
     		if(i.getItemName().equals(inputString.substring(5,inputString.indexOf("to") - 1 ))) {
@@ -1158,6 +1195,10 @@ public String nothingOverThere() {
     
     //talk to a character
     public void talk(String inputString) {
+    	if(asleep) {
+    		System.out.println("You mumble something in your sleep.");
+    		return;
+    	}
     	if(inputString.equals("talk")) {
     		Scanner sc = new Scanner(System.in);
         	String thought;
@@ -1178,6 +1219,10 @@ public String nothingOverThere() {
     
     //get a character to follow the player, will follow when player moves from room to room
     public void followMe(String inputString) {
+    	if(asleep) {
+    		System.out.println("Follow the path back to wakefulness to do that.");
+    		return;
+    	}
     	for(Character c : currentRoom.people) {
     		if(inputString.substring(10).equals(c.getName()) && c.typeToString().equals("Familiar")) {
     			c.setFollowing(true);
@@ -1189,6 +1234,10 @@ public String nothingOverThere() {
 
     //character will unfollow the player
     public void unFollowMe(String inputString) {
+    	if(asleep) {
+    		System.out.println("Try that again while awake.");
+    		return;
+    	}
     	for(Character c : currentRoom.people) {
     		if(inputString.substring(12).equals(c.getName())) {
     			c.setFollowing(false);
@@ -1238,6 +1287,10 @@ public String nothingOverThere() {
     }
     
     public void think(String inputString) {
+    	if(asleep) {
+    		System.out.println("You can't think while asleep, only dream.");
+    		return;
+    	}
     	Random r = new Random();
     	System.out.println("A thought pops into your head.");
     	System.out.println(thoughts.get(r.nextInt(thoughts.size())));
@@ -1253,6 +1306,15 @@ public String nothingOverThere() {
     }
     
     public void sit() {
+    	if(asleep) {
+    		System.out.println("You are asleep.");
+    		return;
+    	}
+    	if(sitting) {
+    		System.out.println("You are already sitting down.");
+    		return;
+    	}
+    	
     	if(standing) {
     		standing = false;
     		sitting = true;
@@ -1260,12 +1322,6 @@ public String nothingOverThere() {
     		return;
     	}
     	
-    	if(sitting) {
-    		sitting = false;
-    		standing = true;
-    		System.out.println("You stand up.");
-    		return;
-    	}
     	
     	if(prone) {
     		prone = false;
@@ -1276,7 +1332,46 @@ public String nothingOverThere() {
     	
     }
     
+    public void lieDown() {
+    	if(asleep) {
+    		System.out.println("You might find out what is going on if you are awake.");
+    		return;
+    	}
+    	if(prone) System.out.println("You are already lying down.");
+    	
+    	else if(sitting || standing) {
+    		this.prone = true;
+    		this.sitting = false;
+    		this.standing = false;
+    		System.out.println("You lie down.");
+    	}
+    }
+    
+    public void sleep() {
+    	if(asleep) System.out.println("You are already sleeping.");
+    	else if(standing) {
+    		System.out.println("You cannot sleep standing up.");
+    	}
+    	else if(sitting || prone) {
+    		asleep = true;
+    		System.out.println("You nod off and fall asleep.");
+    	}
+    		
+    	
+    }
+    
+    public void wake() {
+    	if(asleep) {
+    		asleep = false;
+    		System.out.println("You wake up.");
+    	}
+    }
+    
     public void closeDoor(String inputString){
+    	if(asleep) {
+    		System.out.println("Try that while you are awake next time.");
+    		return;
+    	}
     	if(inputString.substring(6,10).equals("door") && (inputString.substring(11).equals("n") || inputString.substring(11).equals("north"))){
             for(Door door : currentRoom.getDoors()){
             if(door.getDoorDir().equals("north") && !door.getOpened()){
