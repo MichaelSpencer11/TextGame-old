@@ -28,6 +28,9 @@ public class Input{
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("open")){
                 thisPlayer.open(inputString);
             }
+            else if(inputString.length() > 3 && inputString.substring(0,5).equals("close")){
+                thisPlayer.closeDoor(inputString);
+            }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("take")) {
             	thisPlayer.take(inputString);
             }

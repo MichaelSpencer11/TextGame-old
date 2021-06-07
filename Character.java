@@ -1276,9 +1276,199 @@ public String nothingOverThere() {
     	
     }
     
-    public void closeDoor(Door door){
-        door.setClosed();
-        System.out.println("You close the door.");
+    public void closeDoor(String inputString){
+    	if(inputString.substring(6,10).equals("door") && (inputString.substring(11).equals("n") || inputString.substring(11).equals("north"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("north") && !door.getOpened()){
+                System.out.println("The door to the north is already closed.");
+                return;
+            }
+            else if(door.getDoorDir().equals("north") && door.getOpened()){
+                System.out.println("You close the door to the north.");
+                door.setClosed();
+                for (Door d : currentRoom.getnRoom().getDoors()) {
+                	if(d.getDoorDir().equals("south")) {
+                		d.setClosed();
+                	}
+                }
+                return;
+            }
+
+            }
+        }
+    	
+    	else if(inputString.substring(6,10).equals("door") && (inputString.substring(11).equals("ne") || inputString.substring(11).equals("northeast"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("northeast") && !door.getOpened()){
+                System.out.println("The door to the northeast is already closed.");
+                return;
+            }
+            else if(door.getDoorDir().equals("northeast") && door.getOpened()){
+                System.out.println("You close the door to the northeast.");
+                door.setClosed();
+                for (Door d : currentRoom.getNeRoom().getDoors()) {
+                	if(d.getDoorDir().equals("southwest")) {
+                		d.setClosed();
+                	}
+                }
+                return;
+            }
+
+            }
+        }
+    	else if(inputString.substring(6,10).equals("door") && (inputString.substring(11).equals("e") || inputString.substring(11).equals("east"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("east") && !door.getOpened()){
+                System.out.println("The door to the east is already closed.");
+                return;
+            }
+            else if(door.getDoorDir().equals("east") && door.getOpened()){
+                System.out.println("You close the door to the east.");
+                door.setClosed();
+                for (Door d : currentRoom.geteRoom().getDoors()) {
+                	if(d.getDoorDir().equals("west")) {
+                		d.setClosed();
+                	}
+                }
+                return;
+            }
+
+            }
+        }
+    	else if(inputString.substring(6,10).equals("door") && (inputString.substring(11).equals("se") || inputString.substring(11).equals("southeast"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("southeast") && !door.getOpened()){
+                System.out.println("The door to the southeast is already closed.");
+                return;
+            }
+            else if(door.getDoorDir().equals("southeast") && door.getOpened()){
+                System.out.println("You close the door to the southeast.");
+                door.setClosed();
+                for (Door d : currentRoom.getSeRoom().getDoors()) {
+                	if(d.getDoorDir().equals("northwest")) {
+                		d.setClosed();
+                	}
+                }
+                return;
+            }
+
+            }
+        }
+    	else if(inputString.substring(6,10).equals("door") && (inputString.substring(11).equals("s") || inputString.substring(11).equals("south"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("south") && !door.getOpened()){
+                System.out.println("The door to the south is already closed.");
+                return;
+            }
+            else if(door.getDoorDir().equals("south") && door.getOpened()){
+                System.out.println("You close the door to the south.");
+                door.setClosed();
+                for (Door d : currentRoom.getSeRoom().getDoors()) {
+                	if(d.getDoorDir().equals("north")) {
+                		d.setClosed();
+                	}
+                }
+                return;
+            }
+
+            }
+        }
+    	else if(inputString.substring(6,10).equals("door") && (inputString.substring(11).equals("sw") || inputString.substring(11).equals("southwest"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("southwest") && !door.getOpened()){
+                System.out.println("The door to the southwest is already closed.");
+                return;
+            }
+            else if(door.getDoorDir().equals("southwest") && door.getOpened()){
+                System.out.println("You close the door to the southwest.");
+                door.setClosed();
+                for (Door d : currentRoom.getSwRoom().getDoors()) {
+                	if(d.getDoorDir().equals("northeast")) {
+                		d.setClosed();
+                	}
+                }
+                return;
+            }
+
+            }
+        }
+    	else if(inputString.substring(6,10).equals("door") && (inputString.substring(11).equals("w") || inputString.substring(11).equals("west"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("west") && !door.getOpened()){
+                System.out.println("The door to the west is already closed.");
+                return;
+            }
+            else if(door.getDoorDir().equals("west") && door.getOpened()){
+                System.out.println("You close the door to the west.");
+                door.setClosed();
+                for (Door d : currentRoom.getwRoom().getDoors()) {
+                	if(d.getDoorDir().equals("east")) {
+                		d.setClosed();
+                	}
+                }
+                return;
+            }
+
+            }
+        }
+    	else if(inputString.substring(6,10).equals("door") && (inputString.substring(11).equals("nw") || inputString.substring(11).equals("northwest"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("northwest") && !door.getOpened()){
+                System.out.println("The door to the northwest is already closed.");
+                return;
+            }
+            else if(door.getDoorDir().equals("northwest") && door.getOpened()){
+                System.out.println("You close the door to the northwest.");
+                door.setClosed();
+                for (Door d : currentRoom.getNwRoom().getDoors()) {
+                	if(d.getDoorDir().equals("southeast")) {
+                		d.setClosed();
+                	}
+                }
+                return;
+            }
+
+            }
+        }
+    	else if(inputString.substring(6,10).equals("door") && (inputString.substring(11).equals("u") || inputString.substring(11).equals("up"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("up") && !door.getOpened()){
+                System.out.println("The door above is already closed.");
+                return;
+            }
+            else if(door.getDoorDir().equals("up") && door.getOpened()){
+                System.out.println("You close the door above.");
+                door.setClosed();
+                for (Door d : currentRoom.getuRoom().getDoors()) {
+                	if(d.getDoorDir().equals("down")) {
+                		d.setClosed();
+                	}
+                }
+                return;
+            }
+
+            }
+        }
+    	else if(inputString.substring(6,10).equals("door") && (inputString.substring(11).equals("d") || inputString.substring(11).equals("down"))){
+            for(Door door : currentRoom.getDoors()){
+            if(door.getDoorDir().equals("down") && !door.getOpened()){
+                System.out.println("The door below is already closed.");
+                return;
+            }
+            else if(door.getDoorDir().equals("down") && door.getOpened()){
+                System.out.println("You close the door below.");
+                door.setClosed();
+                for (Door d : currentRoom.getdRoom().getDoors()) {
+                	if(d.getDoorDir().equals("up")) {
+                		d.setClosed();
+                	}
+                }
+                return;
+            }
+
+            }
+        }
+    	
     }
 
     public void setCurrentRoom(Room newRoom) {
