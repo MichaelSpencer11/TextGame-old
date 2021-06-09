@@ -1,5 +1,8 @@
+import java.util.ArrayList;
 
 public class World {
+	
+	private static ArrayList<Room> globalRoomList = new ArrayList<Room>();
 	
 
 	public static String aAn(String thing) {
@@ -23,6 +26,11 @@ public class World {
 		return "An";
 		} else return "A";
 		}
+		
+		public static void setAllRoomsUnchecked() {
+			
+		}
+		
 
 
 		//this creates the world and begins the game. This is where you will place all the things to go in the world.
@@ -51,11 +59,19 @@ public class World {
 		        Item redRing = new Ring("red ring", false, "A simple lookinng red ring.", "This ring seems to be made out of some fiery red substance.", playerCloset);
 		        Item desk = new Desk("desk", "Your wooden desk in your room. It has a few nicks in the finish but is very sturdy.", room);
 		        Player player = new Player(room);
-		        Character familiar = new Familiar("Someone is standing or floating here, it is very hard to see them, they are almost not there but you know that there is definitely a presence here.", room);
+		        Character familiar = new Familiar("Someone is standing or floating here, it is very hard to see them, they are almost not there but you know that there is definitely a presence here.", room, player);
 		        Character practiceRobot = new Automaton("An ordinary looking automaton with mechanical limbs and a rudimentary programmed action stack. It is currently sitting in a corner non-functionally." , room);
 		        System.out.println("Hi, welcome. Please 'look' or 'l' to look around the room. 'Take' some items and 'equip', 'unequip', and 'drop' them. Type 'help' to get some." );
 		        Input input = new Input(player);
 		        input.input();
 }
+		
+		public ArrayList<Room> getGlobalRoomList(){
+			return globalRoomList;
+		}
+		
+		public static void addRoomToGlobalRoomList(Room room) {
+			globalRoomList.add(room);
+		}
 		
 }		

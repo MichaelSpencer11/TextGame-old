@@ -14,6 +14,7 @@ public class Room {
     private ArrayList<String> dirs;
     private ArrayList<Item> inventory;
     protected ArrayList<Character> people;
+    private boolean checked;
     
     private boolean hasN;
     private boolean hasNE;
@@ -400,7 +401,7 @@ public class Room {
     	
     	
     	createDoors(doors);
-    	
+    	World.addRoomToGlobalRoomList(this);
     }
     
     //print items in the room
@@ -703,6 +704,13 @@ public class Room {
 		return adjacentRooms;
 	}
 
+	public boolean getChecked() {
+		return checked;
+	}
+	
+	public void setChecked(boolean status) {
+		checked = status;
+	}
 
 
 	//public void setHasDirs(ArrayList<Boolean> hasDirs) {

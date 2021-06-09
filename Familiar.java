@@ -6,8 +6,9 @@ public class Familiar extends Character{
 	
 	private int famStoryCount = 0;
 	private boolean following;
+	private Player player;
 	
-	public Familiar(String description, Room firstRoom){
+	public Familiar(String description, Room firstRoom, Player player){
 		this.name = "someone";
 		this.type = this.typeToString();
 		this.description = description;
@@ -20,6 +21,8 @@ public class Familiar extends Character{
         this.floating = true;
         this.currentRoom = firstRoom;
         this.currentRoom.people.add(this);
+        player.familiar = this;
+        this.player = player;
         
         
     }
@@ -52,7 +55,26 @@ public class Familiar extends Character{
 	
 	//public void goToPlayer() {}
 	
-	//public Character findPlayer() {}
+	public Room findPlayer(Room currentRoom) {
+		return this.checkRoom(currentRoom);
+	}
+	
+	public Room checkRoom(Room room) {
+		for(Character c : room.people) {
+			if(c.typeToString().equals("Player")) {
+				World.setAllRoomsUnchecked();
+				System.out.println(player.currentRoom.getDescription());
+				return room;
+			}
+			else {
+				for(Room r : room.getAdjacentRooms()) {
+					this.checkRoom(r);
+				}
+			}
+		}
+		return null;
+		
+	}
 	
 	
 	

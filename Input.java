@@ -16,6 +16,10 @@ public class Input{
             if(inputString.equals("")){
                 continue;
             }
+            //there is a problem with the order of the input calls
+            //if they are in the wrong order, the wrong method will get called
+            //if more conflicts happen later, we can use some intermediate
+            //routing for these method calls
             else if (inputString.length() > 3 && inputString.substring(0,4).equals("look")){
                 thisPlayer.look(inputString);
             }
@@ -25,11 +29,17 @@ public class Input{
             else if (inputString.length() > 3 && inputString.substring(0,4).equals("exit")){
                 System.exit(0);
             }
+            else if(inputString.length() > 3 && inputString.substring(0,4).equals("wake")) {
+            	thisPlayer.wake();
+            }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("open")){
                 thisPlayer.open(inputString);
             }
             else if(inputString.length() > 3 && inputString.substring(0,5).equals("close")){
                 thisPlayer.closeDoor(inputString);
+            }
+            else if(inputString.length() > 3 && inputString.substring(0,7).equals("find me")){
+                thisPlayer.findMe();
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("take")) {
             	thisPlayer.take(inputString);
@@ -48,6 +58,9 @@ public class Input{
             }
             else if (inputString.length() > 3 && inputString.substring(0,5).equals("sleep")) {
             	thisPlayer.sleep();
+            }
+            else if(inputString.length() > 3 && inputString.substring(0,8).equals("lie down")) {
+            	thisPlayer.lieDown();
             }
             else if(inputString.length() > 3 && inputString.substring(0,5).equals("equip")) {
             	thisPlayer.equip(inputString);

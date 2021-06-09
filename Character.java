@@ -120,37 +120,38 @@ public class Character {
         currentRoom.printItems();
         currentRoom.printChars();
         //currentRoom.printDoors();
+        if(currentRoom.getDoors().isEmpty()) {
+        	for (String s : currentRoom.getDirs()) {
+        		if (s.equals("up")) {
+        			System.out.println("There is a way above.");
+        		}
+        		else if (s.equals("down")) {
+        			System.out.println("There is a way down.");
+        		}
+        		else {
+        			System.out.println("There is a way to the " + s + ".");
+        		}
+        	}
+        }
+        else {
         for (String s : currentRoom.getDirs()){
-        	if(s.equals("up")) {
-        		for (Door d : currentRoom.getDoors()) {
-        			if(!d.getDoorDir().equals(s)) {
-        				System.out.println("There is a way up.");
-        			}
-        			else {
-        				System.out.println("There is " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door directly above.");
-        			}
+        	for(Door d : currentRoom.getDoors()) {
+        		if (d.getDoorDir().equals(s)) {
+        			System.out.println("There is " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door to the " + d.getDoorDir() + ".");
+        		}
+        		else {
+        			if (s.equals("up")) {
+            			System.out.println("There is a way above.");
+            		}
+            		else if (s.equals("down")) {
+            			System.out.println("There is a way down.");
+            		}
+            		else {
+            			System.out.println("There is a way to the " + s + ".");
+            		}
         		}
         	}
-        	else if(s.equals("down")) {
-        		for (Door d : currentRoom.getDoors()) {
-        			if(!d.getDoorDir().equals(s)) {
-        				System.out.println("There is a way down.");
-        			}
-        			else {
-        				System.out.println("There is " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + "door on the floor.");
-        			}
-        		}
-        	}
-        	else {
-        		for(Door d : currentRoom.getDoors()) {
-        			if(d.getDoorDir().equals(s)) {
-        				System.out.println("There is " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door to the " + s + ".");
-        			}
-        			else {
-        				System.out.println("There is a way to the " + s + ".");
-        			}
-        		}
-        	}
+        }
         }
         return;
         }
@@ -1564,6 +1565,10 @@ public String nothingOverThere() {
             }
         }
     	
+    }
+    
+    public void findMe() {
+    	familiar.findPlayer(familiar.currentRoom);
     }
 
     public void setCurrentRoom(Room newRoom) {
