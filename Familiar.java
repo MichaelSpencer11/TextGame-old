@@ -63,7 +63,7 @@ public class Familiar extends Character{
 		for(Character c : room.people) {
 			if(c.typeToString().equals("Player")) {
 				World.setAllRoomsUnchecked();
-				System.out.println(player.currentRoom.getDescription());
+				System.out.println(c.currentRoom.getDescription());
 				return room;
 			}
 			else {

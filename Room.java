@@ -167,6 +167,8 @@ public class Room {
     		}
     		this.hasN = true;
     		this.dirs.add("north");
+    		this.adjacentRooms.add(nRoom);
+    		nRoom.adjacentRooms.add(this);
     	}
     	this.neRoom = room2;
     	if(neRoom != null) {
@@ -177,6 +179,8 @@ public class Room {
     		}
     		this.hasNE = true;
     		this.dirs.add("northeast");
+    		this.adjacentRooms.add(neRoom);
+    		neRoom.adjacentRooms.add(this);
     	}
     	this.eRoom = room3;
     	if(eRoom != null) {
@@ -187,6 +191,8 @@ public class Room {
     		}
     		this.hasE = true;
     		this.dirs.add("east");
+    		this.adjacentRooms.add(eRoom);
+    		eRoom.adjacentRooms.add(this);
     	}
     	this.seRoom = room4;
     	if(seRoom != null) {
@@ -197,6 +203,8 @@ public class Room {
     		}
     		this.hasSE = true;
     		this.dirs.add("southeast");
+    		this.adjacentRooms.add(seRoom);
+    		seRoom.adjacentRooms.add(this);
     	}
     	this.sRoom = room5;
     	if(sRoom != null) {
@@ -207,6 +215,8 @@ public class Room {
     		}
     		this.hasS = true;
     		this.dirs.add("south");
+    		this.adjacentRooms.add(sRoom);
+    		sRoom.adjacentRooms.add(this);
     	}
     	this.swRoom = room6;
     	if(swRoom != null) {
@@ -217,6 +227,8 @@ public class Room {
     		}
     		this.hasSW = true;
     		this.dirs.add("southwest");
+    		this.adjacentRooms.add(swRoom);
+    		swRoom.adjacentRooms.add(this);
     	}
     	this.wRoom = room7;
     	if(wRoom != null) {
@@ -227,6 +239,8 @@ public class Room {
     		}
     		this.hasW = true;
     		this.dirs.add("west");
+    		this.adjacentRooms.add(wRoom);
+    		wRoom.adjacentRooms.add(this);
     	}
     	this.nwRoom = room8;
     	if(nwRoom != null) {
@@ -237,6 +251,8 @@ public class Room {
     		}
     		this.hasNW = true;
     		this.dirs.add("northwest");
+    		this.adjacentRooms.add(nwRoom);
+    		nwRoom.adjacentRooms.add(this);
     	}
     	this.uRoom = room9;
     	if(uRoom != null) {
@@ -247,6 +263,8 @@ public class Room {
     		}
     		this.hasU = true;
     		this.dirs.add("up");
+    		this.adjacentRooms.add(uRoom);
+    		uRoom.adjacentRooms.add(this);
     	}
     	this.dRoom = room10;
     	if(dRoom != null) {
@@ -257,6 +275,8 @@ public class Room {
     		}
     		this.hasD = true;
     		this.dirs.add("down");
+    		this.adjacentRooms.add(dRoom);
+    		dRoom.adjacentRooms.add(this);
     	}
     	
     }	
@@ -307,6 +327,8 @@ public class Room {
     		}
     		this.hasN = true;
     		this.dirs.add("north");
+    		this.adjacentRooms.add(nRoom);
+    		nRoom.adjacentRooms.add(this);
     	}
     	this.neRoom = room2;
     	if(neRoom != null) {
@@ -317,6 +339,8 @@ public class Room {
     		}
     		this.hasNE = true;
     		this.dirs.add("northeast");
+    		this.adjacentRooms.add(neRoom);
+    		neRoom.adjacentRooms.add(this);
     	}
     	this.eRoom = room3;
     	if(eRoom != null) {
@@ -327,6 +351,8 @@ public class Room {
     		}
     		this.hasE = true;
     		this.dirs.add("east");
+    		this.adjacentRooms.add(eRoom);
+    		eRoom.adjacentRooms.add(this);
     	}
     	this.seRoom = room4;
     	if(seRoom != null) {
@@ -337,6 +363,8 @@ public class Room {
     		}
     		this.hasSE = true;
     		this.dirs.add("southeast");
+    		this.adjacentRooms.add(seRoom);
+    		seRoom.adjacentRooms.add(this);
     	}
     	this.sRoom = room5;
     	if(sRoom != null) {
@@ -347,6 +375,8 @@ public class Room {
     		}
     		this.hasS = true;
     		this.dirs.add("south");
+    		this.adjacentRooms.add(sRoom);
+    		sRoom.adjacentRooms.add(this);
     	}
     	this.swRoom = room6;
     	if(swRoom != null) {
@@ -357,6 +387,8 @@ public class Room {
     		}
     		this.hasSW = true;
     		this.dirs.add("southwest");
+    		this.adjacentRooms.add(swRoom);
+    		swRoom.adjacentRooms.add(this);
     	}
     	this.wRoom = room7;
     	if(wRoom != null) {
@@ -367,6 +399,8 @@ public class Room {
     		}
     		this.hasW = true;
     		this.dirs.add("west");
+    		this.adjacentRooms.add(wRoom);
+    		wRoom.adjacentRooms.add(this);
     	}
     	this.nwRoom = room8;
     	if(nwRoom != null) {
@@ -377,6 +411,8 @@ public class Room {
     		}
     		this.hasNW = true;
     		this.dirs.add("northwest");
+    		this.adjacentRooms.add(nwRoom);
+    		nwRoom.adjacentRooms.add(this);
     	}
     	this.uRoom = room9;
     	if(uRoom != null) {
@@ -387,6 +423,8 @@ public class Room {
     		}
     		this.hasU = true;
     		this.dirs.add("up");
+    		this.adjacentRooms.add(uRoom);
+    		uRoom.adjacentRooms.add(this);
     	}
     	this.dRoom = room10;
     	if(dRoom != null) {
@@ -397,6 +435,8 @@ public class Room {
     		}
     		this.hasD = true;
     		this.dirs.add("down");
+    		this.adjacentRooms.add(dRoom);
+    		dRoom.adjacentRooms.add(this);
     	}
     	
     	
@@ -434,6 +474,12 @@ public class Room {
     				System.out.println(c.name.substring(1) + " is here.");
     			}
     		}
+    	}
+    }
+    
+    public void printAdjRooms() {
+    	for(Room r : this.adjacentRooms) {
+    		System.out.println(r);
     	}
     }
     

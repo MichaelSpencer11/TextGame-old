@@ -119,6 +119,7 @@ public class Character {
         System.out.println("This area seems to be " + World.aAn(currentRoom.getTerrainType()) + " " + currentRoom.getTerrainType() + " area.");
         currentRoom.printItems();
         currentRoom.printChars();
+        currentRoom.printAdjRooms();
         //currentRoom.printDoors();
         if(currentRoom.getDoors().isEmpty()) {
         	for (String s : currentRoom.getDirs()) {
