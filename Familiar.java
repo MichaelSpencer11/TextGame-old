@@ -67,8 +67,11 @@ public class Familiar extends Character{
 				return room;
 			}
 			else {
+				room.setChecked(true);
 				for(Room r : room.getAdjacentRooms()) {
-					this.checkRoom(r);
+					if(r.getChecked() == false) {
+						this.checkRoom(r);
+					}
 				}
 			}
 		}

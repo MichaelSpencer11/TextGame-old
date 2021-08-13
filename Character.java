@@ -121,6 +121,7 @@ public class Character {
         currentRoom.printChars();
         currentRoom.printAdjRooms();
         //currentRoom.printDoors();
+        /*
         if(currentRoom.getDoors().isEmpty()) {
         	for (String s : currentRoom.getDirs()) {
         		if (s.equals("up")) {
@@ -154,6 +155,8 @@ public class Character {
         	}
         }
         }
+        */
+        
         return;
         }
         
@@ -187,7 +190,7 @@ public class Character {
         }
         
         
-        //there were doors early on but now they're gone, they may come back sometimes and later
+        
         
         /*
         if(currentRoom.getDoorsNum() == 1 && inputString.equals("look door")){

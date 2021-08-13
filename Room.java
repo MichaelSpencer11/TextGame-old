@@ -3,6 +3,7 @@ import java.util.*;
 //the world is made of rooms so this one is pretty important
 public class Room {
 	private int roomId;
+	private String name;
 	public static int RoomIdTracker;
     //private enum dirs{N, NE, E, SE, S, SW, W, NW, U, D};
     public enum Terrain{rocky, wetland, field, interior, grass, forest, snow, town };
@@ -15,6 +16,7 @@ public class Room {
     private ArrayList<Item> inventory;
     protected ArrayList<Character> people;
     private boolean checked;
+    private boolean hasDoors;
     
     private boolean hasN;
     private boolean hasNE;
@@ -43,8 +45,9 @@ public class Room {
     //Maybe don't use this constructor as it makes a room with no connections
     //Still works. Room1 is one of these
     //a room will retroactively make a connection to a new room that is connected to it
-    public Room(String terrainType, String desc, String... dirs) {
+    public Room(String terrainType, String name, String desc, String... dirs) {
     	//initialize the vars for Room
+    	this.name = name;
     	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
@@ -125,8 +128,9 @@ public class Room {
     
     
     //Use this one for rooms without doors, put null for rooms that aren't there
-    public Room(String terrainType, String desc, Room room1, Room room2, Room room3, Room room4, Room room5,
+    public Room(String terrainType, String name,String desc, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, Room room7, Room room8, Room room9, Room room10){
+    	this.name = name;
     	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
@@ -282,8 +286,9 @@ public class Room {
     }	
     	
     //Constructor of room with doors
-    public Room(String terrainType, String desc, Room room1, Room room2, Room room3, Room room4, Room room5,
+    public Room(String terrainType, String name,String desc, Room room1, Room room2, Room room3, Room room4, Room room5,
     		Room room6, Room room7, Room room8, Room room9, Room room10, Door[] doors){
+    	this.name = name;
     	this.people = new ArrayList<Character>();
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
@@ -293,6 +298,7 @@ public class Room {
     	for(Door d : doors) {
     		this.doors.add(d);
     	}
+    	this.hasDoors = true;
     	if(terrainType.equals("rocky")){
             this.roomTerrain = Terrain.rocky;
         }
@@ -477,11 +483,96 @@ public class Room {
     	}
     }
     
-    public void printAdjRooms() {
+    //work on this
+    public void printAdjRooms() {	
     	for(Room r : this.adjacentRooms) {
-    		System.out.println(r);
-    	}
+    		for(Door d : this.doors) {
+    				if(d.getDoorDir().equals("north")) {
+    					System.out.println(r.name + " is behind " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door to the north.");
+    					break;
+    				}
+    				else if(r == this.nRoom) {
+    					System.out.println(r.name + " is to the north.");
+    					break;
+    				}
+    				if(d.getDoorDir().equals("northeast")) {
+    					System.out.println(r.name + " is behind " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door to the northeast.");
+    					break;
+    				}
+    				else if(r == this.neRoom) {
+    					System.out.println(r.name + " is to the northeast.");
+    					break;
+    				}
+    				if(d.getDoorDir().equals("east")) {
+    					System.out.println(r.name + " is behind " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door to the east.");
+    					break;
+    				}
+    				else if(r == this.eRoom) {
+    					System.out.println(r.name + " is to the east.");
+    					break;
+    				}
+    				if(d.getDoorDir().equals("southeast")) {
+    					System.out.println(r.name + " is behind " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door to the southeast.");
+    					break;
+    				}
+    				else if(r == this.seRoom) {
+    					System.out.println(r.name + " is to the southeast.");
+    					break;
+    				}
+    				if(d.getDoorDir().equals("south")) {
+    					System.out.println(r.name + " is behind " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door to the south.");
+    					break;
+    				}
+    				else if(r == this.sRoom) {
+    					System.out.println(r.name + " is to the south.");
+    					break;
+    				}
+    				if(d.getDoorDir().equals("southwest")) {
+    					System.out.println(r.name + " is behind " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door to the southwest.");
+    					break;
+    				}
+    				else if(r == this.swRoom) {
+    					System.out.println(r.name + " is to the southwest.");
+    					break;
+    				}
+    				if(d.getDoorDir().equals("west")) {
+    					System.out.println(r.name + " is behind " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door to the west.");
+    					break;
+    				}
+    				else if(r == this.wRoom) {
+    					System.out.println(r.name + " is to the west.");
+    					break;
+    				}
+    				if(d.getDoorDir().equals("northwest")) {
+    					System.out.println(r.name + " is behind " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door to the northwest.");
+    					break;
+    				}
+    				else if(r == this.nwRoom) {
+    					System.out.println(r.name + " is to the northwest.");
+    					break;
+    				}
+    				if(d.getDoorDir().equals("up")) {
+    					System.out.println(r.name + " is behind " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door above.");
+    					break;
+    				}
+    				else if(r == this.uRoom) {
+    					System.out.println(r.name + " is above.");
+    					break;
+    				}
+    				if(d.getDoorDir().equals("down")) {
+    					System.out.println(r.name + " is behind " + World.aAn(d.getOpenedString()) + " " + d.getOpenedString() + " door below.");
+    					break;
+    				}
+    				else if(r == this.dRoom) {
+    					System.out.println(r.name + " is below.");
+    					break;
+    				}
+    		
+    			}
+    		
+    		}
     }
+    	    
     
     public void createDoors(Door[] doors){
     	for (Door d : doors) {
