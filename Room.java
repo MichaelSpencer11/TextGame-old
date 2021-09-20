@@ -476,8 +476,7 @@ public class Room {
     				System.out.println(World.capAAn(c.type) + " " + c.typeToString().toLowerCase() + " is here.");
     			}
     			else {
-    				System.out.print(c.name.substring(0,1).toUpperCase());
-    				System.out.println(c.name.substring(1) + " is here.");
+    				System.out.println(c.name.substring(0,1).toUpperCase() + c.name.substring(1) + " is here.");
     			}
     		}
     	}

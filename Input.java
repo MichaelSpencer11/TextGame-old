@@ -29,6 +29,9 @@ public class Input{
             else if (inputString.length() > 3 && inputString.substring(0,4).equals("exit")){
                 System.exit(0);
             }
+            else if (inputString.length() > 3 && inputString.substring(0,thisPlayer.familiar.getName().length()).equals(thisPlayer.familiar.getName())){
+                thisPlayer.familiar.buddyRequest(inputString);
+            }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("wake")) {
             	thisPlayer.wake();
             }
@@ -38,8 +41,8 @@ public class Input{
             else if(inputString.length() > 3 && inputString.substring(0,5).equals("close")){
                 thisPlayer.closeDoor(inputString);
             }
-            else if(inputString.length() > 3 && inputString.substring(0,7).equals("find me")){
-                thisPlayer.findMe();
+            else if(inputString.length() > 3 && inputString.substring(0,6).equals("summon")){
+                thisPlayer.comeToMe();
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("take")) {
             	thisPlayer.take(inputString);

@@ -24,6 +24,7 @@ public class Character {
     protected boolean floating;
     protected boolean following;
     protected boolean asleep;
+    protected boolean solid;
     
     //stats
     protected int str;
@@ -170,7 +171,7 @@ public class Character {
         
         //looking at Characters in the room
         for (Character c : currentRoom.getPeople()) {
-        	if(inputString.substring(5).equals(c.name) || 
+        	if(inputString.substring(5).toLowerCase().equals(c.name.toLowerCase()) || 
         			inputString.substring(5).equals(c.typeToString().toLowerCase())) {
         		 System.out.println(c.getDescription());
         		 return;
@@ -1202,6 +1203,7 @@ public String nothingOverThere() {
     public void talk(String inputString) {
     	if(asleep) {
     		System.out.println("You mumble something in your sleep.");
+    		//lets build this area out into some unlockable
     		return;
     	}
     	if(inputString.equals("talk")) {
@@ -1215,7 +1217,7 @@ public String nothingOverThere() {
     	}
     	else {
     		for (Character c : currentRoom.getPeople()) {
-    			if(inputString.substring(inputString.indexOf("to") + 3).toLowerCase().equals(c.getName())){
+    			if((inputString.substring(inputString.indexOf("to") + 3).toLowerCase().equals(c.getName().toLowerCase())) || inputString.substring(inputString.indexOf("talk") + 5).toLowerCase().equals(c.getName().toLowerCase())){
     				c.talk();
     			}
     		}
@@ -1571,8 +1573,8 @@ public String nothingOverThere() {
     	
     }
     
-    public void findMe() {
-    	familiar.findPlayer(familiar.currentRoom);
+    public void comeToMe() {
+    	familiar.goToPlayer();
     }
 
     public void setCurrentRoom(Room newRoom) {
