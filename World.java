@@ -10,8 +10,7 @@ public class World {
 		thing.toLowerCase().startsWith("e") ||
 		thing.toLowerCase().startsWith("i") ||
 		thing.toLowerCase().startsWith("o") ||
-		thing.toLowerCase().startsWith("u") ||
-		thing.toLowerCase().startsWith("y")){
+		thing.toLowerCase().startsWith("u")) {
 		return "an";
 		} else return "a";
 		}
@@ -21,8 +20,7 @@ public class World {
 		thing.toLowerCase().startsWith("e") ||
 		thing.toLowerCase().startsWith("i") ||
 		thing.toLowerCase().startsWith("o") ||
-		thing.toLowerCase().startsWith("u") ||
-		thing.toLowerCase().startsWith("y")){
+		thing.toLowerCase().startsWith("u")){
 		return "An";
 		} else return "A";
 		}
@@ -39,14 +37,18 @@ public class World {
 			
 			    
 		        Room room = new Room("interior", "Your room","This is your room. Your twin size bed is against one wall. Your desk is against another. There is a black computer monitor, a keyboard and a mouse on the desk.", null, null, null, null, null, null, null, null, null, null);
+		        Item yourBed = new Bed("Your bed", "A basic twin four post bed. It is a little squeaky but pretty comfortable.", room);
 		        Door[] doors = {new Door("east")};
 		        Room playerCloset = new Room("interior", "Your closet","Your walk-in closet. There are clothes hanging up in the closet and some on the floor neatly placed under the racks.", null, null, room, null, null, null, null, null, null, null, doors);
-		        Room hallwayStairs = new Room("interior", "Hallway stairs","The upstairs hallway in your home. There is a stairway here that goes down.", room, null, null,null,null,null,null,null,null,null);
+		        Room hallwayStairs = new Room("interior", " The hallway stairs","The upstairs hallway in your home. There is a stairway here that goes down.", room, null, null,null,null,null,null,null,null,null);
 		        Room hallway = new Room("interior", "A hallway","The upstairs hallway in your house. There is a bannister next to the staircase and a way to the bathroom and your parents' room.", null, null, null, null, null, null, hallwayStairs, null, null, null);
 		        Room bathroom = new Room("interior", "A bathroom" ,"The upstairs bathroom in your house. There is a large garden tub, a toilet and a sink. The room is decorated in floral drapes and leafy brown towels.", null, null, null, null, hallway, null, null, null, null, null);
 		        Room parentsRoom = new Room("interior", "Your parents' room","Your parents' master bedroom. There is a king size bed with end tables and a dresser.", null, null, null, null, null, null, hallway, null, null, null);
 		        Room stairway = new Room("interior", "A stairway","The bottom of the stairway at your house. The stairs are carpeted with a thick woolish material and are alternating tan and brown.", null, null, null, null, null, null, null, null, hallwayStairs, null);
-		        
+		        Room kitchen = new Room("interior", "The kitchen", "The kitchen looks modern, with muted colors for cabinets and a slate grey backsplash. There is also a kitchen island.", null, null, null, null, stairway, null, null, null, null, null, null);
+		        Room livingRoom = new Room("interior", "The living room", "The living room feels very comfortable, with couches and pillows and blankets. Potted plants line the walls and windows. There is a lot of light in the room.", null, null, null, null, null, null, null, null, null, null);
+		        Room diningRoom = new Room("interior", "The dining room", "An oakwood dinner table is in the center of the room, surrounded by four folding chairs.", null, null, null, null, livingRoom, null, kitchen, null, null, null );
+		        Room garage = new Room("interior", "The garage", "The family car is in here, as well as some storage containers.", null, null, null, null, null, null, livingRoom, null, null, null);
 		        
 		        Item practiceStaff = new Tool("wooden staff", "A wooden practice staff. It has a few nicks and cuts in it and is quite worn.", "The staff feels as heavy as a metal staff in your hand, but it is still made out of wood.", playerCloset);
 		        Item practicesword = new Tool("wooden sword", "A wooden practice sword. It has a few nicks and cuts in it and is quite worn.", "The sword feels as heavy as a metal sword in your hand, but it is still made out of wood.", playerCloset);

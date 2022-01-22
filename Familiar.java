@@ -61,19 +61,19 @@ public class Familiar extends Character{
 	}
 	
 	public void buddyRequest(String inputString) {
-		if(inputString.substring(inputString.indexOf("please") + 8).equals("float")) {
+		if(inputString.substring(inputString.indexOf("please") + 7).equals("float")) {
 			this.setFloating();
 			return;
 		}
-		if(inputString.substring(inputString.indexOf("please") + 8).equals("stand")){
+		if(inputString.substring(inputString.indexOf("please") + 7).equals("stand")){
 			this.setStanding();
 			return;
 		}
-		if(inputString.substring(inputString.indexOf("please") + 8).equals("be solid")){
+		if(inputString.substring(inputString.indexOf("please") + 7).equals("be solid")){
 			this.setSolid();
 			return;
 		}
-		if(inputString.substring(inputString.indexOf("please") + 8).equals("be nonsolid")){
+		if(inputString.substring(inputString.indexOf("please") + 7).equals("be nonsolid")){
 			this.setNonsolid();
 			return;
 		}
@@ -85,6 +85,7 @@ public class Familiar extends Character{
 		this.currentRoom = this.player.currentRoom;
 		currentRoom.people.add(this);
 		System.out.println(this.name + " enters the area.");
+		System.out.println(this.name + ": I'm here!");
 	}
 	
 	public void setFloating() {

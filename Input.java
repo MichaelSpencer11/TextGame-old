@@ -29,7 +29,7 @@ public class Input{
             else if (inputString.length() > 3 && inputString.substring(0,4).equals("exit")){
                 System.exit(0);
             }
-            else if (inputString.length() > 3 && inputString.substring(0,thisPlayer.familiar.getName().length()).equals(thisPlayer.familiar.getName())){
+            else if (inputString.length() > 3 && inputString.substring(0,thisPlayer.familiar.getName().length()).toLowerCase().equals(thisPlayer.familiar.getName().toLowerCase())){
                 thisPlayer.familiar.buddyRequest(inputString);
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("wake")) {
@@ -41,11 +41,14 @@ public class Input{
             else if(inputString.length() > 3 && inputString.substring(0,5).equals("close")){
                 thisPlayer.closeDoor(inputString);
             }
-            else if(inputString.length() > 3 && inputString.substring(0,6).equals("summon")){
-                thisPlayer.comeToMe();
+            else if(inputString.length() > 3 && inputString.substring(0,4).equals("call")){
+                thisPlayer.familiar.goToPlayer();
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("take")) {
             	thisPlayer.take(inputString);
+            }
+            else if(inputString.length() > 3 && inputString.substring(0).equals("lie in bed")){
+            	thisPlayer.lieInBed();
             }
             else if(inputString.length() > 3 && inputString.substring(0,4).equals("help")) {
             	thisPlayer.help(inputString);

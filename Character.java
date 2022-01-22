@@ -25,6 +25,7 @@ public class Character {
     protected boolean following;
     protected boolean asleep;
     protected boolean solid;
+    protected boolean inBed;
     
     //stats
     protected int str;
@@ -1571,6 +1572,12 @@ public String nothingOverThere() {
             }
         }
     	
+    }
+    
+    public void lieInBed() {
+    	System.out.println("You lie down in bed.");
+    	this.inBed = true;
+    	this.prone = true;
     }
     
     public void comeToMe() {
