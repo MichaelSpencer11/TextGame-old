@@ -18,4 +18,4 @@ port to ASP.NET CORE and C# just to see if we can
 use ASP.NET CORE MVC, a relational database, and Vue.js //to make it live on the internet 
 
 Sincerely Yours,
-Jaghtz Lutein
+Michael Spencer
