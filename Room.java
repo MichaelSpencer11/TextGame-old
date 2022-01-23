@@ -29,6 +29,17 @@ public class Room {
     private boolean hasU;
     private boolean hasD;
     
+    private boolean hasNdoor;
+    private boolean hasNEdoor;
+    private boolean hasEdoor;
+    private boolean hasSEdoor;
+    private boolean hasSdoor;
+    private boolean hasSWdoor;
+    private boolean hasWdoor;
+    private boolean hasNWdoor;
+    private boolean hasUdoor;
+    private boolean hasDdoor;
+    
     
     private Room nRoom;
     private Room neRoom;
@@ -40,6 +51,19 @@ public class Room {
     private Room nwRoom;
     private Room uRoom;
     private Room dRoom;
+    
+    private Door nDoor;
+    private Door neDoor;
+    private Door eDoor;
+    private Door seDoor;
+    private Door sDoor;
+    private Door swDoor;
+    private Door wDoor;
+    private Door nwDoor;
+    private Door uDoor;
+    private Door dDoor;
+    
+    
     
     
     //Maybe don't use this constructor as it makes a room with no connections
@@ -482,8 +506,75 @@ public class Room {
     	}
     }
     
-    //work on this
+    //work on this: cover null rooms
     public void printAdjRooms() {	
+    	for(Room r : this.adjacentRooms) {
+    		if (r.hasSdoor && r == nRoom) {
+    			System.out.println(this.nRoom.name + " is behind " + World.aAn(this.nDoor.getOpenedString()) + " " + this.nDoor.getOpenedString() + " door to the north.");
+    		}
+    		else if(r == nRoom){
+    			System.out.println(this.nRoom.name + " is to the north.");
+    		}
+    		if (r.hasSWdoor && r == neRoom) {
+    			System.out.println(this.neRoom.name + " is behind " + World.aAn(this.neDoor.getOpenedString()) + " " + this.neDoor.getOpenedString() + " door to the northeast.");
+    		}
+    		else if(r == neRoom){
+    			System.out.println(this.neRoom.name + " is to the northeast.");
+    		}
+    		if (r.hasWdoor && r == eRoom) {
+    			System.out.println(this.eRoom.name + " is behind " + World.aAn(this.eDoor.getOpenedString()) + " " + this.eDoor.getOpenedString() + " door to the east.");
+    		}
+    		else if (r == eRoom){
+    			System.out.println(this.eRoom.name + " is to the east.");
+    		}
+    		if (r.hasNWdoor && r == seRoom) {
+    			System.out.println(this.seRoom.name + " is behind " + World.aAn(this.seDoor.getOpenedString()) + " " + this.seDoor.getOpenedString() + " door to the southeast.");
+    		}
+    		else if(r == seRoom){
+    			System.out.println(this.seRoom.name + " is to the southeast.");
+    		}
+    		if (r.hasNdoor && r == sRoom) {
+    			System.out.println(this.sRoom.name + " is behind " + World.aAn(this.sDoor.getOpenedString()) + " " + this.sDoor.getOpenedString() + " door to the south.");
+    		}
+    		else if(r == sRoom){
+    			System.out.println(this.sRoom.name + " is to the south.");
+    		}
+    		if (r.hasNEdoor && r == swRoom) {
+    			System.out.println(this.swRoom.name + " is behind " + World.aAn(this.swDoor.getOpenedString()) + " " + this.swDoor.getOpenedString() + " door to the southwest.");
+    		}
+    		else if(r == swRoom){
+    			System.out.println(this.swRoom.name + " is to the southwest.");
+    		}
+    		if (r.hasEdoor && r == wRoom) {
+    			System.out.println(this.wRoom.name + " is behind " + World.aAn(this.wDoor.getOpenedString()) + " " + this.wDoor.getOpenedString() + " door to the west.");
+    		}
+    		else if(r == wRoom){
+    			System.out.println(this.wRoom.name + " is to the west.");
+    		}
+    		if (r.hasSEdoor && r == nwRoom) {
+    			System.out.println(this.nwRoom.name + " is behind " + World.aAn(this.nwDoor.getOpenedString()) + " " + this.nwDoor.getOpenedString() + " door to the northwest.");
+    		}
+    		else if (r == nwRoom){
+    			System.out.println(this.nwRoom.name + " is to the northwest.");
+    		}
+    		if (r.hasDdoor && r == uRoom) {
+    			System.out.println(this.uRoom.name + " is behind " + World.aAn(this.uDoor.getOpenedString()) + " " + this.uDoor.getOpenedString() + " door above.");
+    		}
+    		else if (r == uRoom){
+    			System.out.println(this.uRoom.name + " is above.");
+    		}
+    		if (r.hasUdoor && r == dRoom) {
+    			System.out.println(this.dRoom.name + " is behind " + World.aAn(this.dDoor.getOpenedString()) + " " + this.dDoor.getOpenedString() + " door below.");
+    		}
+    		else if(r == dRoom){
+    			System.out.println(this.dRoom.name + " is below.");
+    		}
+    		
+    	}
+    	
+    	
+    	
+    	/*
     	for(Room r : this.adjacentRooms) {
     		for(Door d : this.doors) {
     				if(d.getDoorDir().equals("north")) {
@@ -570,41 +661,83 @@ public class Room {
     			}
     		
     		}
+    	*/
     }
     	    
     
     public void createDoors(Door[] doors){
     	for (Door d : doors) {
     		this.doorsNum++;
+    		
     		if(d.getDoorDir().equals("north") && nRoom != null) {
     			nRoom.doors.add(new Door("south"));
+    			nRoom.hasSdoor = true;
+    			this.hasNdoor = true;
+    			this.nDoor = d;
+    			nRoom.sDoor = d;
     		}
     		else if (d.getDoorDir().equals("northeast") && neRoom != null) {
     			neRoom.doors.add(new Door("southwest"));
+    			neRoom.hasSWdoor = true;
+    			this.hasNEdoor = true;
+    			this.neDoor = d;
+    			neRoom.swDoor = d;
     		}
     		else if(d.getDoorDir().equals("east") && eRoom != null) {
     			eRoom.doors.add(new Door("west"));
+    			eRoom.hasWdoor = true;
+    			this.hasEdoor = true;
+    			this.eDoor = d;
+    			eRoom.wDoor = d;    		
     		}
     		else if(d.getDoorDir().equals("southeast") && seRoom != null) {
     			seRoom.doors.add(new Door("northwest"));
+    			seRoom.hasNWdoor = true;
+    			this.hasSEdoor = true;
+    			this.seDoor = d;
+    			seRoom.nwDoor = d;
     		}
     		else if(d.getDoorDir().equals("south") && sRoom != null) {
     			sRoom.doors.add(new Door("north"));
+    			sRoom.hasNdoor = true;
+    			this.hasSdoor = true;
+    			this.sDoor = d;
+    			sRoom.nDoor = d;
     		}
     		else if(d.getDoorDir().equals("southwest") && swRoom != null) {
     			swRoom.doors.add(new Door("northeast"));
+    			swRoom.hasNEdoor = true;
+    			this.hasSWdoor = true;
+    			this.swDoor = d;
+    			swRoom.neDoor = d;
     		}
     		else if(d.getDoorDir().equals("west") && wRoom != null) {
     			wRoom.doors.add(new Door("east"));
+    			wRoom.hasEdoor = true;
+    			this.hasWdoor = true;
+    			this.wDoor = d;
+    			wRoom.eDoor = d;
     		}
     		else if(d.getDoorDir().equals("northwest") && nwRoom != null) {
     			nwRoom.doors.add(new Door("southeast"));
+    			swRoom.hasSEdoor = true;
+    			this.hasNWdoor = true;
+    			this.nwDoor = d;
+    			nwRoom.seDoor = d;
     		}
     		else if(d.getDoorDir().equals("up") && uRoom != null) {
     			uRoom.doors.add(new Door("down"));
+    			uRoom.hasDdoor = true;
+    			this.hasUdoor = true;
+    			this.uDoor = d;
+    			uRoom.dDoor = d;
     		}
     		else if(d.getDoorDir().equals("down") && dRoom != null) {
     			dRoom.doors.add(new Door("up"));
+    			dRoom.hasUdoor = true;
+    			this.hasDdoor = true;
+    			this.dDoor = d;
+    			dRoom.uDoor = d;
     		}
     	}
     }
