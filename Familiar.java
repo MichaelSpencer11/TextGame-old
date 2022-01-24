@@ -127,6 +127,7 @@ public class Familiar extends Character{
 		return this.checkRoom(currentRoom);
 	}
 	
+	//trying a recursive search method
 	public Room checkRoom(Room room) {
 		for(Character c : room.people) {
 			if(c.typeToString().equals("Player")) {

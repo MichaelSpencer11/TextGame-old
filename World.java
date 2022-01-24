@@ -3,7 +3,8 @@ import java.util.ArrayList;
 public class World {
 	
 	private static ArrayList<Room> globalRoomList = new ArrayList<Room>();
-	
+	private static ArrayList<Item> globalItemList = new ArrayList<Item>();
+	private static ArrayList<Door> globalDoorList = new ArrayList<Door>();
 
 	public static String aAn(String thing) {
 		if(thing.toLowerCase().startsWith("a") ||
@@ -38,8 +39,9 @@ public class World {
 			    
 		        Room room = new Room("interior", "Your room","This is your room. Your twin size bed is against one wall. Your desk is against another. There is a black computer monitor, a keyboard and a mouse on the desk.", null, null, null, null, null, null, null, null, null, null);
 		        Item yourBed = new Bed("bed", "A basic twin four post bed. It is a little squeaky but pretty comfortable.", room);
-		        Door[] doors = {new Door("east")};
-		        Room playerCloset = new Room("interior", "Your closet","Your walk-in closet. There are clothes hanging up in the closet and some on the floor neatly placed under the racks.", null, null, room, null, null, null, null, null, null, null, doors);
+		        Room playerCloset = new Room("interior", "Your closet","Your walk-in closet. There are clothes hanging up in the closet and some on the floor neatly placed under the racks.", null, null, room, null, null, null, null, null, null, null);
+		        Door closetDoor = new Door("east", "locked", playerCloset);
+		        Key closetDoorKey = new Key("closet door key", "A small door key", closetDoor, playerCloset);
 		        Room hallwayStairs = new Room("interior", "The hallway stairs","The upstairs hallway in your home. There is a stairway here that goes down.", room, null, null,null,null,null,null,null,null,null);
 		        Room hallway = new Room("interior", "A hallway","The upstairs hallway in your house. There is a bannister next to the staircase and a way to the bathroom and your parents' room.", null, null, null, null, null, null, hallwayStairs, null, null, null);
 		        Room bathroom = new Room("interior", "A bathroom" ,"The upstairs bathroom in your house. There is a large garden tub, a toilet and a sink. The room is decorated in floral drapes and leafy brown towels.", null, null, null, null, hallway, null, null, null, null, null);
@@ -74,8 +76,24 @@ public class World {
 			return globalRoomList;
 		}
 		
+		public ArrayList<Item> getGlobalItemList(){
+			return globalItemList;
+		}
+		
+		public ArrayList<Door> getGlobalDoorList() {
+			return globalDoorList;
+		}
+		
 		public static void addRoomToGlobalRoomList(Room room) {
 			globalRoomList.add(room);
+		}
+		
+		public static void addItemToGlobalItemList(Item item) {
+			globalItemList.add(item);
+		}
+		
+		public static void addDoorToGlobalDoorList(Door door) {
+			globalDoorList.add(door);
 		}
 		
 }		

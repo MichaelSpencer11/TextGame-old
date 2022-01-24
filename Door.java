@@ -10,11 +10,21 @@ public class Door {
     private boolean isLocked;
     private String doorType;
     private String keyName = "";
+    private Room room;
 
-    public Door(String dir){
+    public Door(String dir, String locked, Room room){
         this.DoorId = DoorIdTracker++;
         this.setClosed();
         this.doorDir = dir;
+        this.room = room;
+        World.addDoorToGlobalDoorList(this);
+        this.room.addDoor(this);
+        if(locked.equals("locked")) {
+        	this.setLocked();
+        }
+        else if (locked.equals("unlocked")) {
+        	this.setUnlocked();
+        }
         
     }
     
@@ -22,30 +32,41 @@ public class Door {
     //the key is created before the door
     //just match the key name to the door with the key's name
     // a locked door is a named door
-    public Door(String dir, String keyName) {
+    public Door(String dir, Room room, Key key) {
     	this.DoorId = DoorIdTracker++;
+    	this.room = room;
     	this.setClosed();
     	this.doorDir = dir;
     	this.isLocked = true;
-    	this.keyName = keyName;
+    	World.addDoorToGlobalDoorList(this);
+    	this.room.addDoor(this);
     	
     }
+    
+    /*
+    public void printDoorStatus(Room room) {
+    	System.out.println("It's a door to the " +  + ".");
+    	System.out.println("The door is " + getOpenedString() + " and " + getLockedString() + ".");
+    }
+    */
 
     public boolean getOpened(){
         return isOpened;
     }
     
     public String getOpenedString() {
-    	if(isOpened) {
-    		return "open";
-    	}
-    	else {
-    		return "closed";
-    	}
+    	if(isOpened) return "open";
+    	else return "closed";
+    	
     }
 
     public boolean getLocked(){
         return isLocked;
+    }
+    
+    public String getLockedString() {
+    	if(isLocked) return "locked";
+    	else return "unlocked";
     }
 
     public void setOpened(){

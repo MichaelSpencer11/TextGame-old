@@ -1,10 +1,11 @@
 
 public class Key extends Item{
 
-	public Key(String name, String description, String desc2, Room room) {
+	
+	//key just has to be created after the item it locks/unlocks
+	public Key(String name, String description, Object fits , Room room) {
 		this.itemName = name;
 		this.description = description;
-		this.desc2 = desc2;
 		this.itemId = itemTracker++;
 		this.roomIn = room;
 		this.takeable = true;

@@ -18,6 +18,7 @@ public class Room {
     private boolean checked;
     private boolean hasDoors;
     
+    //does this room have directions
     private boolean hasN;
     private boolean hasNE;
     private boolean hasE;
@@ -29,6 +30,7 @@ public class Room {
     private boolean hasU;
     private boolean hasD;
     
+    //does this rooms have doors
     private boolean hasNdoor;
     private boolean hasNEdoor;
     private boolean hasEdoor;
@@ -41,6 +43,7 @@ public class Room {
     private boolean hasDdoor;
     
     
+    //adjacent rooms
     private Room nRoom;
     private Room neRoom;
     private Room eRoom;
@@ -52,6 +55,7 @@ public class Room {
     private Room uRoom;
     private Room dRoom;
     
+    //directional doors
     private Door nDoor;
     private Door neDoor;
     private Door eDoor;
@@ -76,9 +80,10 @@ public class Room {
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
+    	World.addRoomToGlobalRoomList(this);
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
-    	//init the vars for terrain
+    	//initialize the vars for terrain
     	if(terrainType.equals("rocky")){
             this.roomTerrain = Terrain.rocky;
         }
@@ -159,6 +164,7 @@ public class Room {
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
+    	World.addRoomToGlobalRoomList(this);
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	if(terrainType.equals("rocky")){
@@ -317,6 +323,7 @@ public class Room {
     	this.inventory = new ArrayList<Item>();
     	this.dirs = new ArrayList<String>();
     	this.adjacentRooms = new ArrayList<Room>();
+    	World.addRoomToGlobalRoomList(this);
     	this.roomId = RoomIdTracker++;
     	this.description = desc;
     	for(Door d : doors) {
@@ -470,8 +477,6 @@ public class Room {
     	}
     	
     	
-    	createDoors(doors);
-    	World.addRoomToGlobalRoomList(this);
     }
     
     //print items in the room
@@ -664,8 +669,8 @@ public class Room {
     	*/
     }
     	    
-    
-    public void createDoors(Door[] doors){
+    /*
+    public void insertDoors(Door[] doors){
     	for (Door d : doors) {
     		this.doorsNum++;
     		
@@ -741,6 +746,7 @@ public class Room {
     		}
     	}
     }
+    */
     
     public void printDoors() {
     	for (Door d : doors) {
@@ -750,8 +756,79 @@ public class Room {
     
     
     //i dunno, we'll see
-    public void addDoor(String dir1, String dir2, Room room1, Room room2) {
-    	
+    public void addDoor(Door door) {
+    	this.doorsNum++;
+		
+		if(door.getDoorDir().equals("north") && nRoom != null) {
+			//nRoom.doors.add(new Door("south"));
+			nRoom.hasSdoor = true;
+			this.hasNdoor = true;
+			this.nDoor = door;
+			nRoom.sDoor = door;
+		}
+		else if (door.getDoorDir().equals("northeast") && neRoom != null) {
+			//neRoom.doors.add(new Door("southwest"));
+			neRoom.hasSWdoor = true;
+			this.hasNEdoor = true;
+			this.neDoor = door;
+			neRoom.swDoor = door;
+		}
+		else if(door.getDoorDir().equals("east") && eRoom != null) {
+			//eRoom.doors.add(new Door("west"));
+			eRoom.hasWdoor = true;
+			this.hasEdoor = true;
+			this.eDoor = door;
+			eRoom.wDoor = door;    		
+		}
+		else if(door.getDoorDir().equals("southeast") && seRoom != null) {
+			//seRoom.doors.add(new Door("northwest"));
+			seRoom.hasNWdoor = true;
+			this.hasSEdoor = true;
+			this.seDoor = door;
+			seRoom.nwDoor = door;
+		}
+		else if(door.getDoorDir().equals("south") && sRoom != null) {
+			//sRoom.doors.add(new Door("north"));
+			sRoom.hasNdoor = true;
+			this.hasSdoor = true;
+			this.sDoor = door;
+			sRoom.nDoor = door;
+		}
+		else if(door.getDoorDir().equals("southwest") && swRoom != null) {
+			//swRoom.doors.add(new Door("northeast"));
+			swRoom.hasNEdoor = true;
+			this.hasSWdoor = true;
+			this.swDoor = door;
+			swRoom.neDoor = door;
+		}
+		else if(door.getDoorDir().equals("west") && wRoom != null) {
+			//wRoom.doors.add(new Door("east"));
+			wRoom.hasEdoor = true;
+			this.hasWdoor = true;
+			this.wDoor = door;
+			wRoom.eDoor = door;
+		}
+		else if(door.getDoorDir().equals("northwest") && nwRoom != null) {
+			//nwRoom.doors.add(new Door("southeast"));
+			swRoom.hasSEdoor = true;
+			this.hasNWdoor = true;
+			this.nwDoor = door;
+			nwRoom.seDoor = door;
+		}
+		else if(door.getDoorDir().equals("up") && uRoom != null) {
+			//uRoom.doors.add(new Door("down"));
+			uRoom.hasDdoor = true;
+			this.hasUdoor = true;
+			this.uDoor = door;
+			uRoom.dDoor = door;
+		}
+		else if(door.getDoorDir().equals("down") && dRoom != null) {
+			//dRoom.doors.add(new Door("up"));
+			dRoom.hasUdoor = true;
+			this.hasDdoor = true;
+			this.dDoor = door;
+			dRoom.uDoor = door;
+		}
     	
     }
     
@@ -980,7 +1057,125 @@ public class Room {
 	public void setChecked(boolean status) {
 		checked = status;
 	}
+	
+	public String toDirString(Door door) {
+		if(door == nDoor) {
+			return "north";
+		}
+		else if (door == neDoor) {
+			return "northeast";
+		}
+		else if (door == eDoor) {
+			return "east";
+		}
+		else if (door == seDoor) {
+			return "southeast";
+		}
+		else if(door == sDoor) {
+			return "south";
+		}
+		else if (door == swDoor) {
+			return "southwest";
+		}
+		else if (door == wDoor) {
+			return "west";
+		}
+		else if (door == nwDoor) {
+			return "northwest";
+		}
+		else if (door == uDoor) {
+			return "above";
+		}
+		else if (door == dDoor) {
+			return "below";
+		}
+		
+		return null;
+	}
 
+	public Room getRoom () {
+		return this;
+	}
+	
+	public Room getNroom() {
+		return nRoom;
+	}
+	
+	public Room getNEroom() {
+		return neRoom;
+	}
+	
+	public Room getEroom() {
+		return eRoom;
+	}
+	
+	public Room getSEroom() {
+		return seRoom;
+	}
+	
+	public Room getSroom() {
+		return sRoom;
+	}
+	
+	public Room getSWroom() {
+		return swRoom;
+	}
+	
+	public Room getWroom() {
+		return wRoom;
+	}
+	
+	public Room getNWroom() {
+		return nwRoom;
+	}
+	
+	public Room getUroom() {
+		return uRoom;
+	}
+	
+	public Room getDroom() {
+		return dRoom;
+	}
+	
+	public Door getNdoor() {
+		return nDoor;
+	}
+
+	public Door getNEdoor() {
+		return neDoor;
+	}
+
+	public Door getEdoor() {
+		return eDoor;
+	}
+
+	public Door getSEdoor() {
+		return seDoor;
+	}
+
+	public Door getSdoor() {
+		return sDoor;
+	}
+
+	public Door getSWdoor() {
+		return swDoor;
+	}
+
+	public Door getWdoor() {
+		return wDoor;
+	}
+
+	public Door getNWdoor() {
+		return nwDoor;
+	}
+
+	public Door getUdoor() {
+		return uDoor;
+	}
+
+	public Door getDdoor() {
+		return dDoor;
+	}
 
 	//public void setHasDirs(ArrayList<Boolean> hasDirs) {
 		//this.hasDirs = hasDirs;
