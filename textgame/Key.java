@@ -1,5 +1,6 @@
+package textgame;
 
-public class Key extends Item{
+public class Key extends Item {
 
 	
 	//key just has to be created after the item it locks/unlocks

@@ -1,4 +1,8 @@
+package textgame;
+
 import java.util.ArrayList;
+
+
 
 public class World {
 	
@@ -67,7 +71,7 @@ public class World {
 		        Player player = new Player(room);
 		        Character familiar = new Familiar("Someone is standing or floating here, it is very hard to see them, they are almost not there but you know that there is definitely a presence here.", room, player);
 		        Character practiceRobot = new Automaton("An ordinary looking automaton with mechanical limbs and a rudimentary programmed action stack. It is currently sitting in a corner non-functionally." , room);
-		        System.out.println("Hi, welcome. Please 'look' or 'l' to look around the room. 'Take' some items and 'equip', 'unequip', and 'drop' them. Type 'help' to get some." );
+		        System.out.println(ConsoleColors.CYAN + "Hello, welcome. Please 'look' or 'l' to look around the room. 'Take' some items and 'equip', 'unequip', and 'drop' them. Type 'help' to get some." + ConsoleColors.RESET );
 		        Input input = new Input(player);
 		        input.input();
 }

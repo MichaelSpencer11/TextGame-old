@@ -1,3 +1,5 @@
+package textgame;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -112,13 +114,13 @@ public class Character {
     public void look(String inputString){
         int count = 0;
         if(asleep) {
-        	System.out.println("You are asleep.");
+        	System.out.println(ConsoleColors.WHITE + "You are asleep." + ConsoleColors.RESET);
         	return;
         }
         if (inputString.equals("look") || inputString.equals("l")){
-        System.out.println("You look around a bit.");
+        System.out.println(ConsoleColors.GREEN + "You look around a bit." + ConsoleColors.RESET);
         currentRoom.printDescription();
-        System.out.println("This area seems to be " + World.aAn(currentRoom.getTerrainType()) + " " + currentRoom.getTerrainType() + " area.");
+        System.out.println(ConsoleColors.GREEN + "This area seems to be " + World.aAn(currentRoom.getTerrainType()) + " " + ConsoleColors.YELLOW + currentRoom.getTerrainType() + ConsoleColors.GREEN + " area." + ConsoleColors.RESET);
         currentRoom.printItems();
         currentRoom.printChars();
         currentRoom.printAdjRooms();

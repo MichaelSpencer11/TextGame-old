@@ -1,3 +1,4 @@
+package textgame;
 
 //there are items in the game, here are some attributes and stuff
 public class Item {

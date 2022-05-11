@@ -1,3 +1,5 @@
+package textgame;
+
 import java.util.ArrayList;
 
 public class Automaton extends Character {

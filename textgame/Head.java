@@ -1,7 +1,9 @@
+package textgame;
 
-public class Back extends Item {
+public class Head extends Item
+{
 
-	public Back(String name, String description, String desc2, Room room) {
+	public Head(String name, String description, String desc2, Room room) {
 		this.itemName = name;
 		this.description = description;
 		this.desc2 = desc2;

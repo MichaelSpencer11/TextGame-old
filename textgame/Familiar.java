@@ -1,3 +1,5 @@
+package textgame;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -151,5 +153,3 @@ public class Familiar extends Character{
 	
 	
 }
-
-

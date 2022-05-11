@@ -1,11 +1,13 @@
-import java.awt.Color;
-import java.awt.Font;
+package textgame;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.border.Border;
+//import java.awt.Color;
+//import java.awt.Font;
+
+//import javax.swing.BorderFactory;
+//import javax.swing.ImageIcon;
+//import javax.swing.JFrame;
+//import javax.swing.JLabel;
+//import javax.swing.border.Border;
 
 //the main method. Java needs this to run the stuff
 //I try to have this do as little as possible and have the classes do all the work

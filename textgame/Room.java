@@ -1,3 +1,5 @@
+package textgame;
+
 import java.util.*;
 
 //the world is made of rooms so this one is pretty important

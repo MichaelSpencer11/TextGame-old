@@ -1,3 +1,4 @@
+package textgame;
 
 public class Clock {
 	private int year;

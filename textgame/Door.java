@@ -1,3 +1,4 @@
+package textgame;
 
 //doors are for sure things in the world
 public class Door {

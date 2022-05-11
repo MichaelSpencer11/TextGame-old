@@ -1,7 +1,8 @@
+package textgame;
 
-public class Hands extends Item {
+public class Legs extends Item {
 
-	public Hands(String name, boolean plural, String description, String desc2, Room room) {
+	public Legs(String name, boolean plural, String description, String desc2, Room room) {
 		this.itemName = name;
 		this.plural = plural;
 		this.description = description;

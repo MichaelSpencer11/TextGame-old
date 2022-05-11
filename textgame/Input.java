@@ -1,3 +1,5 @@
+package textgame;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,7 +12,7 @@ public class Input{
     
     public void input(){
         while(true){
-            System.out.print(">>>");
+            System.out.print(ConsoleColors.GREEN + ">>>" + ConsoleColors.RESET);
             String inputString = scanner.nextLine();
             try {
             if(inputString.equals("")){
