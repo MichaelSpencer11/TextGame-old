@@ -1843,6 +1843,41 @@ public String nothingOverThere() {
 		}
 	}
 
+	public void use(String inputString, Character player){
+		Item targetItem = null;
+		Character targetCharacter = null;
+		String substring1 = inputString.substring(4);
+		String secondWord = substring1.substring(0,substring1.indexOf(' '));
+		String thirdWord = substring1.substring(substring1.indexOf(' ')).trim();
+		System.out.println("inputString: " + "{" + inputString + "}");
+		System.out.println("substring1: " + "{" + substring1 + "}");
+		System.out.println("secondWord: " + "{" + secondWord + "}");
+		System.out.println("thirdWord: " + "{" + thirdWord + "}");
+		for(Character c : player.currentRoom.people){
+			if(thirdWord.toLowerCase().equals(c.name.toLowerCase())){
+				targetCharacter = c;
+			}
+		}
+
+		if(targetCharacter == null){
+			System.out.println("Character not found.");
+		}
+		
+		
+		for(Item i : player.inventory){
+			if(secondWord.toLowerCase().equals(i.itemName.toLowerCase())){
+				targetItem = i;
+			}
+		}
+
+		if(targetItem == null){
+			System.out.println("Item not found.");
+		}
+
+		targetItem.applyEffect(targetCharacter);
+
+	}
+
 	public void status(){
 		System.out.println("Level: " + job.getLevel());
 		System.out.println("HP: " + this.job.getHp() + "/" + this.job.getMaxHp());

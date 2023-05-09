@@ -11,6 +11,7 @@ public class Thief extends Job {
 		this.level = 1;
 		setMaxExp(level);
 		setMaxHp(level);
+		this.hp = maxHp;
 		setMaxMp(level);
 		this.vigor = 37;
 		this.speed = 40;
@@ -39,7 +40,7 @@ public class Thief extends Job {
 
 	public void setMaxMp(int newLevel){
 		maxMp = (int)Math.floor((.17 + (newLevel / 22.0)) * 100 );
-		hp = maxMp;
+		mp = maxMp;
 	}
 
 }

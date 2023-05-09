@@ -26,6 +26,6 @@ public class RedMage extends Job {
 
 	public void setMaxMp(int newLevel){
 		maxMp = (int)Math.floor((.2 + (newLevel / 16.0)) * 100 );
-		hp = maxMp;
+		mp = maxMp;
 	}
 }

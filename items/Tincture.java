@@ -14,7 +14,12 @@ public class Tincture extends Item {
 
     public void applyEffect(Character player) {
         player.getJob().addMp(healingAmount);
+        if(player.getJob().getMp() > player.getJob().getMaxMp()){
+            player.getJob().setMp(player.getJob().getMaxMp());
+        }
         this.empty = true;
+        System.out.println("You apply the Tincture to " + player.getName() + ".");
+        System.out.println("MP: " + player.getJob().getMp() + "/" + player.getJob().getMaxMp());
 
     }
 }

@@ -5,6 +5,7 @@ public class Warrior extends Job {
     public Warrior() {
 		this.level = 1;
 		setMaxHp(level);
+		this.hp = maxHp;
 		setMaxExp(level);
 		setMaxMp(level);
 		this.vigor = 50;
@@ -25,6 +26,6 @@ public class Warrior extends Job {
 
 	public void setMaxMp(int newLevel){
 		maxMp = (int)Math.floor((.16 + (newLevel / 25.0)) * 100 );
-		hp = maxMp;
+		mp = maxMp;
 	}
 }

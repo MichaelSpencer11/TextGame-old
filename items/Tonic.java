@@ -14,8 +14,14 @@ public class Tonic extends Item {
     }
 
     public void applyEffect(Character player) {
+
         player.getJob().addHp(healingAmount);
+        if(player.getJob().getHp() > player.getJob().getMaxHp()){
+            player.getJob().setHp(player.getJob().getMaxHp());
+        }
         this.empty = true;
+        System.out.println("You apply the Tonic to " + player.getName() + ".");
+        System.out.println("HP: " + player.getJob().getHp() + "/" + player.getJob().getMaxHp());
 
     }
 }

@@ -47,6 +47,9 @@ public class Input{
             else if(inputString.equals("battle")){
                 new Battle(thisPlayer, thisPlayer.getTarget(), thisPlayer.getCurrentRoom());
             }
+            else if(inputString.substring(0, 3).equals("use")){
+                thisPlayer.use(inputString, thisPlayer);
+            }
             else if (inputString.length() > 3 && inputString.substring(0,4).equals("exit")){
                 System.exit(0);
             }

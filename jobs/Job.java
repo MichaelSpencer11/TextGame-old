@@ -55,6 +55,7 @@ public abstract class Job {
 	public int getLevel(){return level;}
 	public void setLevel(int newLevel){level = newLevel;}
 	public int getHp(){return hp;}
+	public void setHp(int newHp){this.hp = newHp;}
 	public int getMaxHp(){return maxHp;}
 	public abstract void setMaxHp(int newLevel);
 	public abstract void setMaxMp(int newLevel);
@@ -62,6 +63,7 @@ public abstract class Job {
 		maxExp = (newLevel * newLevel) * 100;
 	}
 	public int getMp(){return mp;}
+	public void setMp(int newMp){mp = newMp;}
 	public int getMaxMp(){return maxMp;}
 	public int getExp(){return exp;}
 	public int getMaxExp(){return maxExp;}

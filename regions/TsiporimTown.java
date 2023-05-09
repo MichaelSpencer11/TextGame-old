@@ -55,23 +55,21 @@ public class TsiporimTown extends Region {
         Room alley1 = new Room("town","Alley behind Peregrine and Osprey 1", "An alley behind Osprey and Peregrine streets. Some garbage cans can be found here behind the houses.", house1WOsprey,null,mainAndSchool,null,house1WPeregrine,null,null,null,null,null);
         Room alley2 = new Room("town","Alley behind Peregrine and Osprey 2", "An alley behind Osprey and Peregrine streets. A beehive has been made inside of a garbage can.", house2WOsprey,null,alley1,null,house2WPeregrine,null,null,null,null,null);
         Room alley3 = new Room("town","Alley behind Peregrine and Osprey 3", "An alley behind Osprey and Peregrine streets. A concrete barrier is at the west end of the alley.", bestFriendHouse,null,alley2,null,null,null,null,null,null,null);
-        Room dirtPath1 = new Room ("forest","A dirt path","A dirt path cuts through the forest and snakes to the east around trees and bushes.",null,null,alley3,null,null,null,null,null,null,null);
+        Room dirtPath1 = new Room("forest","A dirt path","A dirt path cuts through the forest and snakes to the east around trees and bushes.",null,null,alley3,null,null,null,null,null,null,null);
         Room dirtPath2 = new Room("forest","A dirt path", "There is a small wooden bridge over a brook flowing steadily leading the path deeper into the forest.",null,null,dirtPath1,null,null,null,null,null,null,null);
-        Room dirtPath3 = new Room("forest", "A dirt path", "The path turns southwest here and the trees get a little thicker.", null,null,dirtPath2,null,null,null,null,null,null,null);
-        Room dirtPath4 = new Room("forest", "A dirt path","The continues southwest. There is a fallen tree across the path.", null,dirtPath3,null,null,null,null,null,null,null,null);
+        Room dirtPath3 = new Room("forest","A dirt path", "The path turns southwest here and the trees get a little thicker.", null,null,dirtPath2,null,null,null,null,null,null,null);
+        Room dirtPath4 = new Room("forest","A dirt path","The continues southwest. There is a fallen tree across the path.", null,dirtPath3,null,null,null,null,null,null,null,null);
         Room dirtPath5 = new Room("forest","A dirt path","The path contiues west here and the path gently slopes downward for a bit.",null,dirtPath4,null,null,null,null,null,null,null,null);
         Room dirtPath6 = new Room("forest","A dirt path","The path continues east-west and snakes around a few trees and sometimes splits.",null,null,dirtPath5,null,null,null,null,null,null,null);
         Room dirtPath7 = new Room("forest","A dirt path", "The path becomes faint here and overgrown with bushes. It seems like no one has been here in a while.",null,null,dirtPath6,null,null,null,null,null,null,null);
         Room dirtPath8 = new Room("forest","A dirt path","The path now widens and the trees grow a little more sparse at this point. The deep sound of water can be heard.",null,null,dirtPath7,null,null,null,null,null,null,null);
         Room riverBank = new Room("forest","A river bank", "A river gently moves from south to north and the occasional plop of fish jumping out of the water can be heard.",null,null,dirtPath8,null,null,null,null,null,null,null);
+        
 
         nLink = inFrontOfHome;
         alleyLink = alley3;
     }
 
-    public Room getNLink(){
-        return nLink;
-    }
-
+    public Room getNLink(){return nLink;}
     public Room getAlleyLink(){return alleyLink;}
 }

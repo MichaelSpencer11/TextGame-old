@@ -25,6 +25,6 @@ public class Monk extends Job {
 
 	public void setMaxMp(int newLevel){
 		maxMp = (int)Math.floor((.18 + (newLevel / 23.0)) * 100 );
-		hp = maxMp;
+		mp = maxMp;
 	}
 }
